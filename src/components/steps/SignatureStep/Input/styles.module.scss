@@ -1,0 +1,53 @@
+@import "styles/index.scss";
+@import "styles/chat-input.scss";
+
+.container {
+  width: 100%;
+  background-color: map-get($colors, white);
+  box-shadow: 0 -4px 10px 0 rgba($color-shadow-2, 0.1);
+
+  .header {
+    padding: 15px 20px;
+  }
+
+  .title {
+    font-family: $ff-lato;
+    font-size: $fs-regular;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    margin-top: 0.5em;
+    font-family: $ff-lato;
+    font-size: $fs-smaller;
+    color: $color-silver-gray;
+  }
+
+  .canvasWrapper {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    background-color: $color-darker-white;
+  }
+
+  .placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: $ff-lato;
+    font-style: italic;
+    text-align: center;
+    color: $color-silver-gray;
+    transform: translate(-50%, -50%);
+    user-select: none;
+  }
+
+  .clearBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 25px;
+    color: $color-silver-gray;
+    user-select: none;
+  }
+}

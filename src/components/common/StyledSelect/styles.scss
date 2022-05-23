@@ -1,0 +1,54 @@
+@import '~styles/index.scss';
+
+.StyledSelect {
+  & &__control {
+    height: 46px;
+    font-family: $ff-lato;
+    font-size: map-get($sizes, regular);
+    line-height: 20px;
+    border: 1px solid map-get($colors, darker-gray);
+    color: map-get($colors, main-black);
+    background-color: map-get($colors, white);
+
+    &--is-disabled {
+      background-color: map-get($colors, darker-gray);
+    }
+  }
+
+  & &__single-value--is-disabled {
+    color: map-get($colors, black);
+  }
+
+  &__menu {
+    display: flex;
+    padding: 8px 0;
+    border: 1px solid map-get($colors, darker-gray);
+    border-radius: 10px;
+    background-color: map-get($colors, white);
+    box-shadow: 0 12px 30px 0 rgba(map-get($colors, black), 0.16);
+    flex-direction: column;
+
+    &-list {
+      padding: 0;
+
+      .StyledSelect__option {
+        display: flex;
+        height: 44px;
+        font-family: $ff-lato;
+        font-size: map-get($sizes, regular);
+        line-height: 20px;
+        border: none;
+        color: map-get($colors, main-black);
+        align-items: center;
+
+        &--is-selected {
+          background-color: rgba(map-get($colors, light-blue), 0.1);
+        }
+
+        &--is-focused {
+          background-color: rgba(map-get($colors, light-blue), 0.05);
+        }
+      }
+    }
+  }
+}

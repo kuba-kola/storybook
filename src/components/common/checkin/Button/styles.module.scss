@@ -1,0 +1,61 @@
+@import 'styles/index.scss';
+
+.button {
+  padding: 15px 30px;
+  font-family: $ff-ibm;
+  font-size: $fs-regular;
+  letter-spacing: 0.4px;
+  border: none;
+  border-radius: 6px;
+  white-space: nowrap;
+  color: map-get($colors, white);
+  cursor: pointer;
+}
+
+.primaryButton {
+  @extend .button;
+
+  background: $color-secondary-gradient;
+  box-shadow: 0 8px 15px 0 rgba($color-black, 0.18);
+}
+
+.secondaryButton {
+  @extend .button;
+
+  background-color: $color-matte-gray;
+}
+
+.bigButton {
+  @extend .button;
+
+  height: 128px;
+  margin-right: 32px;
+  padding: 0 64px;
+  font-size: $fs-very-large;
+  border-radius: 12px;
+  -webkit-tap-highlight-color: transparent;
+
+  @media only screen and (max-width: 1079px) {
+    height: unset;
+    padding: 48px;
+    font-size: $fs-large;
+  }
+
+  @media only screen and (max-width: 719px) {
+    height: unset;
+    margin-right: 16px;
+    padding: 24px;
+    font-size: $fs-very-big;
+  }
+}
+
+.wide {
+  width: 100%;
+  padding: 1em;
+}
+
+.disabled {
+  background: none;
+  background-color: $color-light-gray;
+  cursor: default;
+}

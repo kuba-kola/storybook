@@ -1,0 +1,87 @@
+@import '~styles/index.scss';
+
+.conciergeBookedServices {
+  &Block {
+    margin: 25px;
+  }
+
+  &Title {
+    @include main-font(map-get($sizes, smaller), $fw-bold);
+
+    margin-bottom: 15px;
+  }
+
+  &Accordion {
+    border: $default-border;
+    border-radius: $big-border-radius;
+
+    &Item {
+      @include main-font;
+
+      &ToggleButton {
+        cursor: pointer;
+      }
+
+      &Header {
+        padding: 15px;
+        border-radius: 10px 10px 0 0;
+        border-bottom: 1px solid map-get($colors, darker-gray);
+        background-color: map-get($colors, light-gray);
+
+        &Row {
+          display: flex;
+          align-items: baseline;
+          justify-content: space-between;
+
+          &:first-child {
+            margin-bottom: 10px;
+          }
+
+          .conciergeBookingDetailsLabel {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      &Content {
+        padding: 20px;
+      }
+
+      &:last-child {
+        .conciergeBookedServicesAccordionItemHeader {
+          border-radius: $big-border-radius;
+          border-bottom: none;
+        }
+      }
+
+      &-open {
+        &:last-child {
+          .conciergeBookedServicesAccordionItemHeader {
+            border-radius: 10px 10px 0 0;
+            border-bottom: $default-border;
+          }
+        }
+      }
+    }
+  }
+
+  &MenuItemTitle {
+    text-transform: capitalize;
+  }
+
+  &QuestionBlock {
+    margin-bottom: 20px;
+
+    &Answer {
+      @include secondary-font(map-get($sizes, bigger));
+
+      margin-top: 15px;
+      text-transform: capitalize;
+      color: map-get($colors, light-blue);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

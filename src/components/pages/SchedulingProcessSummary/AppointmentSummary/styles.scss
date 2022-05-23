@@ -1,0 +1,144 @@
+@import '~styles/index.scss';
+
+.bookingDetails {  
+  &Divider {
+    width: 100%;
+    height: 1px;
+    background-color: map-get($colors, darker-gray);
+  }
+
+  &Service {
+    margin: 0px 5px;
+    font-size: map-get($sizes, regular);
+    color: map-get($colors, main-black);
+
+    &:first-child {
+      margin-left: 0px;
+    }
+
+    &Accordion {
+      border: $default-border;
+      border-radius: $big-border-radius;
+  
+      &Item {
+        @include main-font;
+
+        &QuestionBlock {
+          padding: 10px 10px;
+          background-color: map-get($colors, light-gray);
+
+          &Label, &Value, &Answer {
+            @include secondary-font(map-get($sizes, smaller));
+          }
+
+          &Label, &Value {
+            color: map-get($colors, font-gray);
+          }
+
+          &Answer {
+            margin-left: 5px;
+            color: map-get($colors, main-black);
+          }
+
+          &:last-child {
+            border-bottom: $default-border;
+          }
+        }
+  
+        &ToggleButton {
+          cursor: pointer;
+        }
+
+        &Content p {
+          padding: 20px;
+          font-size: map-get($sizes, smaller);
+          color: map-get($colors, darker-gray);
+          background-color: map-get($colors, light-gray);
+        }
+  
+        &:last-child {
+          .conciergeBookedServicesAccordionItemHeader {
+            border-radius: $big-border-radius;
+            border-bottom: none;
+          }
+        }
+  
+        &-open {
+          &:last-child {
+            .conciergeBookedServicesAccordionItemHeader {
+              border-radius: 10px 10px 0 0;
+              border-bottom: $default-border;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &ServiceName {
+    span {
+        font-size: map-get($sizes, bigger);
+        font-weight: $fw-bold;
+    }
+  }
+
+  &ServicePrice {
+    &SmallGrayText {
+      font-size: map-get($sizes, smaller);
+      color: map-get($colors, font-gray);
+    }
+
+    &Value {
+        font-size: map-get($sizes, smaller);
+        margin-left: 3px; 
+    }
+  }
+
+  &ServiceToggle {
+    margin-left: auto;
+  }
+
+  &Section {
+    padding: 15px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &ServiceTotal {
+    padding: 15px;
+    font-size: map-get($sizes, smaller);
+    background-color: map-get($colors, light-gray);
+  }
+
+  &ServiceTotalValue {
+    padding: 15px 15px 5px;
+    font-weight: $fw-bold;
+  }
+
+  @mixin service-summary {
+    font-size: map-get($sizes, smaller);
+
+    &Label {
+      color: map-get($colors, font-gray);
+    }
+
+    &Value {
+      color: map-get($colors, main-black);
+    }
+  }
+
+  &ServiceEstimatedTime {
+    @include service-summary;
+
+    padding: 15px 0px 5px 15px;
+    
+  }
+
+  &ServiceTransportation {
+    @include service-summary;
+    
+    padding: 10px 0px 15px 15px;
+  }
+}

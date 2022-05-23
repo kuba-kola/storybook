@@ -1,0 +1,62 @@
+@import '~styles/index.scss';
+
+.conciergeCalendar {
+  &Navigation {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+
+    .conciergeInputWrapper {
+      margin: 0;
+    }
+  }
+
+  &MonthYearWrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &MonthName {
+    margin-right: 10px;
+  }
+
+  &Year {
+    width: 70px;
+    height: 36px;
+  }
+
+  &Icon {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+
+    &.prevMonth {
+      border-top: $default-border;
+      border-left: $default-border;
+      transform: rotate(-45deg);
+    }
+
+    &.nextMonth {
+      border-top: $default-border;
+      border-right: $default-border;
+      transform: rotate(45deg);
+    }
+  }
+
+  &WeekDaysRow {
+    display: flex;
+  }
+
+  &WeekDay {
+    width: 40px;
+    font-size: map-get($sizes, smaller);
+    text-align: center;
+    color: map-get($colors, light-blue);
+  }
+
+  &DaysRow {
+    display: flex;
+    margin: 10px 0;
+  }
+}

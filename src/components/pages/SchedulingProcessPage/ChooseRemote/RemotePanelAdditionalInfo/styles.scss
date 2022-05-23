@@ -1,0 +1,17 @@
+@import "~styles/index.scss";
+
+.conciergeRemotePanel {
+  .conciergeBlockContent {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .conciergeButtonApply.AdditionalInfo {
+    margin-right: 0;
+
+    &:disabled {
+      background: map-get($colors, darker-gray);
+      cursor: not-allowed;
+    }
+  }
+}

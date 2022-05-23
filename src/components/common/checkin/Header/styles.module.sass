@@ -1,0 +1,68 @@
+@import "styles/index.scss"
+
+.header
+  background: $color-dark-blue
+  height: 60px
+  display: flex
+  align-items: center
+  padding: $fs-tiny $fs-big
+  width: 100%
+  z-index: 1
+  flex-shrink: 0
+  position: relative
+  font-family: $ff-lato
+  &.fixed
+    position: fixed
+    left: 0
+    top: 0
+    width: 100%
+
+  &Wrap
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+
+.dealerlogo
+  max-height: 100%
+
+.dealerName
+  color: $color-white
+  font-size: $fs-much-bigger
+
+.goBack
+  font-weight: normal
+  font-size: 15px
+  line-height: 20px
+  display: flex
+  align-items: center
+  cursor: pointer
+  width: 60px
+  color: $color-aqua
+  span
+    padding-left: 3px
+
+.hidden
+  width: 60px
+  opacity: 0
+
+.title
+  font-weight: bold
+  font-size: 15px
+  line-height: 20px
+  text-align: center
+  color: $color-darker-white
+  flex: 1
+
+.button
+  @include flex-centered
+  display: flex
+  width: 30px
+  height: 30px
+  outline: none
+  border: 1px solid $color-dark-gray
+  border-radius: 7px
+  background: rgba($color-dark-gray, 0.25)
+  cursor: pointer
+  .icon
+    display: block

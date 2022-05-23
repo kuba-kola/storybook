@@ -1,0 +1,151 @@
+@import "styles/index.scss";
+
+.container {
+  display: flex;
+  width: 100%;
+  margin-top: 4px;
+  padding: 16px;
+  border: 1px solid $color-light-gray;
+  border-radius: 10px;
+  background-color: $color-white;
+  box-shadow: 0 4px 10px 0 rgba($color-shadow-1, 0.08);
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.highlighted {
+    border: 1px solid $color-secondary-mint;
+    background-color: rgba($color-secondary-mint, 0.05);
+  }
+
+  .content {
+    font-family: $ff-lato;
+    text-align: left;
+  }
+
+  .name {
+    margin-bottom: 0.5em;
+    font-family: $ff-ibm;
+    font-size: $fs-regular;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    text-align: left;
+    color: $color-black;
+  }
+
+  .attr {
+    color: $color-silver-gray;
+    font-size: $fs-smaller;
+    margin-right: 0.5em;
+  }
+  .text {
+    font-size: $fs-smaller;
+  }
+
+  .text + .text {
+    margin-top: 0.5em;
+  }
+
+  .time {
+    margin-bottom: 8px;
+    font-family: $ff-lato;
+    font-size: $fs-slightly-bigger;
+    letter-spacing: 0.2px;
+    line-height: 22px;
+    color: $color-gray;
+  }
+
+  .footer {
+    display: flex;
+    width: 262px;
+    margin-top: 24px;
+  }
+
+  .fee {
+    margin-left: auto;
+    font-family: $ff-ibm;
+    font-size: $fs-very-large;
+    letter-spacing: 0.4px;
+    line-height: 50px;
+    color: $color-gray;
+  }
+
+  .selectedIcon,
+  .unselectedIcon {
+    margin-right: 10px;
+  }
+}
+
+.container.smallContainer {
+  display: flex;
+  width: 100%;
+  margin-top: 12px;
+  padding: 18px 18px 16px;
+  flex-direction: row;
+
+  .selectedIcon,
+  .unselectedIcon {
+    @include sizing(22px);
+
+    span {
+      transform: scale(0.7);
+    }
+  }
+
+  .smallRecallContent {
+    display: flex;
+    margin-left: 12px;
+    font-family: $ff-lato;
+    text-align: left;
+    flex-direction: column;
+  }
+
+  .name {
+    display: flex;
+    padding: 0;
+    padding-bottom: 10px;
+    font-family: $ff-lato;
+    font-size: $fs-regular;
+    font-weight: $fw-bold;
+    letter-spacing: unset;
+    line-height: unset;
+    outline: none;
+    border: none;
+    background: none;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .description {
+    margin-bottom: 1em;
+    font-size: $fs-small;
+  }
+
+  .data {
+    display: flex;
+  }
+
+  .data + .data {
+    margin-top: 15px;
+  }
+
+  .dataKey {
+    margin-right: 0.5em;
+    font-size: $fs-small;
+    color: $color-gray;
+  }
+
+  .dataValue {
+    font-size: $fs-small;
+    color: $color-black;
+  }
+
+  .price {
+    margin-top: 1em;
+    font-size: $fs-small;
+    font-weight: $fw-bold;
+  }
+}

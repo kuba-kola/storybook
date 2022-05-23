@@ -1,0 +1,52 @@
+@import '~styles/index.scss';
+
+.extra {
+  &Form {
+    display: flex;
+  }
+
+  &AddButton {
+    @include sizing(52px 44px);
+
+    margin: 8px 0 0 12px;
+    font-family: $ff-ibm;
+    color: map-get($colors, white);
+    background-color: map-get($colors, blueish-gray);
+  }
+
+  &Input {
+    width: 512px;
+  }
+
+  &Item {
+    font-family: $ff-ibm;
+    font-size: map-get($sizes, slightly-bigger);
+  }
+
+  &RemoveButton {
+    @include sizing(unset);
+
+    margin-right: 6px;
+    padding: 0 6px 3px;
+    font-size: map-get($sizes, smaller);
+    border: none;
+    color: map-get($colors, white);
+    background: map-get($colors, blueish-gray);
+  }
+
+  &ItemContainer {
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  &Buttons {
+    display: flex;
+  }
+
+  &Button {
+    width: 72px;
+    margin: 8px 8px 0 0;
+    color: map-get($colors, white);
+    background: map-get($colors, blueish-gray);
+  }
+}

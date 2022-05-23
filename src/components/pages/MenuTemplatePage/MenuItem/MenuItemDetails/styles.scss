@@ -1,0 +1,46 @@
+@import '~styles/index.scss';
+
+.menuItemDetails {
+  width: 1110px;
+  margin-bottom: 8px;
+  padding: 24px;
+  border: 1px solid map-get($colors, darker-gray);
+  border-radius: 0 0 6px 6px;
+  border-top: 0;
+  background: map-get($colors, white);
+
+  &Section {
+    &Label {
+      display: flex;
+      margin-bottom: 12px;
+      font-family: $ff-lato;
+      font-size: map-get($sizes, regular);
+      font-weight: $fw-bold;
+      line-height: 20px;
+      color: map-get($colors, main-black);
+    }
+  }
+
+  &Container {
+    display: flex;
+    width: 1062px;
+    margin-bottom: 16px;
+    padding: 24px;
+    border: 1px solid map-get($colors, darker-gray);
+    border-radius: 6px;
+    background-color: map-get($colors, light-gray);
+    flex-direction: column;
+  }
+
+  &AddVehicleGroup {
+    @include sizing(150px 48px);
+
+    margin-left: auto;
+    font-family: $ff-ibm;
+    font-size: map-get($sizes, slightly-bigger);
+    line-height: 16px;
+    border-radius: 6px;
+    color: map-get($colors, white);
+    background-color: map-get($colors, blueish-gray);
+  }
+}

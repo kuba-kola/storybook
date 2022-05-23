@@ -1,0 +1,66 @@
+@import '~styles/index.scss';
+
+.conciergeVehicleDetailsBlock {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0px 25px;
+
+  &Image {
+    max-height:150px;
+    max-width:200px;
+  }
+  
+  &NoImageText {
+    padding: 50px 20px;
+  }
+
+  &ModelName {
+    font-size: map-get($sizes, slightly-bigger);
+    color: map-get($colors, main-black);
+    font-weight: $fw-bold;
+    padding-top: 4px;
+  }
+
+  &BookingDetails {
+    font-size: map-get($sizes, regular);
+    color: map-get($colors, font-gray);
+    padding-top: 4px;
+  }
+
+  &Group {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    height: 110px;
+    margin: 0px 25px;
+
+    &Input {
+      font-size: map-get($sizes, smaller);
+      color: map-get($colors, font-gray);
+      padding-top: 4px;
+      font-weight: $fw-normal;
+  
+      .conciergeInput {
+        font-size: map-get($sizes, smaller);
+      }
+    }
+  }
+
+  &Label {
+    font-size: map-get($sizes, smaller);
+    color: map-get($colors, font-gray);
+    padding-top: 4px;
+    font-weight: $fw-normal;
+  }
+
+  &Value {
+    font-size: map-get($sizes, small);
+    color: map-get($colors, main-black);
+    padding-top: 4px;
+    font-weight: $fw-bold;
+  }
+}

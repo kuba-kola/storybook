@@ -1,0 +1,85 @@
+@import "~styles/index.scss";
+
+.conciergeBookingDetailsPanel {
+  &DriverActivity {
+    min-width: 470px;
+
+    .conciergeBlockContent {
+      overflow: hidden;
+      padding: 0 !important;
+    }
+
+    .RemotePanelDriverActivityItem {
+      display: flex;
+      padding: 12px 15px 12px  12px;
+      border-bottom: 1px solid map-get($colors, darker-gray);
+      background: map-get($colors, light-gray);
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      &:nth-child(even) {
+        background: map-get($colors, white);
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .iconRow {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .circle {
+          display: flex;
+          width: 26px;
+          height: 26px;
+          border: 1px solid map-get($colors, darker-gray);
+          border-radius: 100%;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .activityIcon {
+          width: 14px;
+          height: 14px;
+        }
+
+        .activityLabel {
+          margin-left: 12px;
+          color: map-get($colors, bluey-grey);
+        }
+      }
+
+      .activityDate {
+        color: map-get($colors, bluey-grey);
+      }
+
+      &Done {
+        .iconRow {
+          .activityLabel {
+            color: map-get($colors, black);
+          }
+
+          .circle {
+            border: 1px solid map-get($colors, light-blue);
+          }
+        }
+      }
+
+      &Active {
+        .iconRow {
+          .activityLabel {
+            color: map-get($colors, light-blue);
+          }
+
+          .circle {
+            border: 1px solid map-get($colors, light-blue);
+            background: map-get($colors, light-blue);
+          }
+        }
+      }
+    }
+  }
+}

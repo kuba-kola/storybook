@@ -1,0 +1,217 @@
+@import "styles/index.scss";
+@import "styles/chat-input.scss";
+@import "styles/box-content.scss";
+@import "styles/package-items.scss";
+
+.header {
+  display: flex;
+  padding: 17px 32px;
+  font-family: $ff-ibm;
+  font-size: map-get($sizes, large);
+  letter-spacing: 0.2px;
+  line-height: 38px;
+  border-bottom: 1px solid map-get($colors, light-gray);
+  background-color: map-get($colors, darker-white);
+  align-items: center;
+  justify-content: space-between;
+
+  .close {
+    margin-left: 16px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    svg {
+      use {
+        fill: map-get($colors, black);
+      }
+    }
+  }
+}
+
+.tabsContainer {
+  @include flex-centered;
+
+  padding: 48px;
+
+  .tab {
+    @include sizing(232px 160px);
+    @include flex-centered;
+
+    position: relative;
+    padding: 0;
+    border: 1px solid map-get($colors, light-gray);
+    border-radius: 10px;
+    background-color: map-get($colors, white);
+    box-shadow: 0 4px 10px 0 rgba(map-get($colors, shadow-gray), 0.08);
+    flex-direction: column;
+    cursor: pointer;
+
+    img {
+      @include sizing(64px);
+    }
+
+    &:first-of-type {
+      margin-right: 32px;
+    }
+
+    &.highlighted {
+      border: 1px solid map-get($colors, mint);
+      background-color: rgba(map-get($colors, mint), 0.05);
+      box-shadow: 0 4px 10px 0 rgba(map-get($colors, shadow-gray), 0.08);
+    }
+
+    &.disabled {
+      background-color: map-get($colors, light-gray);
+    }
+
+    .tabCaption {
+      margin-top: 8px;
+      font-family: $ff-lato;
+      font-size: map-get($sizes, much-bigger);
+      font-weight: $fw-bold;
+      line-height: 28px;
+      color: map-get($colors, black);
+    }
+
+    .counter {
+      @include absolute(top 4.5px right 4.5px);
+      @include sizing(24px);
+      @include flex-centered;
+
+      font-family: $ff-lato;
+      font-size: map-get($sizes, smaller);
+      line-height: 18px;
+      border-radius: 50%;
+      color: map-get($colors, white);
+      background-color: map-get($colors, mint);
+      box-shadow: 0 4px 15px 0 rgba(map-get($colors, mint), 0.4);
+    }
+  }
+}
+
+.serviceWrap + .serviceWrap {
+  margin-top: 10px;
+}
+
+.servicesContainer {
+  overflow-y: scroll;
+  padding: 15px 20px;
+  background: map-get($colors, smoke-white);
+
+  .service {
+    @include sizing(100% auto);
+
+    overflow: hidden;
+    margin-bottom: 15px;
+    padding: 0;
+    text-align: left;
+    border: 1px solid map-get($colors, light-gray);
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 10px 0 rgba(27, 43, 41, 0.08);
+    align-items: center;
+    cursor: pointer;
+
+    .serviceBody {
+      display: flex;
+      padding: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .serviceName {
+      font-family: $ff-lato;
+      font-size: map-get($sizes, regular);
+      font-weight: $fw-bold;
+      color: map-get($colors, black);
+    }
+
+    .selectedIcon,
+    .unselectedIcon {
+      @include sizing(24px);
+      @include flex-centered;
+
+      margin-left: auto;
+      border-radius: 50%;
+
+      span {
+        height: 24px;
+      }
+    }
+
+    .selectedIcon {
+      background-color: map-get($colors, mint);
+      box-shadow: 0 4px 15px 0 rgba(map-get($colors, mint), 0.4);
+
+      path {
+        fill: map-get($colors, white);
+      }
+    }
+
+    .unselectedIcon {
+      background-color: map-get($colors, white);
+
+      g {
+        fill: map-get($colors, mint);
+      }
+    }
+
+    &.highlighted {
+      position: relative;
+      border: 1px solid map-get($colors, mint);
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        content: "";
+        background: rgba(map-get($colors, mint), 0.05);
+      }
+    }
+
+    &.disabled {
+      background-color: rgba(map-get($colors, gray), 0.05);
+      cursor: initial;
+
+      .unselectedIcon {
+        background-color: rgba(map-get($colors, gray), 0.05);
+      }
+    }
+
+    &PriceWrap {
+      display: flex;
+      width: 100%;
+      align-items: center;
+    }
+
+    &PriceTag {
+      font-family: $ff-lato;
+      font-size: map-get($sizes, regular);
+      color: map-get($colors, gray);
+    }
+
+    &SaveTag {
+      display: inline-block;
+      margin-left: 7px;
+      padding: 2px 7px;
+      font-family: $ff-lato;
+      font-size: map-get($sizes, smaller);
+      border: 1px solid rgba(map-get($colors, mint), 0.1);
+      border-radius: map-get($sizes, smaller);
+      white-space: nowrap;
+      color: map-get($colors, mint);
+      background: rgba(map-get($colors, mint), 0.05);
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  padding: 15px 20px;
+  justify-content: center;
+}

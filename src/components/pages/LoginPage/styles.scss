@@ -1,0 +1,54 @@
+@import '~styles/index.scss';
+
+.conciergeLoginPage {
+  @include horizontally-centered;
+  @include flex-centered;
+
+  height: calc(100vh - #{$header-height});
+}
+
+.conciergeLoginPanelHeader {
+  @include main-font(map-get($sizes, bigger));
+
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0.3px;
+}
+
+.conciergeLoginButton {
+  width: 100%;
+  margin: 12px 0;
+  color: map-get($colors, white);
+  background: map-get($colors, primary-gradient);
+
+  &:hover {
+    box-shadow: $default-box-shadow;
+  }
+
+  &:disabled {
+    background: map-get($colors, darker-gray);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
+
+.conciergeLoginApiError {
+  @include main-font(map-get($sizes, smaller));
+
+  color: map-get($colors, pink);
+}
+
+.conciergeLoginReset {
+  @include main-font(map-get($sizes, smaller));
+
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  text-align: right;
+  background: none;
+
+  &Wrapper {
+    margin-top: -12px;
+    margin-bottom: 12px;
+  }
+}

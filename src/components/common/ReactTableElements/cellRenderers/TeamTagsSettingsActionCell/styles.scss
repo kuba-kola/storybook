@@ -1,0 +1,15 @@
+@import '~styles/index.scss';
+
+
+.conciergeTeamTagsSettingsActionCell {
+  position: relative;
+  padding: 0;
+
+  .conciergeTableActionsCellAction {
+    width: auto;
+
+    img {
+      margin: 0;
+    }
+  }
+}

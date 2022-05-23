@@ -1,0 +1,47 @@
+@import '~styles/index.scss';
+
+.wrapper {
+  display: flex;
+  box-sizing: border-box;
+  width: 100vw;
+  padding: 0 15px;
+  background-color: map-get($colors, white);
+  box-shadow: 0 -4px 10px 0 rgba($color-shadow-2, 0.1);
+  justify-content: center;
+}
+
+.container {
+  @include sizing(100%);
+
+  box-sizing: border-box;
+
+  background-color: map-get($colors, white);
+  box-shadow: 0 -4px 10px 0 rgba($color-shadow-2, 0.1);
+}
+
+.header {
+  display: flex;
+  padding: 12px 0 4px;
+  border-bottom: 1px solid $color-light-gray;
+  justify-content: flex-end;
+}
+
+.navigationButton {
+  @include sizing(24px);
+
+  margin-left: 20px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.disabled {
+    path {
+      fill: $color-light-gray;
+    }
+  }
+}

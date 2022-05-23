@@ -1,0 +1,20 @@
+@import '~styles/index.scss';
+
+.conciergePanel {
+  width: 348px;
+  border: 1px solid map-get($colors, darker-gray);
+  border-radius: 10px;
+  background-color: map-get($colors, white);
+  box-shadow: $default-box-shadow;
+
+  &Header {
+    padding: 21px;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 1px solid map-get($colors, darker-gray);
+    background-color: map-get($colors, light-gray);
+  }
+
+  &Body {
+    padding: 20px 21px;
+  }
+}

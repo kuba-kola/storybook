@@ -1,0 +1,133 @@
+@import '~styles/index.scss';
+.timePicker {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 350px;
+  min-height: 243px;
+  font-family: $ff-lato;
+  border: thin solid map-get($colors, darker-gray);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(27, 43, 41, 0.08);
+
+  &Header {
+    display: flex;
+    height: 49px;
+    font-weight: $fw-bold;
+    border-radius: 9px 9px 0 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: map-get($colors, darker-gray);
+    background: #f9fafc;
+    align-items: center;
+    justify-content: space-between;
+
+    &Text {
+      text-align: center;
+      color: map-get($colors, dark-gray);
+      flex-grow: 1;
+    }
+
+    &Btn {
+      display: flex;
+      min-width: 44px;
+      height: 100%;
+      padding: 1px 6px;
+      border: none;
+      background: #f9fafc;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &Btn:disabled {
+      background-color: #f0f0f0;
+    }
+
+    &Btn:enabled:focus,
+    &Btn:enabled:hover {
+      background-color: #e6e6e6;
+    }
+  }
+
+  &View {
+    display: flex;
+    padding: 15px 12px 5px 12px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &Btn {
+      margin-bottom: 10px;
+      padding: 6px;
+      font-family: $ff-lato;
+      font-size: map-get($sizes, regular);
+      line-height: 18px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      color: map-get($colors, dark-gray);
+      background-color: #f9fafc;
+      cursor: pointer;
+    }
+
+    &Btn:disabled, &BtnDisabled {
+      color: map-get($colors, font-gray);
+      cursor: default;
+    }
+
+    & .active {
+      box-sizing: border-box;
+      font-weight: $fw-bold;
+      border: 1px solid #0bcaf9;
+      border-radius: 10px;
+      background: linear-gradient(0deg, rgba(11, 202, 249, 0.05), rgba(11, 202, 249, 0.05)), #fff;
+      box-shadow: 0 4px 10px rgba(27, 43, 41, 0.08);
+    }
+  }
+
+  & .btn {
+    outline: none;
+  }
+
+  &Popup {
+    position: absolute;
+    z-index: $z-index-1;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: calc(100% - 20px);
+    padding: 20px;
+    text-align: center;
+    border: thin solid map-get($colors, darker-gray);
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(27, 43, 41, 0.08);
+
+    &Title {
+      margin-bottom: 1em;
+    }
+
+    &Button {
+      cursor: pointer;
+      padding: 2px 16px;
+      border: thin solid map-get($colors, darker-gray);
+      background-color: #fff;
+      border-radius: 4px;
+
+
+      &+& {
+        margin-left: 10px;
+      }
+
+      &Dark {
+        color: #fff;
+        background-color: #000;
+        border: thin solid #000;
+      }
+    }
+  }
+}
+
+.conciergeSettingsCapacityTooltip {
+  z-index: $z-index-1;
+}

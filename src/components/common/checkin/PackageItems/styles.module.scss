@@ -1,0 +1,59 @@
+@import 'styles/index.scss';
+
+.packageItemsContainer {
+  width: 100%;
+  position: relative;
+}
+
+.packageItemsHeader {
+  font-family: $ff-lato;
+  font-size: $fs-smaller;
+  line-height: 18px;
+  color: $color-silver-gray;
+  background: $color-darker-white;
+  padding: 1em;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  .isSelected & {
+    background: rgba($color-aqua, 0.05);
+    color: $color-aqua;
+  }
+}
+
+.packageItems {
+  z-index: $z-index-negative;
+  display: flex;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 350ms ease-in-out;
+  flex-direction: column;
+}
+
+.packageItemsAreShown {
+  z-index: $z-index-one;
+  max-height: 1200px;
+  transition: max-height 350ms ease-in-out;
+}
+
+.packageItemsBody {
+  padding: 15px;
+}
+
+.packageItemsList + .packageItemsList {
+  margin-top: $fs-smaller;
+}
+
+.packageItemsListTitle {
+  font-family: $ff-lato;
+  color: $color-silver-gray;
+  font-size: $fs-smaller;
+  margin-bottom: 1em;
+}
+
+.packageItemsListItem {
+  font-family: $ff-lato;
+  font-size: $fs-smaller;
+  line-height: 1.7em;
+}

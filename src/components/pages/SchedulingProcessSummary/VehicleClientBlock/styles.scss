@@ -1,0 +1,71 @@
+@import '~styles/index.scss';
+
+.schedulingProcessSummaryPanel {
+  .conciergePanelBody {
+    padding: 20px 0;
+  }
+
+  .conciergeBlockContent {
+    background-color: map-get($colors, light-gray);
+  }
+
+  &Row {
+    display: flex;
+    padding: 15px 0px 10px 0px;
+    justify-content: space-between;
+
+    &:first-child {
+      padding-top: 25px;
+    }
+
+    &:last-child {
+      padding-bottom: 0px;
+    }
+
+    &Grey {
+      @extend .schedulingProcessSummaryPanelRow;
+
+      background-color: map-get($colors, light-gray);
+    }
+  }
+
+  &HalfPart {
+    width: 50%;
+
+    &Divided {
+      display: flex;
+    }
+  }
+
+  &CreatedLabel {
+    @include secondary-font(map-get($sizes, small));
+    color: map-get($colors, font-gray);
+  }
+
+  &CreatedTime {
+    @include secondary-font(map-get($sizes, small));
+    color: map-get($colors, main-black);
+  }
+
+  &CreatedAt {
+    margin: 0 25px 0;
+  }
+
+  &StatusBlock {
+    display: flex;
+    align-items: baseline;
+
+    .conciergeDropdownWrapper {
+      margin-left: 10px;
+    }
+  }
+
+  &SubdividedContainer {
+    display: flex;
+  }
+
+  &Card .conciergePanelBody {
+    padding: 0px;
+    width: 100%;
+  }
+}

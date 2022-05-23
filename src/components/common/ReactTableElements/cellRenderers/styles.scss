@@ -1,0 +1,188 @@
+@import "~styles/index.scss";
+
+.conciergeTable {
+  &CapitalisedCell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    white-space: nowrap;
+  }
+
+  &StatusCell {
+    @extend .conciergeTableCapitalisedCell;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &MadeByCell,
+  &CustomerCell,
+  &RepairOrderCell {
+    @extend .conciergeTableCapitalisedCell;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .vehicleImg {
+      width: 55px;
+      min-width: 55px;
+      height: 100%;
+      margin-right: 9px;
+    }
+
+    .customer,
+    .source,
+    .createdByName {
+      font-style: normal;
+      font-weight: $fw-normal;
+      font-size: map-get($sizes, regular);
+      line-height: 24px;
+      color: $color-dark-gray;
+      white-space: break-spaces;
+    }
+
+    .vehicle,
+    .repairOrderTag,
+    .createdByRole {
+      font-style: normal;
+      font-weight: $fw-normal;
+      font-size: map-get($sizes, smaller);
+      line-height: map-get($sizes, slightly-bigger);      
+      color: map-get($colors, gray);
+      white-space: break-spaces;
+    }
+
+    .createdByRole {
+      display: flex;
+    }
+
+    .createdByName {
+      white-space: break-spaces;
+      display: flex;
+    }
+  }
+
+  &AppArrivedTimeCell {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .arrivedTime {
+      font-style: normal;
+      font-weight: $fw-normal;
+      font-size: map-get($sizes, smaller);
+      line-height: map-get($sizes, slightly-bigger);      
+      color: map-get($colors, gray);
+    }
+
+    &Warning {
+      width: 24px;
+      height: 24px;
+    }
+
+    .appTime {
+      font-style: normal;
+      font-weight: $fw-normal;
+      font-size: map-get($sizes, regular);
+      line-height: 24px;
+      color: $color-dark-gray;
+    }
+
+    .appTime.error {
+      padding: 2px 6px;
+      border-radius: 12px;
+      color: map-get($colors, white);
+      background: map-get($colors, warning-red);
+    }
+  }
+
+  &StatusIndicator {
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+
+    &-open {
+      background-color: map-get($colors, light-blue);
+    }
+
+    &-arrived {
+      background-color: map-get($colors, green);
+    }
+
+    &-closed {
+      background-color: map-get($colors, darkest-gray);
+    }
+  }
+
+  &StatusIconCell {
+    display: flex;
+    align-items: center;
+
+    .conciergeTableStatusIcon {
+      &__outer {
+        @include circle(18px);
+        @include flex-centered;
+
+        margin-right: 10px;
+        border: 1px solid map-get($colors, darkest-gray);
+      }
+
+      &__inner {
+        @include circle(8px);
+
+        background-color: map-get($colors, darkest-gray);
+      }
+    }
+
+    &.isActive {
+      .conciergeTableStatusIcon {
+        &__outer {
+          border-color: map-get($colors, green);
+        }
+
+        &__inner {
+          background-color: map-get($colors, green);
+        }
+      }
+    }
+  }
+
+  &LinkCell {
+    a {
+      font-family: $ff-lato;
+      font-size: map-get($sizes, smaller);
+      font-weight: $fw-bold;
+      text-decoration: none;
+      color: map-get($colors, main-black);
+    }
+  }
+
+  &IdNumberCell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &ConcernIndicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: map-get($colors, red);
+    }
+  }
+
+  &AppraisalRequestedCell {
+    display: flex;
+    justify-content: center;
+
+    &WithText {
+      font-family: $ff-lato;
+      font-size: map-get($sizes, smaller);
+      font-weight: $fw-bold;
+      color: map-get($colors, green);
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import "styles/index.scss";
+@import "styles/chat-input.scss";
+
+.overlay {
+  @include flex-centered;
+  @include fixed(top 0 left 0);
+  @include sizing(100vw 100vh);
+
+  z-index: $z-index-1;
+  background-color: rgba($color-silver-gray, 0.95);
+}
+
+.modal {
+  display: flex;
+  max-width: 720px;
+  height: 85%;
+  margin-bottom: auto;
+  background-color: map-get($colors, white);
+  box-shadow: 0 12px 30px 0 rgba($color-black, 0.16);
+  flex-direction: column;
+}

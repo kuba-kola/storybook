@@ -1,0 +1,30 @@
+@import '~styles/index.scss';
+
+.conciergeCustomerDetailsPanel {
+  &BlocksWrapper {
+    display: flex;
+  }
+
+  .conciergeBlockContent {
+    background-color: map-get($colors, light-gray);
+  }
+
+  .conciergeBlock {
+    margin: 0;
+
+    &Content {
+      margin-right: 25px;
+    }
+
+    &:last-child {
+      .conciergeBlockTitle {
+        margin-left: 25px;
+      }
+
+      .conciergeBlockContent {
+        margin-right: 0;
+        margin-left: 25px;
+      }
+    }
+  }
+}

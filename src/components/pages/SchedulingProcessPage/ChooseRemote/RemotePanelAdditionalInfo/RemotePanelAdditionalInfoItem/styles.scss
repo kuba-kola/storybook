@@ -1,0 +1,203 @@
+@import "~styles/index.scss";
+
+.conciergeRemotePanel {
+  margin: 0;
+
+  .title {
+    @include main-font(map-get($sizes, much-smaller), $fw-bold);
+
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: map-get($colors, black);
+  }
+
+  &AdditionalInfo {
+    &Item {
+      &Wrapper {
+        margin-bottom: 20px;
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .row + .row {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid map-get($colors, darker-gray);
+      }
+
+      .additionalInfoItemColumn {
+        display: flex;
+        margin-right: 15px;
+        flex-direction: column;
+
+        .conciergeInputWrapper {
+          margin: 0;
+
+          .conciergeInput {
+            margin: 0;
+          }
+        }
+
+        .checkbox {
+          @include sizing(18px);
+
+          border: 1px solid map-get($colors, darker-gray);
+          border-radius: 3px;
+
+          &Active {
+            @include flex-centered;
+
+            border: none;
+            background: map-get($colors, light-blue);
+          }
+
+          &Row {
+            display: flex;
+            width: 160px;
+            margin-top: 10px;
+            flex-direction: row;
+            align-items: center;
+            cursor: pointer;
+          }
+
+          &Title {
+            margin-left: 7px;
+            font-size: map-get($sizes, smaller);
+          }
+        }
+
+        &.fullWidth {
+          width: 100%;
+        }
+
+        .additionalInfoItemTimeWrapper {
+          @include sizing(230px 44px);
+
+          display: flex;
+          overflow: hidden;
+          border: 1px solid map-get($colors, darker-gray);
+          border-radius: 6px;
+
+          .conciergeDealershipTimeFieldInput {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            border: none;
+          }
+
+          .watchIcon {
+            margin: 0 15px;
+          }
+        }
+
+        .additionalInfoItemLocation {
+          &Wrapper {
+            position: relative;
+
+            .autocomplete-dropdown-container {
+              @include absolute(top 55px);
+
+              z-index: 20;
+              overflow: hidden;
+              width: 100%;
+              padding: 5px 0;
+              border: 1px solid map-get($colors, darker-gray);
+              border-radius: 6px;
+              background-color: map-get($colors, white);
+
+              .suggestion-item {
+                padding: 5px 15px;
+                background-color: map-get($colors, white);
+                cursor: "pointer";
+
+                &--active {
+                  background-color: map-get($colors, darker-gray);
+                }
+              }
+            }
+          }
+
+          &Input {
+            @include sizing(100% 44px);
+
+            display: flex;
+            padding: 0 15px;
+            border: 1px solid map-get($colors, darker-gray);
+            border-radius: 6px;
+
+            &:disabled {
+              color: map-get($colors, font-gray);
+              background-color: map-get($colors, white);
+            }
+          }
+        }
+
+        .conciergeDropdownWrapper {
+          .conciergeDropdownSelectedField {
+            @include sizing(230px 44px);
+          }
+
+          .conciergeDropdownMenu {
+            overflow: hidden;
+            width: 230px;
+          }
+        }
+      }
+
+      .conciergeInputLabel {
+        margin-bottom: 10px;
+        font-size: map-get($sizes, smaller);
+        line-height: 20px;
+        color: map-get($colors, black);
+      }
+
+      .conciergeDatepickerWrapper {
+        margin-right: 15px;
+
+        .datepicker {
+          margin-right: 0;
+        }
+
+        .conciergeCalendarNavigation {
+          justify-content: space-around;
+
+          .conciergeCalendarMonthYearWrapper {
+            width: 120px;
+          }
+        }
+      }
+
+      .conciergeBlockContent {
+        display: flex;
+        padding: 20px;
+        background: map-get($colors, white);
+
+        .datepicker {
+          width: 230px;
+
+          .conciergeInputLabel {
+            margin-bottom: 10px;
+            color: map-get($colors, black);
+          }
+
+          .conciergeInput {
+            display: flex;
+            margin: 0;
+            padding: 0;
+
+            .calendarIcon {
+              margin: 0 12px;
+            }
+
+            input {
+              border: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

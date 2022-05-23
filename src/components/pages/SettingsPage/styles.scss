@@ -1,0 +1,182 @@
+@import '~styles/index.scss';
+
+.conciergeSettingsPage {
+  height: calc(100% - #{$header-height});
+  min-height: calc(100vh - #{$header-height});
+
+  &Main {
+    @include horizontally-centered;
+
+    padding: 16px 0;
+  }
+
+  &PanelHeader {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    &Controls {
+      display: flex;
+      margin-left: auto;
+    }
+
+    &Separator {
+      width: 1px;
+      margin: 0 1.5em;
+      background: map-get($colors, darker-gray);
+    }
+  }
+
+  .conciergePanel {
+    width: 100%;
+    margin: 35px 0;
+  }
+
+  &ActionButton {
+    @include secondary-font(map-get($sizes, bigger));
+
+    display: flex;
+    height: auto;
+    border: none;
+    color: map-get($colors, font-gray);
+    align-items: center;
+
+    &-save {
+      color: map-get($colors, light-blue);
+    }
+
+    &-cancel {
+      margin-right: 20px;
+    }
+  }
+
+  &Icon {
+    margin-right: 10px;
+  }
+
+  &Navbar {
+    display: flex;
+    margin-bottom: 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    &Tab {
+      @include sizing(106px 48px);
+
+      font-family: $ff-lato;
+      font-size: map-get($sizes, regular);
+      line-height: 20px;
+      border: none;
+      border-bottom: 1px solid map-get($colors, darker-gray);
+      color: map-get($colors, darkest-gray);
+      background: transparent;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+
+      &.active {
+        border-bottom: 2px solid map-get($colors, light-blue);
+        color: map-get($colors, main-black);
+      }
+    }
+  }
+
+  &Block {
+    .conciergeBlockContent {
+      background-color: map-get($colors, light-gray);
+    }
+  }
+
+  &BlockTitle {
+    display: flex;
+    height: 24px;
+    justify-content: space-between;
+  }
+
+  &BlockContent {
+    border: none;
+  }
+
+  &IntegrationsBlock {
+    margin: 25px;
+    padding: 15px;
+    border: 1px solid map-get($colors, darker-gray);
+    border-radius: 10px;
+    background-color: map-get($colors, light-gray);
+
+    &InputsPart {
+      display: flex;
+      margin-left: -40px;
+      flex-wrap: wrap;
+    }
+
+    &DropdownsContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    &DefaultOptionDropdownContainer {
+      width: 48%;
+      padding-bottom: 20px;
+
+      .conciergeDropdownSelectedField,
+      .conciergeDropdownMenu {
+        width: 100%;
+      }
+
+      .conciergeDropdownMenu {
+        overflow: auto;
+        max-height: 270px;
+      }
+
+      .conciergeDropdownMenuItem,
+      .conciergeDropdownSelectedField {
+        height: 44px;
+      }
+
+      .conciergeDropdownWrapper {
+        margin: 3px 0;
+      }
+    }
+
+    .conciergeBlockTitle {
+      text-transform: capitalize;
+    }
+
+    .conciergeInputWrapper {
+      width: 50%;
+      padding-left: 40px;
+    }
+  }
+
+  &Info {
+    font-family: $ff-lato;
+    font-size: map-get($sizes, regular);
+    font-weight: $fw-normal;
+
+    &CodeContainer {
+      margin-top: 10px;
+      padding: 20px;
+      border-left: 4px solid map-get($colors, black);
+      background-color: map-get($colors, darker-gray);
+
+      code {
+        display: block;
+      }
+    }
+  }
+
+  &ActivitySwitch {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+
+    .integrationActivitySwitch {
+      margin-left: 10px;
+    }
+  }
+}

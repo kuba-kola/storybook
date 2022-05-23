@@ -1,0 +1,85 @@
+@import "~styles/index.scss";
+
+.AdditionalInfo {
+  &FilterDropdown {
+    position: relative;
+    display: flex;
+    width: 50px;
+    height: 100%;
+    margin-left: -1px;
+    border: 1px solid map-get($colors, darker-gray);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    .caret {
+      position: absolute;
+      top: calc(100% - 10px);
+      left: calc(50% - 4px);
+      width: 8px;
+      height: 8px;
+
+      &Open {
+        transform: rotate(180deg);
+      }
+    }
+
+    .circle {
+      width: 24px;
+      height: 24px;
+    }
+
+    &Content {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      z-index: $z-index-2;
+      width: 100%;
+      border: 1px solid map-get($colors, darker-gray);
+      border-radius: 6px;
+      background: map-get($colors, white);
+      box-shadow: 0 4px 10px 0 rgba(27, 43, 41, 0.08);
+
+      &Head {
+        display: flex;
+        padding: 12px;
+        justify-content: space-between;
+      }
+
+      hr {
+        height: 1px;
+        margin: 0 12px;
+        border: none;
+        background-color: map-get($colors, white-gray);
+      }
+    }
+
+    &SelectAllBtn {
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-right: 10px;
+      }
+
+      span {
+        font-size: map-get($sizes, regular);
+        line-height: 20px;
+        color: map-get($colors, bluey-grey);
+      }
+    }
+
+    &ResetBtn {
+      padding: 4px 12px;
+      font-size: map-get($sizes, regular);
+      border: 1px solid map-get($colors, white-gray);
+      border-radius: 4px;
+      cursor: pointer;
+
+      &Disabled {
+        cursor: not-allowed;
+        color: map-get($colors, bluey-grey);
+      }
+    }
+  }
+}

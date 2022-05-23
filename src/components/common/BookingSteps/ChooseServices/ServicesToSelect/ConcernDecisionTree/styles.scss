@@ -1,0 +1,24 @@
+@import '~styles/index.scss';
+
+.conciergeDecisionTree {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid map-get($colors, darker-gray);
+  border-radius: 10px;
+  background: map-get($colors, white);
+
+  &Intro {
+    margin-bottom: 1em;
+  }
+
+  &Question {
+    margin-bottom: 1em;
+    font-size: map-get($sizes, regular);
+  }
+
+  &Step {
+    margin-bottom: 1em;
+    padding-top: 10px;
+    border-top: 1px solid map-get($colors, darker-gray);
+  }
+}

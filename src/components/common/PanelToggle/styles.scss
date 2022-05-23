@@ -1,0 +1,36 @@
+@import "~styles/index.scss";
+
+.conciergePanel {
+  width: 348px;
+  border: 1px solid map-get($colors, darker-gray);
+  border-radius: 10px;
+  background-color: map-get($colors, white);
+  box-shadow: $default-box-shadow;
+
+  &Closed {
+    border: 1px solid map-get($colors, darker-gray);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  &Header {
+    display: flex;
+    padding: 21px;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 1px solid map-get($colors, darker-gray);
+    background-color: map-get($colors, light-gray);
+
+    &Closed {
+      border: none;
+      background-color: map-get($colors, white);
+    }
+
+    .angelIcon {
+      margin-right: 15px;
+    }
+  }
+
+  &Body {
+    padding: 20px 21px;
+  }
+}

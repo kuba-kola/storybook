@@ -1,0 +1,147 @@
+@import '~styles/index.scss';
+
+.conciergeTableMembersCell {
+  flex: 1;
+  margin-top: -8px;
+  margin-left: -8px;
+}
+
+.teamTagMember {
+  display: flex;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 8px;
+  background-color: map-get($colors, white-gray);
+  align-items: center;
+
+  .teamTagMemberRemove {
+    cursor: pointer;
+    display: flex;
+    margin-left: 5px;
+    padding: 0;
+    background-color: map-get($colors, white-gray);
+    align-items: center;
+
+    span {
+      font-size: map-get($sizes, very-big);
+      line-height: 0px;
+      transform: rotateZ(45deg);
+    }
+  }
+
+  &List {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &ListItem {
+    margin-top: 8px;
+    margin-left: 8px;
+  }
+
+  &ActionButton {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 8px;
+    background-color: map-get($colors, light-blue);
+  }
+
+  &ActionButtonSave {
+    cursor: pointer;
+    width: auto;
+    padding: 0 10px;
+    color: map-get($colors, white);
+  }
+
+  &Select {
+    position: relative;
+    min-width: 180px;
+
+    &Control {
+      display: flex;
+      overflow: hidden;
+      height: 32px;
+      border: 1px solid map-get($colors, darker-gray);
+      border-radius: 8px;
+      color: map-get($colors, main-black);
+      background-color: map-get($colors, white);
+      box-shadow: 0 12px 30px 0 rgba(map-get($colors, black), 0.16);
+    }
+
+    &Input {
+      height: 100%;
+      padding: 0 10px;
+      font-family: $ff-lato;
+      font-size: map-get($sizes, regular);
+      line-height: 20px;
+      border: none;
+    }
+
+    &Indicator {
+      padding: 0 10px;
+      background-color: map-get($colors, white);
+    }
+
+    &Menu {
+      position: absolute;
+      top: 105%;
+      z-index: $z-index-one;
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+      padding: 0;
+      border: 1px solid map-get($colors, darker-gray);
+      border-radius: 8px;
+      background-color: map-get($colors, white);
+      box-shadow: 0 12px 30px 0 rgba(map-get($colors, black), 0.16);
+      flex-direction: column;
+
+      &List {
+        display: flex;
+        overflow-y: scroll;
+        height: 150px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        flex-direction: column;
+      }
+
+      &Item {
+        display: flex;
+        padding: 10px;
+        outline: none;
+        text-align: left;
+        border: none;
+        background-color: map-get($colors, white);
+        align-items: center;
+
+        &Checkbox {
+          width: 14px;
+          height: 14px;
+          margin-right: 10px;
+        }
+
+        &:hover,
+        &Selected {
+          background-color: rgba($color-secondary-mint, 0.05);
+        }
+
+        &Selected {
+          color: $color-secondary-mint;
+        }
+
+        &Separator {
+          height: 1px;
+          margin: 0 10px;
+          background-color: map-get($colors, darker-gray);
+        }
+      }
+
+      &SelectAll {
+        font-weight: $fw-bold;
+        color: map-get($colors, darker-gray);
+      }
+    }
+  }
+}

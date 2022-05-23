@@ -1,0 +1,18 @@
+@import "~styles/index.scss";
+
+.conciergeBookingDetailsPanel {
+  .conciergeBlockContent {
+    display: flex;
+    padding: 25px;
+    flex-direction: column;
+  }
+
+  .conciergeButtonApply.AdditionalInfo {
+    margin-right: 0;
+
+    &:disabled {
+      background: map-get($colors, darker-gray);
+      cursor: not-allowed;
+    }
+  }
+}

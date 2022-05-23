@@ -1,0 +1,45 @@
+@import '~styles/index.scss';
+
+.concierge {
+  &SettingsColorScheme {
+    &Preview {
+      @include sizing(100% 61px);
+
+      margin: -21px 0 -20px 0; // Slight hack to remove ReactTable's padding in a single Cell
+    }
+
+    &Footer {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+
+    &ResetAll {
+      width: 172px;
+      margin: 24px 12px 10px;
+      font-family: $ff-ibm;
+      border: none;
+      color: map-get($colors, white);
+      background: map-get($colors, red);
+    }
+
+    &Submit {
+      width: 172px;
+      margin: 24px 0 10px;
+      font-family: $ff-ibm;
+      border: none;
+      color: map-get($colors, white);
+      background: map-get($colors, button-gradient);
+    }
+
+    &Reset {
+      height: 20px;
+      padding: 0 6px;
+      font-family: $ff-ibm;
+      font-size: map-get($sizes, slightly-smaller);
+      border: none;
+      color: map-get($colors, white);
+      background: map-get($colors, button-gradient);
+    }
+  }
+}

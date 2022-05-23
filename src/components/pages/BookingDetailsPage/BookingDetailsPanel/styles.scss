@@ -1,0 +1,100 @@
+@import '~styles/index.scss';
+
+.conciergeBookingDetailsPanel {
+  .conciergePanelBody {
+    padding: 20px 0;
+  }
+
+  .conciergeBlockContent {
+    background-color: map-get($colors, light-gray);
+  }
+
+  &Row {
+    display: flex;
+    padding: 15px 0px 10px 0px;
+    justify-content: space-between;
+
+    &:first-child {
+      padding-top: 25px;
+    }
+
+    &:last-child {
+      padding-bottom: 0px;
+    }
+
+    &Grey {
+      @extend .conciergeBookingDetailsPanelRow;
+
+      background-color: map-get($colors, light-gray);
+    }
+  }
+
+  &HalfPart {
+    width: 50%;
+
+    &Divided {
+      display: flex;
+    }
+  }
+
+  &StatusBlock {
+    display: flex;
+    align-items: baseline;
+
+    .conciergeDropdownWrapper {
+      margin-left: 10px;
+    }
+  }
+
+  &RepairOrderDetailsBlock {
+    margin: 0px 25px;
+    @include secondary-font(map-get($sizes, small));
+
+    &Label {
+      color: map-get($colors, font-gray);
+      margin: 0 2px;
+      &--save {
+        cursor: pointer;
+        font-size: map-get($sizes, slightly-smaller);
+        color: map-get($colors, light-blue)
+      }
+    }
+
+    &Text {
+      color: map-get($colors, main-black);
+      &--repair-order-tag {
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .conciergeInputWrapper {
+      display: inline-block;
+      width: 150px;
+      margin: 0 5px;
+    }
+
+    &Tag {
+      height: 35px;
+      display: flex;
+      align-items: center;
+      &Input {
+        height: 25px;
+        margin: 0 2px;
+      }
+      span {
+        margin: 0 2px;
+      }
+    }
+  }
+
+  &SubdividedContainer {
+    display: flex;
+  }
+
+  &Card .conciergePanelBody {
+    padding: 0px;
+  }
+}

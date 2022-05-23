@@ -1,0 +1,35 @@
+@import "~styles/index.scss";
+
+.conciergeBookingDetailsPanel {
+
+  .conciergeBlockContent {
+    background-color: map-get($colors, light-gray);
+  }
+
+  .conciergePanelBody {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .conciergeButtonApply {
+    width: 200px;
+    margin-right: 25px;
+    color: map-get($colors, white);
+    background: map-get($colors, dark-gray);
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.18);
+    align-self: flex-end;
+  }
+
+  .conciergeDropdownBlockContainer {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  &SelectedOption {
+    @include main-font(map-get($sizes, bigger));
+    
+    color: map-get($colors, dark-gray);
+    margin-left: auto;
+    margin-right: 15px;
+  }
+}

@@ -1,0 +1,85 @@
+@import '~styles/index.scss';
+
+.conciergeSettingsPageCapacityTabDriversPanel {
+  .conciergePanelBody {
+    padding: 0;
+  }
+
+  .ReactTable {
+    border: none;
+    border-radius: 0 0 6px 6px;
+
+    .rt-table {
+      overflow: visible;
+    }
+
+    .rt-tbody {
+      overflow: visible;
+
+      .rt-tr {
+        height: 100px;
+        align-items: center;
+      }
+
+      .rt-td {
+        padding: 12px 12px 12px 30px;
+      }
+    }
+
+    .rt-noData {
+      top: 74%;
+    }
+
+    .-pagination {
+      padding: 15px;
+      border-top: $default-border;
+      box-shadow: none;
+
+      .-previous,
+      .-center,
+      .-next {
+        flex: none;
+      }
+
+      .-pageSizeOptions {
+        @include main-font;
+      }
+    }
+  }
+
+  &ButtonSection {
+    display: flex;
+    margin: 20px;
+    justify-content: flex-end;
+  }
+
+  &Button-add {
+    @include secondary-font(map-get($sizes, slightly-bigger));
+
+    padding: 16px 32px;
+    line-height: 16px;
+    border: none;
+    border-radius: 6px;
+    color: map-get($colors, white);
+    background-color: map-get($colors, blueish-gray);
+
+    &:hover {
+      box-shadow: $default-box-shadow;
+    }
+  }
+
+  .conciergeSettingsAddDriverModal {
+    top: calc(50% - 200.5px);
+    height: auto;
+
+    &Footer {
+      padding-bottom: 20px;
+    }
+  }
+
+  .driverPhoto {
+    @include sizing(80px);
+
+    border-radius: 50%;
+  }
+}

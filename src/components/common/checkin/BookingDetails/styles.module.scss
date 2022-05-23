@@ -1,0 +1,300 @@
+@import "styles/index.scss";
+@import "styles/box-content.scss";
+
+.details {
+  min-width: 50%;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  padding: 1em;
+  font-family: $ff-lato;
+  font-size: map-get($sizes, smaller);
+  color: map-get($colors, black);
+  align-items: center;
+  justify-content: space-between;
+
+  .addservice {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    padding: 0;
+    font-size: 0;
+    border: none;
+    background: transparent;
+    transform: translateY(-50%);
+
+    img {
+      width: 26px;
+      height: 26px;
+    }
+  }
+}
+
+.advisor {
+  display: flex;
+  padding: map-get($sizes, regular);
+  border-top: 1px solid #dedee0;
+  background: #f9fafc;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &__img {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 50%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+
+  &__caption {
+    margin-bottom: 0.5em;
+    font-family: $ff-lato;
+    font-size: map-get($sizes, smaller);
+    color: map-get($colors, silver-gray);
+  }
+
+  &__name {
+    font-family: $ff-lato;
+    font-size: map-get($sizes, regular);
+    font-weight: bold;
+    line-height: 20px;
+    color: map-get($colors, black);
+  }
+}
+
+.info {
+  display: flex;
+  background-color: map-get($colors, white);
+  flex-direction: column;
+
+  .vehicle {
+    font-family: $ff-lato;
+    font-size: map-get($sizes, regular);
+    font-weight: $fw-bold;
+    letter-spacing: -0.2px;
+    color: map-get($colors, black);
+  }
+
+  .infotag {
+    margin-top: 1em;
+    font-family: $ff-lato;
+    font-size: map-get($sizes, smaller);
+  }
+
+  .date {
+    margin-top: 8px;
+    font-family: $ff-lato;
+    font-size: map-get($sizes, smaller);
+    color: map-get($colors, gray);
+  }
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  & + & {
+    border-top: 2px solid map-get($colors, darker-white);
+  }
+
+  &__wrap {
+    display: flex;
+    width: 100%;
+    padding: 15px;
+    flex: 1;
+  }
+
+  &__savetag {
+    display: inline-block;
+    padding: 5px 10px;
+    font-family: $ff-lato;
+    font-size: map-get($sizes, smaller);
+    border: none;
+    border-radius: map-get($sizes, smaller);
+    white-space: nowrap;
+    color: map-get($colors, white);
+    background: map-get($colors, secondary-gradient);
+  }
+
+  &__body {
+    flex: 1;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+  }
+
+  &__name {
+    font-family: $ff-lato;
+    font-size: map-get($sizes, regular);
+    font-weight: bold;
+    color: map-get($colors, black);
+  }
+
+  .priceTag {
+    font-family: $ff-lato;
+    margin-right: 0.5em;
+    font-size: map-get($sizes, smaller);
+    color: map-get($colors, silver-gray);
+  }
+
+  .price {
+    font-family: $ff-lato;
+    font-size: map-get($sizes, regular);
+    color: map-get($colors, black);
+  }
+
+  .remove {
+    margin-right: 10px;
+    padding: 0;
+    font-size: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .priceContainer {
+    display: flex;
+    margin-left: auto;
+    flex-direction: column;
+
+    .price {
+      margin-left: auto;
+      font-family: $ff-lato;
+      font-size: map-get($sizes, regular);
+      line-height: 20px;
+      color: map-get($colors, black);
+    }
+
+    .packageItemsPrice {
+      font-family: $ff-lato;
+      margin-left: auto;
+      font-size: map-get($sizes, smaller);
+      text-decoration: line-through;
+      color: map-get($colors, warning-red);
+    }
+  }
+}
+
+.summary {
+  padding: 32px;
+
+  .summaryBlock {
+    display: flex;
+    justify-content: space-between;
+
+    .summaryBlockLabel {
+      font-family: $ff-lato;
+      font-size: map-get($sizes, smaller);
+      line-height: 18px;
+      color: map-get($colors, gray);
+    }
+
+    .taxRate {
+      margin-left: auto;
+      font-family: $ff-lato;
+      font-size: map-get($sizes, regular);
+      line-height: 20px;
+      color: map-get($colors, black);
+    }
+  }
+
+  .total {
+    display: flex;
+    justify-content: space-between;
+
+    .totalLabel {
+      font-family: $ff-lato;
+      font-size: map-get($sizes, very-big);
+      letter-spacing: -0.2px;
+      line-height: 28px;
+      color: map-get($colors, black);
+    }
+
+    .totalPriceContainer {
+      display: flex;
+      font-family: $ff-lato;
+      flex-direction: column;
+      align-items: flex-end;
+
+      .discount {
+        margin-left: 10px;
+        color: map-get($colors, green);
+      }
+    }
+  }
+
+  .time {
+    display: flex;
+    margin-top: 32px;
+    align-items: center;
+
+    .timeLabel {
+      margin: 0 8px 0 12px;
+      font-family: $ff-lato;
+      font-size: map-get($sizes, much-bigger);
+      line-height: 28px;
+      color: map-get($colors, gray);
+    }
+
+    .timeValue {
+      font-family: $ff-lato;
+      font-size: map-get($sizes, much-bigger);
+      font-weight: $fw-bold;
+      line-height: 28px;
+      color: map-get($colors, black);
+    }
+  }
+}
+
+.totalPriceContainer {
+  margin-bottom: 5px;
+}
+
+.totalValue {
+  font-family: $ff-lato;
+  margin-left: auto;
+  font-size: map-get($sizes, regular);
+  font-weight: $fw-bold;
+  color: map-get($colors, black);
+}
+
+.totalPackageItemsValue {
+  font-family: $ff-lato;
+  margin-right: 15px;
+  text-decoration: line-through;
+  color: map-get($colors, warning-red);
+}
+
+.data {
+  font-family: $ff-lato;
+  font-size: map-get($sizes, smaller);
+
+  & + & {
+    margin-top: 5px;
+  }
+
+  &Label {
+    color: map-get($colors, silver-gray);
+  }
+}

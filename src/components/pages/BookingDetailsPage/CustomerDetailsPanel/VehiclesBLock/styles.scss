@@ -1,0 +1,21 @@
+@import '~styles/index.scss';
+
+.conciergeVehiclesBlock {
+  &InputsContainer {
+    display: flex;
+    flex-wrap: wrap;
+
+    .conciergeInputWrapper {
+      width: 50%;
+      margin-bottom: 12px;
+
+      &:nth-child(even) {
+        padding-left: 10px;
+      }
+
+      &:nth-child(odd) {
+        padding-right: 10px;
+      }
+    }
+  }
+}

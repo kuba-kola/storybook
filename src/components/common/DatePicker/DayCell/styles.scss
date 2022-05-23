@@ -1,0 +1,46 @@
+@import '~styles/index.scss';
+
+.conciergeDayCell {
+  width: 40px;
+  height: 30px;
+  padding-top: 7px;
+  text-align: center;
+  cursor: pointer;
+
+  &.today {
+    color: map-get($colors, light-blue);
+  }
+
+  &.withinRange {
+    color: map-get($colors, white);
+    background-color: lighten(map-get($colors, light-blue), 15%);
+  }
+
+  &.selected {
+    border-radius: $big-border-radius;
+    color: map-get($colors, white);
+    background-color: map-get($colors, light-blue);
+  }
+
+  &.selected.endOfRange {
+    border-radius: 0;
+    border-top-right-radius: $big-border-radius;
+    border-bottom-right-radius: $big-border-radius;
+  }
+
+  &.selected.startOfRange {
+    border-radius: 0;
+    border-top-left-radius: $big-border-radius;
+    border-bottom-left-radius: $big-border-radius;
+  }
+
+  &.outOfMonth {
+    color: map-get($colors, font-gray);
+    cursor: not-allowed;
+
+    &.startOfRange,
+    &.endOfRange {
+      background-color: lighten(map-get($colors, light-blue), 15%);
+    }
+  }
+}

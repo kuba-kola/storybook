@@ -1,0 +1,23 @@
+@import '~styles/index.scss';
+
+.conciergeBookingsAdditionalInfoCell {
+  &Container {
+    display: flex;
+  }
+
+  &StatusCell {
+    @include sizing(30px 25px);
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+
+  &AlternativeTransport {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    border: null;
+    border-radius: 15px;
+  }
+}

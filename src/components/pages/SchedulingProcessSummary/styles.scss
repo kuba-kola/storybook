@@ -1,0 +1,107 @@
+@import '~styles/index.scss';
+
+.schedulingProcessSummary {
+  &Container {
+    @include main-font;
+
+    display: grid;
+    width: 100%;
+    max-width: 1120px;
+    grid-template-areas: "choicePanel details";
+    grid-template-columns: minmax(600px, 4fr) 2fr;
+    column-gap: 25px;
+    row-gap: 25px;
+    margin: auto;
+    align-items: start;
+
+    &NoVehicle {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: space-between;
+
+      button {
+        margin: 20px 0;
+      }
+    }
+  }
+
+  &ChoicePanel {
+    grid-area: choicePanel;
+
+    .carouselArrowsContainer {
+      padding-bottom: 10px;
+    }
+  }
+
+  &Page {
+    height: calc(100% - #{$header-height});
+    min-height: calc(100vh - #{$header-height});
+
+    .conciergePageHeaderTitle {
+      display: flex;
+      width: 100%;
+      align-items: baseline;
+    }
+
+    .conciergePanel {
+      width: 100%;
+      margin: 35px 0;
+    }
+  }
+
+  &Main {
+    @include horizontally-centered;
+  }
+
+  &PanelHeader {
+    @include main-font(map-get($sizes, bigger));
+  }
+
+  &PanelCard {
+    width: 100%;
+  }
+
+  &LoadingPanel {
+    @include main-font(map-get($sizes, bigger));
+
+    width: 100%;
+    text-align: center;
+    color: map-get($colors, pink);
+  }
+
+  &Label {
+    @include main-font(map-get($sizes, smaller));
+
+    margin-bottom: 10px;
+    color: map-get($colors, font-gray);
+  }
+
+  &Value {
+    @include main-font;
+
+    text-transform: capitalize;
+
+    &-notTransformed {
+      text-transform: none;
+    }
+  }
+
+  &Bar {
+    max-width: 1120px;
+    margin: 31px auto 0;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10px;
+    color: map-get($colors, white);
+    box-shadow: 0 12px 30px 0 rgba(0, 0, 0, 0.16);
+
+    &Green {
+      background-color: map-get($colors, green2);
+    }
+
+    &Red {
+      background-color: map-get($colors, red);
+    }
+  }
+}

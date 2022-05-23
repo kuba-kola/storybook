@@ -1,0 +1,56 @@
+@import "~styles/index.scss";
+
+.container {
+  width: 100vw;
+  background-color: map-get($colors, white);
+  box-shadow: 0 -4px 10px 0 rgba($color-shadow-2, 0.1);
+
+  .form {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px 20px;
+    align-items: center;
+  }
+
+  .input {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 826px;
+    padding: 12px 16px;
+    font-family: $ff-lato;
+    font-size: $fs-regular;
+    outline: none;
+    border: 1px solid $color-light-gray;
+    border-radius: 6px;
+    color: $color-black;
+    caret-color: $color-secondary-mint;
+    resize: none;
+
+    &.invalid {
+      border-color: $color-warning-red;
+      color: $color-warning-red;
+    }
+  }
+
+  .icon {
+    width: 34px;
+    padding: 4px;
+    cursor: pointer;
+  }
+
+  .submit {
+    margin-right: 10px;
+    margin-left: 15px;
+    padding: 0;
+    border: none;
+    background-color: map-get($colors, white);
+    -webkit-tap-highlight-color: $color-transparent;
+
+    &:focus {
+      outline: 0;
+      border: none;
+      color: $color-transparent;
+    }
+  }
+}

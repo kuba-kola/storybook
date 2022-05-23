@@ -1,0 +1,44 @@
+@import '~styles/index.scss';
+
+.conciergeTableAdvisorsWorkingHoursCell {
+  display: flex;
+  height: 80px;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  .conciergeTableAdvisorsWorkingHours {
+    &__inactiveAdvisorInfo {
+      color: map-get($colors, font-gray);
+    }
+
+    &__daysContainer {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__dayValue {
+      @include sizing(30px);
+
+      display: flex;
+      border-radius: 50%;
+      color: map-get($colors, white);
+      background: map-get($colors, darker-gray);
+      align-items: center;
+      justify-content: center;
+
+      &--active {
+        background: map-get($colors, light-blue);
+      }
+    }
+
+    &__hoursContainer {
+      display: flex;
+      padding: 10px 0;
+      justify-content: space-between;
+    }
+
+    &__hoursLabel {
+      color: map-get($colors, font-gray);
+    }
+  }
+}

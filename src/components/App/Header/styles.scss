@@ -1,0 +1,20 @@
+@import '~styles/index.scss';
+
+.conciergeHeader {
+  height: 56px;
+  color: map-get($colors, white);
+  background-color: map-get($colors, main-black);
+
+  &Centering {
+    @include horizontally-centered;
+
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.conciergeLogo {
+  height: 29px;
+}

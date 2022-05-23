@@ -1,0 +1,52 @@
+@import "styles/index.scss";
+
+@mixin transition-delays {
+  @for $i from 1 through 10 {
+    &.transition-delay-#{$i * 500} {
+      transition-delay: #{$i * 500}ms;
+    }
+  }
+}
+
+:global {
+  .animation {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  .slideUp-appear {
+    transform: translateY(100vh);
+  }
+
+  .slideUp-appear-active {
+    @include transition-delays;
+
+    transform: translateY(0);
+    transition: transform 500ms ease-out;
+  }
+
+  .unfoldRight-appear {
+    width: 0;
+  }
+
+  .unfoldRight-appear-active {
+    @include transition-delays;
+
+    overflow: hidden;
+    width: 100%;
+    transition: width 1250ms ease-in-out;
+  }
+
+  .fadeIn-appear {
+    opacity: 0;
+  }
+
+  .fadeIn-appear-active {
+    @include transition-delays;
+
+    opacity: 1;
+    transition: opacity 500ms linear;
+  }
+}

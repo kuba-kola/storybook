@@ -1,0 +1,228 @@
+@import '~styles/index.scss';
+
+.appointmentDetails {
+  &Container {
+    overflow: hidden;
+  }
+
+  &Owner {
+    display: flex;
+    align-items: center;
+  }
+
+  &OwnerInfo {
+    display: block;
+    margin: 0 0 8px;
+    font-size: map-get($sizes, bigger);
+    font-weight: $fw-bold;
+  }
+
+  &CarImg {
+    max-width: 100px;
+    margin-right: 1em;
+  }
+
+  &CarInfo,
+  &ContactInfo {
+    display: block;
+    font-size: map-get($sizes, regular);
+    color: map-get($colors, font-gray);
+  }
+
+  &Section {
+    padding: 15px;
+
+    &Total {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: space-between;
+
+      span {
+        font-size: map-get($sizes, bigger);
+        font-weight: $fw-bold;
+      }
+    }
+  }
+
+  &Data {
+    padding: 5px 25px;
+
+    &Item {
+      padding: 5px 0;
+    }
+
+    &Title {
+      margin-bottom: 0.5em;
+    }
+
+    &Content {
+      font-size: map-get($sizes, smaller);
+      color: map-get($colors, font-gray);
+    }
+  }
+
+  &SectionHeader {
+    padding: 15px;
+    font-size: map-get($sizes, smaller);
+    border-top: 1px solid map-get($colors, darker-gray);
+    background-color: map-get($colors, light-gray);
+  }
+
+  &Service {
+    display: flex;
+    padding: 10px 15px;
+    font-weight: $fw-normal;
+    align-items: flex-start;
+
+    & + & {
+      border-top: 1px solid map-get($colors, darker-gray);
+    }
+
+    & .PackageItems {
+      margin-top: 20px;
+    }
+
+    &Icon {
+      width: 30px;
+      height: 30px;
+      margin-right: 15px;
+    }
+
+    &Body {
+      width: 100%;
+    }
+
+    &Name {
+      display: flex;
+      align-items: center;
+    }
+
+    &AdditionalInfo {
+      margin-top: 0.5em;
+      align-items: center;
+
+      &Row {
+        display: flex;
+        margin-top: 0.5em;
+        align-items: center;
+      }
+
+      &Key {
+        display: block;
+        font-size: map-get($sizes, smaller);
+        color: map-get($colors, font-gray);
+      }
+
+      &Value {
+        display: block;
+        margin-top: 0.2em;
+        font-size: map-get($sizes, smaller);
+      }
+
+      &Row &Value {
+        margin-top: 0;
+        padding-left: 0.3em;
+      }
+    }
+
+    &Price {
+      display: flex;
+      margin-top: 0.5em;
+      align-items: center;
+
+      &Value {
+        margin-left: 5px;
+        font-size: map-get($sizes, smaller);
+      }
+    }
+
+    &SmallGrayText {
+      font-size: map-get($sizes, smaller);
+      color: map-get($colors, font-gray);
+    }
+
+    &CustomerState {
+      display: block;
+      margin: 8px 0 0;
+    }
+  }
+
+  &Divider {
+    width: 100%;
+    height: 1px;
+    background-color: map-get($colors, darker-gray);
+  }
+
+  &Total {
+    margin-bottom: 0.5em;
+    font-size: map-get($sizes, bigger);
+    font-weight: $fw-bold;
+  }
+
+  &TimeInfoContainer {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  &TimeInfoSpansContainer {
+    width: 100%;
+  }
+
+  &TimeInfoSpans {
+    display: flex;
+    font-size: map-get($sizes, smaller);
+    align-items: baseline;
+
+    &Bold {
+      font-weight: $fw-bold;
+    }
+  }
+
+  &Watch {
+    margin: 0 5px;
+  }
+
+  &AdvisorSection {
+    display: flex;
+    border-top: 1px solid map-get($colors, darker-gray);
+    align-items: center;
+  }
+
+  &AdvisorInfoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &AdvisorText {
+    font-family: $ff-lato;
+    font-size: map-get($sizes, smaller);
+    color: map-get($colors, darkest-gray);
+  }
+
+  &AdvisorName {
+    margin-top: 5px;
+    font-family: $ff-lato;
+    font-size: map-get($sizes, regular);
+    font-weight: $fw-bold;
+  }
+
+  &AdvisorPhoto {
+    @include sizing(auto 50px);
+
+    max-width: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+
+  &SendSmsToggle {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 10px;
+    }
+  }
+}

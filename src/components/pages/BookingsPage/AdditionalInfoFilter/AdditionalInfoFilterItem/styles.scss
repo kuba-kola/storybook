@@ -1,0 +1,33 @@
+@import "~styles/index.scss";
+
+.AdditionalInfoFilter {
+  &Item {
+    display: flex;
+    width: 50px;
+    height: 100%;
+    margin-left: -1px;
+    border: 1px solid map-get($colors, darker-gray);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &Active {
+      z-index: $z-index-3;
+      border: 1px solid map-get($colors, mint) !important;
+      background: map-get($colors, mint005) !important;
+
+      + .AdditionalInfoFilterItem {
+        border-left: thin solid transparent;
+
+        &:not(.AdditionalInfoFilterItemActive) {
+          border-right: thin solid transparent;
+        }
+      }
+    }
+
+    > img {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}

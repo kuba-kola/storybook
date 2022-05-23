@@ -1,0 +1,36 @@
+@import "~styles/index.scss";
+
+.AdditionalInfoFilterDropdownItem {
+  display: flex;
+  width: 100%;
+  padding: 7px 12px;
+  align-items: center;
+  cursor: pointer;
+
+  &:first-child {
+    padding-top: 12px;
+  }
+
+  &:last-child {
+    padding-bottom: 12px;
+  }
+
+  img {
+    max-width: 25px;
+    max-height: 25px;
+    margin-right: 10px;
+  }
+
+  span {
+    font-size: map-get($sizes, smaller);
+    color: map-get($colors, bluey-grey);
+  }
+
+  &Active {
+    background: map-get($colors, mint005) !important;
+
+    span {
+      color: map-get($colors, mint);
+    }
+  }
+}

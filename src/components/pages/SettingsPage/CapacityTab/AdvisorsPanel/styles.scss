@@ -1,0 +1,73 @@
+@import '~styles/index.scss';
+
+.conciergeSettingsPageCapacityTabAdvisorsPanel {
+  .conciergePanelBody {
+    padding: 0;
+  }
+
+  .conciergeBookingDetailsPanelHeader {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .advisorPhoto {
+    @include sizing(80px);
+
+    border-radius: 50%;
+  }
+
+  .ReactTable {
+    border: none;
+    border-radius: 0 0 6px 6px;
+
+    .rt-table {
+      overflow: visible;
+    }
+
+    .rt-tbody {
+      overflow: visible;
+
+      .rt-tr {
+        height: 100px;
+        align-items: center;
+      }
+
+      .rt-td {
+        padding: 12px 12px 12px 30px;
+      }
+    }
+
+    .rt-noData {
+      top: 74%;
+    }
+
+    .-pagination {
+      padding: 15px;
+      border-top: $default-border;
+      box-shadow: none;
+
+      .-previous,
+      .-center,
+      .-next {
+        flex: none;
+      }
+
+      .-pageSizeOptions {
+        @include main-font;
+      }
+    }
+  }
+}
+
+.conciergeSettingsPageCapacityTabAdvisorsSwitch {
+  display: flex;
+  margin-left: auto;
+  padding: 0 1em;
+  align-items: center;
+
+  & label {
+    margin-right: 0.5em;
+  }
+}

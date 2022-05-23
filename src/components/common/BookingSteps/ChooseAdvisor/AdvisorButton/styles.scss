@@ -1,0 +1,44 @@
+@import '~styles/index.scss';
+
+.conciergeSchedulingAdvisorButton {
+  @include sizing(110px 140px);
+
+  display: flex;
+  padding: 0;
+  border: 1px solid map-get($colors, darker-gray);
+  border-radius: 10px;
+  background-color: map-get($colors, white);
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+
+  &Active {
+    border-color: map-get($colors, light-blue);
+    background-color: rgba(map-get($colors, light-blue), 0.05);
+  }
+
+  &AdvisorPhoto {
+    @include sizing(auto 75px);
+
+    max-width: 75px;
+    margin: 0 12.5px;
+    font-family: $ff-lato;
+    font-size: map-get($sizes, smaller);
+    line-height: 18px;
+    text-align: center;
+  }
+
+  &AdvisorName {
+    display: flex;
+    height: 20px;
+    margin: 0 12.5px;
+    font-family: $ff-lato;
+    font-size: map-get($sizes, smaller);
+    font-weight: $fw-bold;
+    line-height: 18px;
+    text-align: center;
+    color: map-get($colors, black);
+    align-items: center;
+  }
+}

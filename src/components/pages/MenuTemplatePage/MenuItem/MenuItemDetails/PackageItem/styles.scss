@@ -1,0 +1,92 @@
+@import '~styles/index.scss';
+
+.packageItem {
+  display: flex;
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid map-get($colors, darker-gray);
+  border-radius: 6px;
+  background-color: map-get($colors, white);
+  flex-wrap: wrap;
+
+  &Input {
+    &Container {
+      display: flex;
+      margin: 0 24px 20px 0;
+      flex-direction: column;
+    }
+
+    &Label {
+      margin-bottom: 2px;
+      font-family: $ff-lato;
+      font-size: map-get($sizes, smaller);
+      line-height: 18px;
+      color: map-get($colors, main-black);
+    }
+
+    &Dropdown {
+      width: 896px;
+
+      &__control {
+        height: 100%;
+        font-family: $ff-lato;
+        font-size: map-get($sizes, regular);
+        line-height: 20px;
+        border: 1px solid map-get($colors, darker-gray) !important;
+        border-radius: 6px;
+        color: map-get($colors, white);
+        background-color: map-get($colors, white) !important;
+
+        &--is-disabled {
+          background-color: #e9ecef !important;
+        }
+      }
+
+      &__menu {
+        display: flex;
+        padding: 8px 0;
+        border: 1px solid map-get($colors, darker-gray);
+        border-radius: 10px;
+        background-color: map-get($colors, white);
+        box-shadow: 0 12px 30px 0 rgba(map-get($colors, black), 0.16);
+        flex-direction: column;
+
+        &-list {
+          padding: 0;
+
+          .packageItemInputDropdown__option {
+            display: flex;
+            height: 44px;
+            font-family: $ff-lato;
+            font-size: map-get($sizes, regular);
+            line-height: 20px;
+            border: none;
+            color: map-get($colors, main-black);
+            align-items: center;
+
+            &--is-selected {
+              background-color: rgba(map-get($colors, light-blue), 0.1);
+            }
+
+            &--is-focused {
+              background-color: rgba(map-get($colors, light-blue), 0.05);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &ActionButton {
+    height: 48px;
+    margin-left: auto;
+    padding: 0 24px;
+    font-family: $ff-ibm;
+    font-size: map-get($sizes, slightly-bigger);
+    line-height: 16px;
+    border-radius: 6px;
+    color: map-get($colors, white);
+    background-color: map-get($colors, blueish-gray);
+    cursor: pointer;
+  }
+}

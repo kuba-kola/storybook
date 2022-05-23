@@ -1,0 +1,93 @@
+@import '~styles/index.scss';
+
+.conciergeMenuTemplatesPage {
+  height: calc(100% - #{$header-height});
+  min-height: calc(100vh - #{$header-height});
+
+  &Main {
+    @include horizontally-centered;
+
+    padding: 16px 0;
+  }
+}
+
+.conciergeMenuTemplatesSearch {
+  @include sizing(315px 48px);
+
+  display: flex;
+  border: 1px solid map-get($colors, darker-gray);
+  border-radius: 6px;
+  background-color: map-get($colors, white);
+  align-items: center;
+
+  &Input {
+    width: 236px;
+    margin: 14px;
+    font-family: $ff-lato;
+    font-size: map-get($sizes, regular);
+    line-height: 20px;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &Icon {
+    margin: 0 19px 0 6px;
+  }
+}
+
+.conciergeMenuTemplatesNavbar {
+  display: flex;
+  margin-bottom: 16px;
+  align-items: center;
+  justify-content: space-between;
+
+  &Tab {
+    @include sizing(106px 48px);
+
+    font-family: $ff-lato;
+    font-size: map-get($sizes, regular);
+    line-height: 20px;
+    border: none;
+    border-bottom: 1px solid map-get($colors, darker-gray);
+    color: map-get($colors, darkest-gray);
+    background: transparent;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.active {
+      border-bottom: 2px solid map-get($colors, light-blue);
+      color: map-get($colors, main-black);
+    }
+  }
+
+  &AddButton {
+    @include sizing(167px 48px);
+
+    padding: 0;
+    font-family: $ff-ibm;
+    font-size: map-get($sizes, slightly-bigger);
+    line-height: 16px;
+    border: none;
+    border-radius: 6px;
+    color: map-get($colors, white);
+    background: map-get($colors, button-gradient);
+    box-shadow: 0 8px 15px 0 rgba(map-get($colors, black), 0.18);
+    cursor: pointer;
+  }
+}
+
+.conciergeMenuTemplatesTable {
+  .rt-table {
+    overflow: visible;
+  }
+
+  .rt-tbody {
+    overflow: visible;
+  }
+}

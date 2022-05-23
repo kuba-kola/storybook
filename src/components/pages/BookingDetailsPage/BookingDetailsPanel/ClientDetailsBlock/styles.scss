@@ -1,0 +1,83 @@
+@import '~styles/index.scss';
+
+.conciergeClientDetailsBlock {
+  width: 100%;
+  height: 100%;
+  padding: 15px 0 25px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: map-get($colors, light-gray);
+
+  &Item {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+  }
+
+  &Input {
+    padding-top: 4px;
+    font-size: map-get($sizes, smaller);
+    font-weight: $fw-normal;
+    color: map-get($colors, font-gray);
+
+    .conciergeInput {
+      font-size: map-get($sizes, smaller);
+    }
+  }
+
+  &Group {
+    display: flex;
+    margin: 0 25px;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    & + & {
+      margin-top: 10px;
+    }
+  }
+
+  &Label {
+    padding-top: 4px;
+    font-size: map-get($sizes, smaller);
+    font-weight: $fw-normal;
+    color: map-get($colors, font-gray);
+  }
+
+  &Value {
+    padding-top: 4px;
+    font-size: map-get($sizes, small);
+    font-weight: $fw-bold;
+    color: map-get($colors, main-black);
+  }
+
+  &ActionButton {
+    @include secondary-font(map-get($sizes, bigger));
+
+    display: flex;
+    height: auto;
+    border: none;
+    color: map-get($colors, font-gray);
+    align-items: center;
+
+    &-save {
+      min-width: 100px;
+      margin-left: auto;
+      line-height: 16px;
+      line-height: 16px;
+      text-decoration: none;
+      border: none;
+      border-radius: 6px;
+      color: map-get($colors, font-gray);
+      background-color: map-get($colors, blueish-gray);
+      box-shadow: 1px 2px 5px 1px rgba(4, 4, 4, 0.4);
+    }
+
+    &-cancel {
+      margin-right: 20px;
+    }
+  }
+
+  &Icon {
+    margin-right: 10px;
+  }
+}

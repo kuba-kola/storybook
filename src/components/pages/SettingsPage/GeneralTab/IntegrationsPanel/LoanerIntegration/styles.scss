@@ -1,0 +1,38 @@
+@import "~styles/index.scss";
+
+.conciergeSettingsPageLoanerIntegration {
+  &ButtonsContainer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .conciergeSettingsPageIntegrationsBlockInputsPart .conciergeInputWrapper:first-child {
+    order: 4;
+  }
+
+  &Button-add {
+    @include secondary-font(map-get($sizes, slightly-bigger));
+
+    padding: 16px 32px;
+    line-height: 16px;
+    border: none;
+    border-radius: 6px;
+    color: map-get($colors, white);
+    background-color: map-get($colors, blueish-gray);
+
+    &:hover {
+      box-shadow: $default-box-shadow;
+    }
+  }
+
+  &Switch {
+    display: flex;
+    width: 50%;
+    padding-left: 40px;
+    align-items: center;
+
+    .loanerRequirementsSwitch {
+      margin-left: 10px;
+    }
+  }
+}

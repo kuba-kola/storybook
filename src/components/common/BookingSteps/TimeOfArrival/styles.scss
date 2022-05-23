@@ -1,0 +1,20 @@
+@import '~styles/index.scss';
+
+.schedulingCalendar {
+  &Container {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  &Buttons {
+    display: flex;
+    margin-top: 1em;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &Current {
+    margin-right: 1em;
+    font-size: map-get($sizes, big);
+  }
+}

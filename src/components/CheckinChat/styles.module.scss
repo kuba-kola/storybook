@@ -1,0 +1,23 @@
+// @import "styles/index.scss";
+
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
+.container {
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px 20px;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.lastMessage {
+  height: 256px;
+}

@@ -1,0 +1,22 @@
+@import '~styles/index.scss';
+
+.communicationStep {
+  &Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  &Section {
+    width: 50%;
+
+    &Header {
+      margin: 0 0 16px;
+    }
+  }
+
+  &OptionsContainer {
+    display: flex;
+    flex-flow: column;
+  }
+}

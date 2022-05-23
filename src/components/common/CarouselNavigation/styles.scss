@@ -1,0 +1,15 @@
+.carouselArrowsContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.carouselArrowButton {
+  border: 0;
+  background-color: transparent;
+}
+
+.carouselArrowIcon {
+  &Disabled {
+    opacity: 0.5;
+  }
+}

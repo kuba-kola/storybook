@@ -1,0 +1,45 @@
+@import "styles/index.scss";
+@import "styles/chat-input.scss";
+
+.form {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  align-items: center;
+}
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 826px;
+  padding: 12px 16px;
+  font-family: $ff-lato;
+  font-size: $fs-regular;
+  outline: none;
+  border: 1px solid $color-light-gray;
+  border-radius: 6px;
+  color: $color-black;
+  caret-color: $color-secondary-mint;
+  resize: none;
+}
+
+.icon {
+  width: 34px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.submit {
+  padding: 0;
+  margin-left: 15px;
+  margin-right: 10px;
+  border: none;
+  background-color: map-get($colors, white);
+  -webkit-tap-highlight-color: $color-transparent;
+
+  &:focus {
+    outline: 0;
+    border: none;
+    color: $color-transparent;
+  }
+}

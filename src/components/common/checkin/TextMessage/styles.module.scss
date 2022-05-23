@@ -1,0 +1,68 @@
+@import "styles/index.scss";
+
+.container {
+  display: flex;
+  width: 100%;
+  margin: 4px 0;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.message {
+  display: flex;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 12px;
+  font-family: $ff-lato;
+  font-size: map-get($sizes, regular);
+  line-height: 20px;
+  border-radius: 0 10px 10px 0;
+  color: map-get($colors, black);
+  background-color: map-get($colors, white);
+  box-shadow: 0 2px 4px 0 rgba(map-get($colors, shadow-gray), 0.12);
+  align-items: center;
+}
+
+.bigMessage {
+  @extend .message;
+
+  min-height: 64px;
+  margin: 4px 0;
+  padding: 16px 24px;
+  font-size: map-get($sizes, very-big);
+  line-height: 28px;
+  border-radius: 0 16px 16px 0;
+
+  &.opening {
+    border-radius: 16px 16px 16px 0;
+  }
+
+  &.closing {
+    border-radius: 0 16px 16px 16px;
+  }
+}
+
+.opening {
+  border-radius: 10px 10px 10px 0;
+}
+
+.closing {
+  border-radius: 0 10px 10px 10px;
+}
+
+.user {
+  .message {
+    border-radius: 10px 10px 0 10px;
+  }
+
+  .message,
+  .bigMessage {
+    margin: 4px 0 4px auto;
+    color: map-get($colors, white);
+    background-color: map-get($colors, mint);
+  }
+
+  .bigMessage {
+    border-radius: 16px 16px 0 16px;
+  }
+}

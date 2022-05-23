@@ -1,0 +1,67 @@
+@import '~styles/index.scss';
+
+.conciergeTable {
+  &ActionsCell {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+
+    &Button {
+      z-index: $z-index-1;
+      border: none;
+      background: none;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &Popup {
+      @include absolute(top 27px right 23px);
+
+      z-index: $z-index-1;
+      display: flex;
+      padding: 8px 0;
+      border: 1px solid map-get($colors, darker-gray);
+      border-radius: 10px;
+      background-color: map-get($colors, white);
+      box-shadow: 0 12px 30px 0 rgba(map-get($colors, black), 0.16);
+      flex-direction: column;
+    }
+
+    &Action {
+      @include sizing(144px 44px);
+
+      display: flex;
+      font-family: $ff-lato;
+      font-size: map-get($sizes, regular);
+      line-height: 20px;
+      border: none;
+      color: map-get($colors, main-black);
+      background: none;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(map-get($colors, light-blue), 0.05);
+      }
+
+      img {
+        margin: 0 8px;
+      }
+    }
+
+    &Delete {
+      color: map-get($colors, pink);
+    }
+
+    &OutsideOverlay {
+      @include fixed(top 0 left 0);
+      @include sizing(100vw 100vh);
+
+      border: none;
+      background: transparent;
+    }
+  }
+}

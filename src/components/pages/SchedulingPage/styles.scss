@@ -1,0 +1,255 @@
+@import '~styles/index.scss';
+
+.conciergeSchedulingPage {
+  height: auto;
+  min-height: 100vh;
+
+  &Main {
+    @include horizontally-centered;
+
+    padding: 16px 0;
+  }
+
+  .conciergeSearchField {
+    width: 100%;
+  }
+}
+
+.conciergeScheduling {
+  &AddButtonSection {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &ConfirmVehicleSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &Button {
+    padding: 16px 32px;
+    font-family: $ff-ibm;
+    font-size: map-get($sizes, slightly-bigger);
+    line-height: 16px;
+    border: none;
+    border-radius: 6px;
+    color: map-get($colors, white);
+    background: map-get($colors, button-gradient);
+    box-shadow: 0 8px 15px 0 rgba(map-get($colors, black), 0.18);
+    cursor: pointer;
+
+    &Secondary {
+      color: map-get($colors, main-black);
+      background: map-get($colors, white);
+    }
+
+    &Disabled {
+      border: none;
+      color: map-get($colors, white);
+      background: map-get($colors, darker-gray);
+      box-shadow: none;
+    }
+  }
+
+  &ButtonGroup {
+    padding-top: 16px;
+  }
+
+  &SubmitWrapper {
+    display: flex;
+    margin: 20px 0 0;
+    justify-content: flex-end;
+  }
+
+  &SubmitButton {
+    width: 140px;
+  }
+
+  &TimeSubmitButton {
+    @include absolute(right 33px bottom 20px);
+  }
+
+  &AddVehicleButton {
+    @include secondary-font(map-get($sizes, slightly-bigger));
+
+    margin: 0 25px;
+    padding: 16px 32px;
+    line-height: 16px;
+    border: none;
+    border-radius: 6px;
+    color: map-get($colors, white);
+    background-color: map-get($colors, blueish-gray);
+    cursor: pointer;
+  }
+
+  &BookButton,
+  &BookedAppointmentButton {
+    width: 100%;
+  }
+
+  &BookedAppointmentButton {
+    position: relative;
+    display: flex;
+    height: 46px;
+    padding: 0 16px;
+    border: 1px solid map-get($colors, main-black);
+    color: map-get($colors, main-black);
+    background: map-get($colors, white);
+    box-shadow: none;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &BookButtonSection {
+    margin: 25px 0 0 0;
+  }
+
+  &BookedAppointmentCounter {
+    @include absolute(top -10px right -10px);
+
+    display: flex;
+    min-width: 20px;
+    min-height: 20px;
+    font-size: map-get($sizes, smaller);
+    border-radius: 100px;
+    color: map-get($colors, white);
+    background: map-get($colors, light-blue);
+    align-items: center;
+    justify-content: center;
+  }
+
+  &Label {
+    @include main-font(map-get($sizes, smaller));
+
+    margin-bottom: 10px;
+    color: map-get($colors, font-gray);
+  }
+
+  &Panel {
+    @include main-font(map-get($sizes, slightly-bigger));
+
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  &ResultsMsg {
+    @include main-font(map-get($sizes, slightly-smaller));
+
+    margin: 20px 0 10px;
+    color: map-get($colors, font-gray);
+  }
+
+  &PersonalData {
+    display: flex;
+
+    &SectionsContainer {
+      display: flex;
+      width: 50%;
+    }
+
+    &Section {
+      display: flex;
+      margin: 5px 0;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    &Edit {
+      display: flex;
+      padding: 0;
+      font-size: map-get($sizes, slightly-bigger);
+      color: map-get($colors, font-gray);
+      background-color: transparent;
+      align-items: center;
+      cursor: pointer;
+
+      &Image {
+        margin: 0 12px 0 0;
+      }
+    }
+  }
+
+  &VehicleData {
+    display: flex;
+
+    &Container {
+      @include sizing(50% 240px);
+
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &SectionsContainer {
+      width: 48.5%;
+    }
+
+    &Column {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    &Section {
+      height: 40px;
+      margin: 0 0 20px;
+    }
+
+    &Header {
+      @include main-font(map-get($sizes, much-bigger), $fw-bold);
+
+      display: flex;
+      margin: 5px 0 10px 5px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &VehicleImage {
+      @include sizing(330px 220px);
+
+      margin-left: 5px;
+    }
+
+    &NoImageText {
+      padding: 115px 150px;
+    }
+  }
+
+  &Block {
+    @include main-font(map-get($sizes, regular));
+
+    margin: 15px 0 20px;
+
+    .conciergeBlockContent {
+      padding: 15px 25px;
+    }
+
+    .conciergePanelBody {
+      margin: 25px 21px;
+    }
+  }
+
+  &BlockHeader {
+    @include main-font(map-get($sizes, slightly-smaller), $fw-bold);
+  }
+
+  &Loading {
+    @include sizing(64px);
+
+    margin-top: 32px;
+
+    &Section {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &LoadingPanel {
+    @include main-font(map-get($sizes, bigger));
+
+    width: 100%;
+    text-align: center;
+    color: map-get($colors, darkest-gray);
+  }
+}

@@ -1,0 +1,70 @@
+@import '~styles/index.scss';
+
+.conciergeTablePagination {
+  &ButtonsWrapper {
+    position: relative;
+    left: calc(50% - #{$table-pagination-buttons-wrapper-width} / 2);
+    display: flex;
+    width: $table-pagination-buttons-wrapper-width;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &ArrowButton {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: map-get($colors, darker-gray);
+
+    &:hover {
+      background-color: darken(map-get($colors, darker-gray), 5%);
+      box-shadow: $default-box-shadow;
+    }
+
+    &:disabled {
+      background-color: rgba(map-get($colors, darker-gray), 0.5);
+      cursor: not-allowed;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &PrevArrowContent {
+    width: 13px;
+    height: 13px;
+    border-top: 1px solid map-get($colors, white);
+    border-left: 1px solid map-get($colors, white);
+    transform: translate(6px, 0) rotate(-45deg);
+  }
+
+  &NextArrowContent {
+    @extend .conciergeTablePaginationPrevArrowContent;
+
+    border-right: 1px solid map-get($colors, white);
+    border-left: none;
+    transform: translate(1px, 0) rotate(45deg);
+  }
+
+  &PageButton {
+    padding: 0 10px;
+    border: none;
+    color: map-get($colors, font-gray);
+    cursor: pointer;
+
+    &Active {
+      @extend .conciergeTablePaginationPageButton;
+
+      color: map-get($colors, main-black);
+    }
+
+    &Dots {
+      margin-right: 20px;
+    }
+  }
+
+  &PageSizeSelect {
+    margin-left: 15px;
+  }
+}

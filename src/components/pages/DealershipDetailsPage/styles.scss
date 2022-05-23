@@ -1,0 +1,95 @@
+@import '~styles/index.scss';
+
+.conciergeDealershipDetails {
+  &Page {
+    height: calc(100% - #{$header-height});
+    min-height: calc(100vh - #{$header-height});
+
+    .conciergePanel {
+      width: 100%;
+      margin: 35px 0;
+    }
+
+    .conciergePanelHeader {
+      display: flex;
+      font-family: $ff-lato;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &Main {
+    @include horizontally-centered;
+
+    padding-bottom: 20px;
+  }
+
+  &GeneralPanel,
+  &IntegrationsPanel,
+  &MaintainersPanel {
+    width: 100%;
+    margin: 35px 0;
+
+    .conciergeInputWrapper {
+      width: 50%;
+
+      &:nth-child(odd) {
+        padding-right: 20px;
+      }
+
+      &:nth-child(even) {
+        padding-left: 20px;
+      }
+    }
+
+    .conciergePanelBody {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &LoadingPanel {
+    @include main-font(map-get($sizes, bigger));
+
+    text-align: center;
+    color: map-get($colors, pink);
+  }
+
+  &IntegrationsPanel {
+    &Block {
+      width: 100%;
+
+      .conciergeBlockContent {
+        background-color: map-get($colors, light-gray);
+      }
+    }
+
+    &InputsContainer {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &AddIntegration {
+      display: flex;
+      width: 100%;
+      padding: 16px 25px;
+      align-items: center;
+      justify-content: flex-end;
+
+      &Button {
+        @include sizing(167px 48px);
+
+        padding: 0;
+        font-family: $ff-ibm;
+        font-size: map-get($sizes, slightly-bigger);
+        line-height: 16px;
+        border: none;
+        border-radius: 6px;
+        color: map-get($colors, white);
+        background: map-get($colors, button-gradient);
+        box-shadow: 0 8px 15px 0 rgba(map-get($colors, black), 0.18);
+        cursor: pointer;
+      }
+    }
+  }
+}

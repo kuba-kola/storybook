@@ -1,0 +1,49 @@
+@import "~styles/index.scss";
+
+.conciergeBookingsAdditionalInfo {
+  &Wrapper {
+    @include main-font;
+
+    display: flex;
+    margin-left: 20px;
+    flex-direction: column;
+
+    .label {
+      margin-bottom: 5px;
+      line-height: 20px;
+      color: map-get($colors, bluey-grey);
+    }
+  }
+
+  &Filter {
+    position: relative;
+    display: flex;
+    height: 44px;
+    margin: 3px 0;
+    border-radius: 6px;
+    background: map-get($colors, white);
+    flex-direction: row;
+    user-select: none;
+
+    > div {
+      &:first-child {
+          div{
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+          }
+      }
+
+      &:last-child {
+        div {
+          border-right: 1px solid map-get($colors, darker-gray) !important;
+          border-top-right-radius: 6px;
+          border-bottom-right-radius: 6px;
+        }
+
+        &.AdditionalInfoFilterItemActive {
+          border-right: 1px solid map-get($colors, mint) !important;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+@import '~styles/index.scss';
+
+.menuItem {
+  @include sizing(1110px 48px);
+
+  position: relative;
+  display: flex;
+  margin-bottom: 8px;
+  border: 1px solid map-get($colors, darker-gray);
+  border-radius: 6px;
+  background-color: map-get($colors, white);
+  justify-content: space-between;
+
+  &AddToROSwitch.SwitchContainer {
+    margin-bottom: 0;
+
+    .conciergeInputLabel {
+      width: max-content;
+    }
+  }
+
+  &.isExpanded {
+    margin-bottom: 0;
+    border-radius: 6px 6px 0 0;
+  }
+
+  &ExpandButton {
+    display: flex;
+    width: 100%;
+    padding: 0 12px;
+    font-family: $ff-lato;
+    font-size: map-get($sizes, bigger);
+    letter-spacing: -0.15px;
+    line-height: 22px;
+    border: none;
+    color: map-get($colors, main-black);
+    background: transparent;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+
+    &.isExpanded {
+      background-color: map-get($colors, light-gray);
+    }
+
+    img {
+      margin-right: 8px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &ActionsButton {
+    display: flex;
+    padding: 0 14px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    align-items: center;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.isExpanded {
+      background-color: map-get($colors, light-gray);
+    }
+  }
+
+  &Actions {
+    &Popup {
+      @include absolute(top 32px right 32px);
+
+      z-index: $z-index-1;
+      display: flex;
+      padding: 8px 0;
+      border: 1px solid map-get($colors, darker-gray);
+      border-radius: 10px;
+      background-color: map-get($colors, white);
+      box-shadow: 0 12px 30px 0 rgba(map-get($colors, black), 0.16);
+      flex-direction: column;
+    }
+
+    &OutsideOverlay {
+      @include fixed(top 0 left 0);
+      @include sizing(100vw 100vh);
+
+      border: none;
+      background: transparent;
+    }
+  }
+
+  &Action {
+    @include sizing(144px 44px);
+
+    display: flex;
+    font-family: $ff-lato;
+    font-size: map-get($sizes, regular);
+    line-height: 20px;
+    border: none;
+    color: map-get($colors, main-black);
+    background: none;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(map-get($colors, light-blue), 0.05);
+    }
+
+    img {
+      margin: 0 8px;
+    }
+
+    &Delete {
+      color: map-get($colors, pink);
+    }
+  }
+}

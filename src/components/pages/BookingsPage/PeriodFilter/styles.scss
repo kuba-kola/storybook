@@ -1,0 +1,11 @@
+@import '~styles/index.scss';
+
+.conciergeBookingsPeriodFilter {
+  @include main-font;
+
+  display: flex;
+
+  &Label {
+    color: map-get($colors, font-gray);
+  }
+}

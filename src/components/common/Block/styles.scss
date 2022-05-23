@@ -1,0 +1,19 @@
+@import '~styles/index.scss';
+
+.conciergeBlock {
+  @include main-font;
+
+  margin: 25px;
+
+  &Title {
+    @include main-font(map-get($sizes, regular), $fw-bold);
+
+    margin-bottom: 15px;
+  }
+
+  &Content {
+    padding: 15px;
+    border: $default-border;
+    border-radius: $big-border-radius;
+  }
+}

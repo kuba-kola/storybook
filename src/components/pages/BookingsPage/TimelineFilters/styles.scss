@@ -1,0 +1,19 @@
+@import '~styles/index.scss';
+
+.conciergeBookingsTimelineFilters {
+  @include main-font;
+
+  display: flex;
+
+  &Item {
+    padding: 15px 15px;
+    border-bottom: $default-border;
+    color: map-get($colors, font-gray);
+    cursor: pointer;
+
+    &Active {
+      border-bottom: 2px solid map-get($colors, light-blue);
+      color: map-get($colors, main-black);
+    }
+  }
+}

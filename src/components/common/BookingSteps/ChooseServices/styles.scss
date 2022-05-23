@@ -1,0 +1,195 @@
+@import '~styles/index.scss';
+
+.chooseServices {
+  &Container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &Togglers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 15px;
+  }
+}
+
+.container {
+  @include absolute(bottom 0 left 0);
+  @include sizing(100%);
+
+  z-index: $z-index-2;
+  display: flex;
+  background-color: map-get($colors, background-gray);
+  flex-direction: column;
+}
+
+.services {
+  overflow-y: scroll;
+}
+
+.selectedIcon,
+.unselectedIcon {
+  @include sizing(32px);
+  @include flex-centered;
+
+  border: 1px solid map-get($colors, light-blue);
+  border-radius: 50%;
+
+  span {
+    height: 24px;
+  }
+
+  svg {
+    fill: white;
+  }
+}
+
+.selectedIcon {
+  background-color: map-get($colors, light-blue);
+  box-shadow: 0 4px 15px 0 rgba(map-get($colors, light-blue), 0.4);
+
+  img {
+    height: 11px;
+    margin: 1px 2px 0 0;
+  }
+}
+
+.unselectedIcon {
+  background-color: map-get($colors, white);
+}
+
+.service {
+  display: flex;
+  width: 100%;
+  height: auto;
+  min-height: 65px;
+  border: 1px solid map-get($colors, light-gray);
+  border-radius: 10px;
+  background-color: map-get($colors, white);
+  box-shadow: 0 4px 10px 0 rgba(map-get($colors, shadow-gray), 0.08);
+  cursor: pointer;
+  flex-direction: column;
+
+  &.selected {
+    border: 1px solid map-get($colors, light-blue);
+    background-color: rgba(map-get($colors, light-blue), 0.05);
+    box-shadow: 0 4px 10px 0 rgba(map-get($colors, shadow-gray), 0.08);
+  }
+
+  &.disabled {
+    background-color: rgba(map-get($colors, darkest-gray), 0.05);
+    cursor: initial;
+
+    .unselectedIcon {
+      background-color: rgba(map-get($colors, darkest-gray), 0.05);
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.serviceTopLineContainer {
+  display: flex;
+  width: 100%;
+  background: none;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.serviceInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.packageItemsContainer {
+  display: flex;
+  margin: 10px 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+
+  span {
+    font-family: $ff-lato;
+    font-size: map-get($sizes, smaller);
+    font-weight: $fw-bold;
+    line-height: 20px;
+    color: map-get($colors, font-gray);
+  }
+}
+
+.serviceCaption {
+  font-family: $ff-lato;
+  font-size: map-get($sizes, regular);
+  font-weight: $fw-bold;
+  line-height: 20px;
+  color: map-get($colors, black);
+}
+
+.submitContainer {
+  display: flex;
+  margin-top: auto;
+  padding: 16px;
+  background-color: map-get($colors, white);
+  box-shadow: 0 -4px 8px 0 rgba(map-get($colors, black), 0.04);
+  justify-content: center;
+}
+
+.submit {
+  @include sizing(100% 48px);
+
+  font-family: $ff-ibm;
+  font-size: map-get($sizes, slightly-bigger);
+  line-height: 16px;
+  border: none;
+  border-radius: 6px;
+  color: map-get($colors, white);
+  background-color: map-get($colors, secondary-gradient);
+  box-shadow: 0 8px 15px 0 rgba(map-get($colors, black), 0.18);
+  cursor: pointer;
+}
+
+.button {
+  @include flex-centered;
+  @include sizing(136px 108px);
+
+  position: relative;
+  margin: 0 20px;
+  border: 1px solid map-get($colors, light-gray);
+  border-radius: 10px;
+  background-color: map-get($colors, white);
+  box-shadow: 0 4px 10px 0 rgba(map-get($colors, shadow-gray), 0.08);
+  flex-direction: column;
+  cursor: pointer;
+
+  &.highlighted {
+    border: 1px solid map-get($colors, light-blue);
+    background-color: rgba(map-get($colors, light-blue), 0.05);
+    box-shadow: 0 4px 10px 0 rgba(map-get($colors, shadow-gray), 0.08);
+  }
+}
+
+.caption {
+  margin-top: 12px;
+  font-family: $ff-lato;
+  font-size: map-get($sizes, regular);
+  font-weight: $fw-bold;
+  line-height: 20px;
+  color: map-get($colors, black);
+}
+
+.counter {
+  @include absolute(top 4.5px right 4.5px);
+  @include sizing(24px);
+  @include flex-centered;
+
+  font-family: $ff-lato;
+  font-size: map-get($sizes, smaller);
+  line-height: 18px;
+  border-radius: 50%;
+  color: map-get($colors, white);
+  background-color: map-get($colors, light-blue);
+  box-shadow: 0 4px 15px 0 rgba(map-get($colors, light-blue), 0.4);
+}

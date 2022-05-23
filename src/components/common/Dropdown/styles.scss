@@ -1,0 +1,64 @@
+@import '~styles/index.scss';
+
+.conciergeDropdown {
+  &Wrapper {
+    @include main-font;
+
+    position: relative;
+  }
+
+  &SelectedField {
+    display: flex;
+    width: 200px;
+    padding: 12px;
+    border: $default-border;
+    border-radius: $small-border-radius;
+    background-color: map-get($colors, white);
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &-disabled {
+      cursor: default;
+      background: map-get($colors, darker-gray);
+    }
+  }
+
+  &Label {
+    text-transform: capitalize;
+  }
+
+  &Arrow {
+    width: 0;
+    height: 0;
+    border-top: 5px solid map-get($colors, main-black);
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+  }
+
+  &Menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    z-index: $z-index-1;
+    display: none;
+    width: 200px;
+    border: $default-border;
+    border-radius: $small-border-radius;
+    background-color: map-get($colors, white);
+    box-shadow: $default-box-shadow;
+
+    &-open {
+      display: block;
+    }
+
+    &Item {
+      padding: 15px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: map-get($colors, light-gray);
+      }
+    }
+  }
+}

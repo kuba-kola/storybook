@@ -1,0 +1,43 @@
+@import '~styles/index.scss';
+
+.radioButtonContainer {
+  display: flex;
+  margin: 12px 0;
+  align-items: center;
+
+  .circleRadioButton {
+    @include sizing(24px 24px);
+
+    position: relative;
+    border: 1px solid map-get($colors, light-blue);
+    border-radius: 50px;
+    background-color: transparent;
+
+    &Label {
+      margin: 0 0 0 16px;
+    }
+
+    &::after {
+      @include absolute(top 50% left 50%);
+      @include sizing(12px 12px);
+
+      display: none;
+      border-radius: 50px;
+      content: '';
+      background-color: map-get($colors, light-blue);
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  input {
+    display: none;
+
+    &:checked {
+      & + .circleRadioButton {
+        &::after {
+          display: block;
+        }
+      }
+    }
+  }
+}

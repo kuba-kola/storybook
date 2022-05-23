@@ -1,0 +1,44 @@
+@import '~styles/index.scss';
+
+.PackageItems {
+  &Title {
+    position: relative;
+    display: flex;
+    padding: 6px 0;
+    font-family: $ff-lato;
+    font-size: map-get($sizes, smaller);
+    color: map-get($colors, font-gray);
+    background-color: map-get($colors, light-gray);
+    align-items: center;
+
+    &Icon {
+      height: 16px;
+      margin-left: 5px;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 100%;
+      width: 100px;
+      height: 100%;
+      content: "";
+      background-color: map-get($colors, light-gray);
+    }
+
+    &::after {
+      right: auto;
+      left: 100%;
+    }
+  }
+
+  &List {
+    padding: 8px 0;
+  }
+
+  &ListItem {
+    display: block;
+    font-size: map-get($sizes, smaller);
+  }
+}

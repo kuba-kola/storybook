@@ -1,0 +1,104 @@
+@import '~styles/index.scss';
+
+.conciergeSettingsCapacity {
+  &Grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr repeat(4, 2fr);
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+    font-family: $ff-lato;
+
+    .conciergeInputWrapper {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    &Item {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center;
+
+      &Select {
+        &Wrapper {
+          @include main-font;
+          margin-top: 3px;
+
+          div[class*='control'] {
+            font-family: "Lato";
+            font-size: 16px;
+            font-weight: normal;
+            height: 45px;
+            margin: 3px 0;
+            border: 1px solid #dedee0;
+          }
+        }
+      }
+
+      &Input {
+        margin-bottom: 0;
+
+        &Invalid {
+          border: 1px solid red;
+        }
+      }
+
+      &TableHeader {
+        margin-bottom: 25px
+      }
+
+      &TableContent {
+        margin-bottom: -18px;
+        span {
+          text-align: right;
+          font-size: map-get($sizes, slightly-smaller);
+          color: map-get($colors, font-gray);
+        }
+      }
+    }
+
+    &Caption {
+      font-size: $fs-smaller;
+      display: flex;
+      align-items: center;
+
+      &Icon {
+        margin-left: 5px;
+      }
+
+      &Subtitle {
+        margin-top: 3px;
+        font-size: $fs-smaller;
+        color: map-get($colors, gray);
+      }
+    }
+  }
+
+  &Tooltip {
+    font-family: $ff-lato;
+    font-size: $fs-smaller;
+    line-height: 20px;
+    padding: 16px !important;
+    width: 297px;
+    border-radius: 10px !important;
+
+    & span {
+      font-weight: bold;
+    }
+  }
+
+  &Divider {
+    width: 100%;
+    height: 1px;
+    margin: 30px 0 15px;
+    background-color: map-get($colors, darker-gray);
+  }
+
+  &Block {
+    margin: 0;
+  }
+
+  &BufferInput {
+    max-width: 280px;
+  }
+}

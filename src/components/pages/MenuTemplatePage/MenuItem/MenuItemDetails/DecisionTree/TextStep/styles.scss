@@ -1,0 +1,107 @@
+@import '~styles/index.scss';
+
+.TextStep {
+  &Header {
+    display: flex;
+    margin-bottom: 4px;
+    align-items: center;
+    justify-content: space-between;
+
+    &Label {
+      @include main-font(map-get($sizes, much-smaller), $fw-bold);
+
+      letter-spacing: 1px;
+      line-height: 16px;
+      text-transform: uppercase;
+      color: map-get($colors, main-black);
+    }
+
+    &Delete {
+      @include secondary-font(map-get($sizes, slightly-bigger));
+
+      display: flex;
+      line-height: 16px;
+      border: none;
+      color: map-get($colors, darkest-gray);
+      background: transparent;
+      align-items: center;
+      cursor: pointer;
+
+      &Icon {
+        @include sizing(24px);
+
+        margin-right: 4px;
+        background: url('~assets/images/delete-inactive.svg');
+      }
+
+      &:hover {
+        color: map-get($colors, pink);
+
+        .TextStepHeaderDeleteIcon {
+          background: url('~assets/images/delete.svg');
+        }
+      }
+    }
+  }
+
+  &Body {
+    display: flex;
+    margin-bottom: 22px;
+    padding: 24px;
+    line-height: 16px;
+    border: 1px solid map-get($colors, darker-gray);
+    border-radius: 6px;
+    background-color: map-get($colors, white);
+
+    &Column {
+      display: flex;
+      flex-direction: column;
+
+      &Abbreviation {
+        margin-left: 20px;
+      }
+    }
+
+    &Label {
+      @include main-font(map-get($sizes, smaller));
+
+      margin-bottom: 2px;
+      line-height: 18px;
+      color: map-get($colors, main-black);
+    }
+
+    &Input {
+      width: 333px;
+      margin-right: 20px;
+      padding: 14px 16px;
+      font-family: $ff-lato;
+      font-size: map-get($sizes, regular);
+      line-height: 20px;
+      border: 1px solid map-get($colors, darker-gray);
+      border-radius: 6px;
+      color: map-get($colors, main-black);
+      background-color: map-get($colors, white);
+
+      &:disabled {
+        background: #e9ecef;
+      }
+    }
+
+    &Select {
+      .StyledSelect__control {
+        width: 110px;
+        height: 50px;
+
+        &--is-disabled {
+          background-color: #e9ecef !important;
+        }
+      }
+    }
+
+    &Row {
+      display: flex;
+      margin-right: 20px;
+      align-items: center;
+    }
+  }
+}

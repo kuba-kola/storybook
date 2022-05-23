@@ -1,0 +1,45 @@
+@import '~styles/index.scss';
+
+.serviceToggler {
+  &Button {
+    position: relative;
+    display: flex;
+    padding: 14px 0;
+    border: 1px solid map-get($colors, darker-gray);
+    border-radius: 10px;
+    background-color: map-get($colors, white);
+    box-shadow: 0 4px 10px 0 rgba(27, 43, 41, 0.08);
+    flex: 1;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &BlueBg {
+      border: 1px solid map-get($colors, light-blue);
+      background-color: rgba(map-get($colors, light-blue), 0.05);
+    }
+  }
+
+  &Image {
+    width: 32px;
+    height: 32px;
+    margin: 0 10px;
+  }
+
+  &Counter {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    display: flex;
+    min-width: 24px;
+    min-height: 24px;
+    font-size: map-get($sizes, smaller);
+    border-radius: 100px;
+    color: map-get($colors, white);
+    background-color: map-get($colors, light-blue);
+    align-items: center;
+    justify-content: center;
+  }
+}

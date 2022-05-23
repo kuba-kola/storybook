@@ -1,0 +1,51 @@
+@import '~styles/index.scss';
+
+.conciergeNavigation {
+  display: flex;
+  height: 100%;
+  align-items: baseline;
+
+  &List {
+    display: flex;
+    height: 100%;
+  }
+
+  &Item {
+    height: 100%;
+  }
+
+  &LogoutBlock {
+    margin-left: 15px;
+    padding-top: 4px;
+    padding-bottom: 6px;
+    padding-left: 40px;
+    border-left: 1px solid lighten(map-get($colors, main-black), 10%);
+    cursor: pointer;
+  }
+}
+
+.conciergeNavLink {
+  @include main-font;
+
+  display: flex;
+  height: 100%;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  color: map-get($colors, font-gray);
+  align-items: center;
+
+  &:hover {
+    color: map-get($colors, white);
+  }
+
+  &Active {
+    border-bottom: 3px solid map-get($colors, light-blue);
+    color: map-get($colors, white);
+  }
+
+  &Img {
+    height: 20px;
+    margin-right: 15px;
+  }
+}

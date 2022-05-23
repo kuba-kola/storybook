@@ -1,0 +1,23 @@
+@import '~styles/index.scss';
+
+.container {
+  @include flex-centered;
+  @include sizing(69px 44px);
+
+  box-sizing: border-box;
+  margin: 8px 0;
+  padding: 10px 0;
+  border-radius: 10px 10px 10px 0;
+  background-color: map-get($colors, white);
+  box-shadow: 0 2px 4px 0 rgba(map-get($colors, shadow-gray), 0.06);
+}
+
+:global(.visit) {
+  .container {
+    @include sizing(128px 64px);
+
+    margin: 24px 0;
+    padding: 12px 0;
+    border-radius: 16px 16px 16px 0;
+  }
+}

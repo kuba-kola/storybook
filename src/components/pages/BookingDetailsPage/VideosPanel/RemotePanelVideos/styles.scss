@@ -1,0 +1,49 @@
+@import "~styles/index.scss";
+
+.conciergeBookingDetailsPanel {
+  &Videos {
+    min-width: 470px;
+    padding-top: 20px;
+
+    .conciergeBlockContent {
+      overflow: hidden;
+      padding: 0 !important;
+    }
+
+    .RemotePanelVideosItem {
+      display: flex;
+      padding: 10px 15px 10px  10px;
+      border-bottom: 1px solid map-get($colors, darker-gray);
+      background: map-get($colors, light-gray);
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      &:nth-child(odd) {
+        background: map-get($colors, white);
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &Player {
+        display: flex;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      &Description {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .videosDate {
+        margin-left: 20px;
+        color: map-get($colors, font-gray);
+      }
+    }
+  }
+}

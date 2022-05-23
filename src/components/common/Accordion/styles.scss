@@ -1,0 +1,98 @@
+@import '~styles/index.scss';
+
+.accordion {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  border: 1px solid map-get($colors, darker-gray);
+  border-radius: 6px 6px 0 0;
+  background-color: map-get($colors, white);
+  box-shadow: 0 4px 10px 0 rgba(27, 43, 41, 0.08);
+  flex-flow: column;
+  justify-content: space-between;
+
+  &.isExpanded {
+    border-radius: 6px;
+  }
+
+  &ExpandButton {
+    position: relative;
+    display: flex;
+    width: 100%;
+    padding: 21px 24px;
+    font-family: $ff-lato;
+    font-size: map-get($sizes, bigger);
+    letter-spacing: -0.15px;
+    line-height: 22px;
+    border: none;
+    color: map-get($colors, main-black);
+    background: transparent;
+    background-color: map-get($colors, light-gray);
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    &LeftPart {
+      display: flex;
+
+      &Image {
+        margin-right: 8px;
+      }
+    }
+
+    &RightPart {
+      display: flex;
+    }
+
+    &CounterWrapper {
+      position: relative;
+      margin: 0 20px 0 0;
+    }
+
+    &Counter {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      display: flex;
+      width: 16px;
+      height: 16px;
+      font-size: map-get($sizes, tiny);
+      border: 1px solid map-get($colors, white);
+      border-radius: 50%;
+      color: map-get($colors, white);
+      background-color: map-get($colors, light-blue);
+      align-items: center;
+      justify-content: center;
+
+      &Red {
+        background-color: map-get($colors, red);
+      }
+    }
+
+    &CounterImage {
+      max-height: 33px;
+    }
+  }
+}
+
+.accordionContent {
+  position: relative;
+  overflow: scroll;
+  max-height: 0;
+  padding: 0;
+  border-top: 0;
+  background-color: map-get($colors, white);
+  opacity: 0;
+  transition: all 0.25s ease;
+
+  &.isExpanded {
+    max-height: 1500px;
+    padding: 25px;
+    border-top: 1px solid map-get($colors, darker-gray);
+    opacity: 1;
+  }
+}

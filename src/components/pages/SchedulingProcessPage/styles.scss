@@ -1,0 +1,91 @@
+@import '~styles/index.scss';
+
+.schedulingProcess {
+  &Container {
+    @include main-font;
+
+    display: grid;
+    width: 100%;
+    max-width: 1120px;
+    grid-template-areas: "choicePanel details";
+    grid-template-columns: minmax(600px, 4fr) 2fr;
+    column-gap: 25px;
+    row-gap: 25px;
+    margin: 36px auto;
+    align-items: start;
+
+    &NoVehicle {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: space-between;
+
+      button {
+        margin: 20px 0;
+      }
+    }
+  }
+
+  &Accordion {
+    margin-bottom: 20px;
+  }
+
+  &ChoicePanel {
+    grid-area: choicePanel;
+
+    .carouselArrowsContainer {
+      padding-bottom: 10px;
+    }
+  }
+
+  &AppointmentDetailsAccordion {
+    grid-area: details;
+
+    .accordionContent {
+      &.isExpanded {
+        padding: 0;
+      }
+    }
+  }
+
+  &Bar {
+    max-width: 1120px;
+    margin: 31px auto 0;
+    padding: 8px 0;
+    text-align: center;
+    border-radius: 10px;
+    color: map-get($colors, white);
+    box-shadow: 0 12px 30px 0 rgba(0, 0, 0, 0.16);
+
+    &Green {
+      background-color: map-get($colors, green2);
+    }
+
+    &Red {
+      background-color: map-get($colors, red);
+    }
+  }
+}
+
+.schedulingPickupSwitch {
+  margin-left: 15px;
+
+  &Container {
+    display: flex;
+    margin-bottom: 20px;
+    border: none;
+    border: 1px solid #dedee0;
+    border-radius: 6px;
+    background-color: #f9fafc;
+    box-shadow: 0 4px 10px 0 rgba(27, 43, 41, 0.08);
+    align-items: center;
+    cursor: pointer;
+
+    .conciergeInputLabel {
+      @include main-font(map-get($sizes, bigger));
+
+      margin-left: 30px;
+      padding: 21px 24px;
+    }
+  }
+}

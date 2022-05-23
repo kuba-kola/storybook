@@ -1,0 +1,26 @@
+@import "~styles/index.scss";
+
+.conciergeBookingDetailsPanel {
+  .conciergeDropdownBlockContainer {
+    &Column {
+      width: 325px;
+      margin-right: 20px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      .conciergeBookingDetailsLabel {
+        color: map-get($colors, black);
+      }
+
+      .conciergeDropdownSelectedField {
+        width: 100%;
+      }
+
+      .conciergeDropdownMenu {
+        width: 100%;
+      }
+    }
+  }
+}

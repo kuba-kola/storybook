@@ -1,0 +1,116 @@
+@import "~styles/index.scss";
+
+.conciergeDatepicker {
+  &Wrapper {
+    position: relative;
+  }
+
+  &InputWrapper {
+    display: flex;
+
+    .conciergeInput {
+      width: 120px;
+    }
+
+    .conciergeInputLabel {
+      margin-right: 10px;
+      font-size: map-get($sizes, regular);
+      line-height: 20px;
+    }
+
+    .conciergeInputWrapper {
+      display: flex;
+      margin: 0;
+      align-items: baseline;
+
+      &.datepicker {
+        align-items: center;
+        justify-content: center;
+
+        .conciergeInputLabel {
+          color: map-get($colors, bluey-grey);
+        }
+
+        .conciergeInput {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          padding: 0;
+          background: map-get($colors, white);
+
+          .calendarIcon {
+            margin: 0 0.5rem;
+          }
+
+          input {
+            width: 120px;
+            border: none;
+            background: transparent;
+
+            &:disabled {
+              color: map-get($colors, font-gray);
+            }
+          }
+        }
+      }
+
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &CalendarContainer {
+    position: absolute;
+    right: 0;
+    z-index: $z-index-1;
+    display: none;
+    width: 310px;
+
+    &-open {
+      display: block;
+    }
+  }
+
+  &ButtonsWrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &Button {
+    width: 80px;
+
+    &:hover {
+      box-shadow: $default-box-shadow;
+    }
+
+    &-apply {
+      margin: 0 10px;
+      color: map-get($colors, white);
+      background: map-get($colors, primary-gradient);
+
+      &:disabled {
+        background: map-get($colors, darker-gray);
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+    }
+
+    &-reset {
+      border: 1px solid map-get($colors, blueish-gray);
+      color: map-get($colors, blueish-gray);
+    }
+
+    &-cancel {
+      border: 1px solid map-get($colors, blueish-gray);
+      color: map-get($colors, blueish-gray);
+
+      &:disabled {
+        border: 1px solid lighten(map-get($colors, font-gray), 15%);
+        color: lighten(map-get($colors, font-gray), 15%);
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
