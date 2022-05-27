@@ -87,7 +87,9 @@ const AdvisorsSettingsActionsCell = ({
           workingHours={workingHours}
           advisorTeamTags={advisorTeamTags}
           onUpdateAdvisorTeamTags={(ids) => {
-            if (!ids.length) return;
+            if (!ids.length) {
+              return;
+            }
             updateServiceAdvisor(id, { team_tag_ids: ids, active: isActive });
           }}
           onSubmit={updateAdvisorData}

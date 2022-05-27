@@ -6,6 +6,7 @@ import { arrayOf, number, func } from "prop-types";
 import { BOOKING_STEP_TIMESLOT } from "shared/constants";
 import { serviceAdvisorPropType } from "shared/prop-types";
 import CarouselNavigation from "components/common/CarouselNavigation";
+import Button from "components/common/Button";
 import AdvisorButton from "./AdvisorButton";
 
 const ChooseAdvisor = ({
@@ -62,17 +63,13 @@ const ChooseAdvisor = ({
           ))}
       </Carousel>
       <div className="conciergeSchedulingSubmitWrapper">
-        <button
-          type="button"
-          className={cx(
-            "conciergeSchedulingButton",
-            "conciergeSchedulingSubmitButton",
-            { conciergeSchedulingButtonDisabled: !selectedAdvisor },
-          )}
+        <Button
+          variant="brand"
+          disabled={!selectedAdvisor}
           onClick={confirmSelectedAdvisor}
         >
           Done
-        </button>
+        </Button>
       </div>
     </>
   );

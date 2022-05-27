@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { number, func } from "prop-types";
 import { connect } from "react-redux";
-
 import { deleteTvScreen } from "store/actions/settings-actions";
-import DeleteModal from "components/common/DeleteModal";
+import Modal from "components/common/Modal";
 import menuIcon from "assets/images/menu.svg";
 import editIcon from "assets/images/edit.svg";
 import deleteIcon from "assets/images/delete.svg";
@@ -49,7 +48,7 @@ const TvScreenSettingsActionCell = ({
             <button
               type="button"
               className="conciergeTableActionsCellAction conciergeTableActionsCellDelete"
-              onClick={() => deleteUser}
+              onClick={deleteUser}
             >
               <img alt="delete" src={deleteIcon} />
               Delete
@@ -66,13 +65,19 @@ const TvScreenSettingsActionCell = ({
         <EditTvScreenModal id={id} onClose={() => this.setState({ editModalOpen: false })} />
       )}
       {deleteModalOpen && (
-        <DeleteModal
+        <Modal
+          title="Wait. Are you sure?"
           text={`
-            Deleting TV screen means that all the accesses will be taken away.
-            Please note that this process cannot be undone.
-          `}
+                  Deleting TV screen means that all the accesses will be taken away.
+                  Please note that this process cannot be undone.
+                `}
+          cancelButtonText="No"
+          submitButtonText="Yes"
+          submitButtonVariant="destructive"
+          cancelButtonVariant="dark"
+          size="small"
           onSubmit={() => onDelete()}
-          onClose={() => setDeleteModalOpen(false)}
+          onCancel={() => setDeleteModalOpen(false)}
         />
       )}
     </div>

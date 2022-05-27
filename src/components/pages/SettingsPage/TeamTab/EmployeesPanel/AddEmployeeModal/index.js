@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import cx from "classnames";
 
 import Input from "components/common/Input";
+import Modal from "components/common/Modal";
 import Select from "react-select";
 import { createUser } from "store/actions/settings-actions";
 import { fullNameValidator, emailValidator } from "shared/validators";
-import closeIcon from "assets/images/close.svg";
 
 const roleOptions = {
   admin: {
@@ -69,53 +69,45 @@ const AddEmployeeModal = ({
   }));
 
   return (
-    <>
-      <div className="menuTemplatesAddTemplateModal conciergeSettingsAddUserModal">
-        <div className="menuTemplatesAddTemplateModalHeader">
-          New user
-          <button type="button" className="menuTemplatesAddTemplateModalCloseButton" onClick={onClose}>
-            <img alt="close" src={closeIcon} />
-          </button>
-        </div>
-        <div className="menuTemplatesAddTemplateModalBody">
-          <Input
-            inputClassName={cx({ error: !!errors.name })}
-            label="Full name"
-            error={errors.name}
-            value={fields.name}
-            onChange={(value) => setField("name", value)}
-          />
-          <Input
-            inputClassName={cx({ error: !!errors.employee_number })}
-            label="Employee Number"
-            error={errors.employee_number}
-            value={fields.employee_number}
-            onChange={(value) => setField("employee_number", value)}
-          />
-          <Input
-            inputClassName={cx({ error: !!errors.email })}
-            label="Email"
-            error={errors.email}
-            value={fields.email}
-            onChange={(value) => setField("email", value)}
-          />
-          <Select
-            value={fields.role}
-            options={Object.values(roleOptions)}
-            onChange={(value) => setField("role", value)}
-            className="addMenuItemSelectContainer"
-            classNamePrefix="addMenuItemSelect"
-            placeholder="Role"
-            menuPlacement="top"
-          />
-        </div>
-        <div className="menuTemplatesAddTemplateModalFooter conciergeSettingsAddUserModalFooter">
-          <button type="button" className="menuTemplatesAddTemplateModalCancel" onClick={onClose}>Cancel</button>
-          <button type="button" className="menuTemplatesAddTemplateModalSave" onClick={submit}>Create</button>
-        </div>
-      </div>
-      <button type="button" className="menuTemplatesAddTemplateOverlay" />
-    </>
+    <Modal
+      title="New user"
+      cancelButtonText="Cancel"
+      submitButtonText="Create"
+      size="small"
+      onCancel={onClose}
+      onSubmit={submit}
+    >
+      <Input
+        inputClassName={cx({ error: !!errors.name })}
+        label="Full name"
+        error={errors.name}
+        value={fields.name}
+        onChange={(value) => setField("name", value)}
+      />
+      <Input
+        inputClassName={cx({ error: !!errors.employee_number })}
+        label="Employee Number"
+        error={errors.employee_number}
+        value={fields.employee_number}
+        onChange={(value) => setField("employee_number", value)}
+      />
+      <Input
+        inputClassName={cx({ error: !!errors.email })}
+        label="Email"
+        error={errors.email}
+        value={fields.email}
+        onChange={(value) => setField("email", value)}
+      />
+      <Select
+        value={fields.role}
+        options={Object.values(roleOptions)}
+        onChange={(value) => setField("role", value)}
+        className="addMenuItemSelectContainer"
+        classNamePrefix="addMenuItemSelect"
+        placeholder="Role"
+        menuPlacement="top"
+      />
+    </Modal>
   );
 };
 

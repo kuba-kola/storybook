@@ -34,6 +34,7 @@ import PageHeader from "components/common/PageHeader";
 import Panel from "components/common/Panel";
 import SearchField from "components/common/SearchField";
 import DataEditionModal from "components/common/DataEditionModal";
+import Button from "components/common/Button";
 import CustomerDetails from "./CustomerDetails";
 
 import "./styles.scss";
@@ -171,9 +172,12 @@ class SchedulingPage extends Component {
         <NotificationContainer />
         <section className="conciergeSchedulingPageMain">
           <section className="conciergeSchedulingAddButtonSection">
-            <button type="button" className="conciergeSchedulingButton" onClick={() => this.handleCustomerWindow(true)}>
+            <Button
+              variant="brand"
+              onClick={() => this.handleCustomerWindow(true)}
+            >
               Add new customer
-            </button>
+            </Button>
           </section>
           <Panel
             header={<p className="conciergeSchedulingSearchPanelHeader">Search for customer</p>}

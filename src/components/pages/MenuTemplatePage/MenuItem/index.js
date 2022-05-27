@@ -4,14 +4,12 @@ import { connect } from "react-redux";
 import Switch from "react-switch";
 import { deleteMenuItem, toggleMenuItemDefaultRO } from "store/actions/menu-template-actions";
 import { menuItemPropType, menuTemplatePropType } from "shared/prop-types";
-
 import arrowUpIcon from "assets/images/up.svg";
 import menuIcon from "assets/images/menu.svg";
 import editIcon from "assets/images/edit.svg";
 import deleteIcon from "assets/images/delete.svg";
 import duplicateIcon from "assets/images/duplicate.svg";
-
-import DeleteModal from "components/common/DeleteModal";
+import Modal from "components/common/Modal";
 import MenuItemDetails from "./MenuItemDetails";
 import EditModal from "./EditModal";
 import "./styles.scss";
@@ -112,10 +110,16 @@ const MenuItem = ({
         />
       )}
       {deleteModalOpen && (
-        <DeleteModal
+        <Modal
+          title="Wait. Are you sure?"
           text="Are you sure you want to delete this item and all of its vehicle groups / decision trees?"
+          cancelButtonText="No"
+          submitButtonText="Yes"
+          submitButtonVariant="destructive"
+          cancelButtonVariant="dark"
+          size="small"
           onSubmit={() => onDeleteMenuItem(menuTemplate.id, menuItem.id)}
-          onClose={() => setDeleteModalOpen(false)}
+          onCancel={() => setDeleteModalOpen(false)}
         />
       )}
     </div>

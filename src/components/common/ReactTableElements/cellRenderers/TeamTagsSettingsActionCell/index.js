@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { number, func } from "prop-types";
 import { connect } from "react-redux";
-
 import { deleteTeamTag } from "store/actions/settings-actions";
-
 import editIcon from "assets/images/edit.svg";
 import deleteIcon from "assets/images/delete.svg";
-import DeleteModal from "components/common/DeleteModal";
+import Modal from "components/common/Modal";
 import EditTeamTagModal from "./EditTeamTagModal";
 
 import "./styles.scss";
@@ -38,16 +36,22 @@ const TeamTagsSettingsActionCell = ({
         <EditTeamTagModal id={id} onClose={() => setEditModalOpen(false)} />
       )}
       {deleteModalOpen && (
-        <DeleteModal
+        <Modal
+          title="Wait. Are you sure?"
           text={`
-            Deleting Team Tag means that all relations will be taken away.
-            Please note that this process cannot be undone.
-          `}
+                Deleting Team Tag means that all relations will be taken away.
+                Please note that this process cannot be undone.
+              `}
+          cancelButtonText="No"
+          submitButtonText="Yes"
+          submitButtonVariant="destructive"
+          cancelButtonVariant="dark"
+          size="small"
           onSubmit={() => {
             onDelete(id);
             setDeleteModalOpen(false);
           }}
-          onClose={() => setDeleteModalOpen(false)}
+          onCancel={() => setDeleteModalOpen(false)}
         />
       )}
 

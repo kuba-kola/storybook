@@ -7,6 +7,7 @@ import { addNewVehicleGroup, saveMenuItemTeamTags } from "store/actions/menu-tem
 import { settingsTeamTagsSelector } from "store/selectors/settings-selectors";
 
 import MultiTagSelect from "components/common/MultiTagSelect";
+import Button from "components/common/Button";
 import VehicleGroup from "./VehicleGroup";
 import DecisionTree from "./DecisionTree";
 import PackageItem from "./PackageItem";
@@ -43,13 +44,14 @@ const MenuItemDetails = ({
             hasPackageItems={menuItem.package_items.length > 0}
           />
         ))}
-        <button
-          type="button"
-          className="menuItemDetailsAddVehicleGroup"
-          onClick={() => onAddNew(menuItem.id, menuItem.kind)}
-        >
-          Add new group
-        </button>
+        <div className="display-flex flex-end full-width">
+          <Button
+            variant="brand"
+            onClick={() => onAddNew(menuItem.id, menuItem.kind)}
+          >
+            <p>Add new group</p>
+          </Button>
+        </div>
       </div>
     </section>
     <section className="menuItemDetailsSection">

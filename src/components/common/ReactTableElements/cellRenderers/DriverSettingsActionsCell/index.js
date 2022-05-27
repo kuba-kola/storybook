@@ -3,14 +3,13 @@ import { connect } from "react-redux";
 import {
   number, bool, func, string,
 } from "prop-types";
-
 import { removeDriver, updateDriver } from "store/actions/settings-actions";
 import { workingHoursPropType, photoPropType } from "shared/prop-types";
 import menuIcon from "assets/images/menu.svg";
 import editIcon from "assets/images/edit.svg";
 import deleteIcon from "assets/images/delete.svg";
 import deactivateIcon from "assets/images/deactivate.svg";
-import DeleteModal from "components/common/DeleteModal";
+import Modal from "components/common/Modal";
 import EditDriverModal from "./EditDriverModal";
 
 const DriversSettingsActionsCell = ({
@@ -96,13 +95,19 @@ const DriversSettingsActionsCell = ({
         />
       )}
       {deleteModalOpen && (
-        <DeleteModal
+        <Modal
+          title="Wait. Are you sure?"
           text={`
-            Deleting driver means that all the accesses will be taken away.
-            Please note that this process cannot be undone.
-          `}
+                  Deleting driver means that all the accesses will be taken away.
+                  Please note that this process cannot be undone.
+                `}
+          cancelButtonText="No"
+          submitButtonText="Yes"
+          submitButtonVariant="destructive"
+          cancelButtonVariant="dark"
+          size="small"
           onSubmit={() => removeDriverUser()}
-          onClose={() => setDeleteModalOpen(false)}
+          onCancel={() => setDeleteModalOpen(false)}
         />
       )}
     </div>

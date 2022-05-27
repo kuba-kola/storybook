@@ -45,12 +45,22 @@ const UsersPanel = ({
   return (
     <Panel
       header={(
-        <p className="conciergeBookingDetailsPanelHeader">
-          {title}
-          {" "}
-          Users
-        </p>
-)}
+        <div className="display-flex space-between align-items-center full-width">
+          <p className="conciergeBookingDetailsPanelHeader">
+            {title}
+            {" "}
+            Users
+          </p>
+          <Button
+            variant="dark"
+            style={{ width: "210px" }}
+            onClick={() => setCreateModalOpen(true)}
+          >
+            {`+ Add new ${title.toLowerCase()} user`}
+          </Button>
+        </div>
+
+      )}
       className="conciergeSettingsPageUsersPanel"
     >
       <ReactTable
@@ -70,18 +80,6 @@ const UsersPanel = ({
         minRows={1}
       />
 
-      <div className="conciergeSettingsPageUsersPanelButtonSection">
-        <Button
-          className="conciergeSettingsPageUsersPanelButton-add"
-          onClick={() => setCreateModalOpen(true)}
-        >
-          + Add new
-          {" "}
-          {title.toLowerCase()}
-          {" "}
-          user
-        </Button>
-      </div>
       {createModalOpen && (
         <AddUserModal onClose={() => setCreateModalOpen(false)} />
       )}

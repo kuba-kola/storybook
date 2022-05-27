@@ -22,6 +22,7 @@ import PageHeader from "components/common/PageHeader";
 import Pagination from "components/common/ReactTableElements/Pagination";
 import { StatusIconCell, LinkCell } from "components/common/ReactTableElements/cellRenderers";
 import ActionsCell from "components/common/ReactTableElements/cellRenderers/ActionsCell";
+import Button from "components/common/Button";
 import searchIcon from "assets/images/search.svg";
 import {
   DEFAULT_SORT_COLUMN_DEALERSHIP, DEFAULT_SORT_DIRECTION_MENU_TEMPLATES, DESC, ASC,
@@ -226,13 +227,9 @@ class MenuTemplatesPage extends Component {
                     Extensions
                   </button>
                 </div>
-                <button
-                  type="button"
-                  className="conciergeMenuTemplatesNavbarAddButton"
-                  onClick={this.openModal}
-                >
-                  Add new template
-                </button>
+                <Button variant="brand" onClick={this.openModal}>
+                  <p>Add new template</p>
+                </Button>
               </section>
               <ReactTable
                 data={menuTemplates}

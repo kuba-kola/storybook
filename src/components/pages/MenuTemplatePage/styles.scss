@@ -11,8 +11,6 @@
   }
 
   &ServiceGroup {
-    @include sizing(1110px 56px);
-
     display: flex;
     margin-bottom: 16px;
     padding: 0 24px;
@@ -25,19 +23,5 @@
     color: map-get($colors, main-black);
     background-color: map-get($colors, white);
     align-items: center;
-  }
-
-  &NewMenuItemButton {
-    @include sizing(1110px 48px);
-
-    margin-bottom: 32px;
-    font-family: $ff-ibm;
-    font-size: map-get($sizes, slightly-bigger);
-    line-height: 16px;
-    border: 1px solid map-get($colors, darker-gray);
-    border-radius: 6px;
-    color: map-get($colors, light-blue);
-    background-color: map-get($colors, white);
-    cursor: pointer;
   }
 }

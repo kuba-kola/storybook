@@ -75,7 +75,6 @@ const EmployeesPanel = ({
       header={(
         <div className="conciergeBookingDetailsPanelHeader conciergeSettingsPagePanelHeader">
           <p>Users</p>
-
           <div className="conciergeSettingsPagePanelHeaderControls">
             <form className="conciergeMenuTemplatesSearch">
               <input
@@ -88,7 +87,8 @@ const EmployeesPanel = ({
             </form>
             <div className="conciergeSettingsPagePanelHeaderSeparator">&nbsp;</div>
             <Button
-              className="conciergeSettingsPageUsersPanelButton-add"
+              variant="dark"
+              style={{ width: "210px" }}
               onClick={() => setIsCreateModalOpen(true)}
             >
               + Add new user

@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { string, func } from "prop-types";
+import { string, func, array } from "prop-types";
 import { connect } from "react-redux";
 import { isEmpty, isNil } from "ramda";
-
 import { weekDaysHumanFormat, leadingZeroHour, timeInUSFormat } from "shared/utils/datetime";
 import { settingsDealershipWorkingHoursSelector, settingsTeamTagsSelector } from "store/selectors/settings-selectors";
 import { workingHoursPropType, photoPropType } from "shared/prop-types";
 import cx from "classnames";
-import closeIcon from "assets/images/close.svg";
 import ImageInput from "components/common/ImageInput";
 import Block from "components/common/Block";
 import StyledSelect from "components/common/StyledSelect";
 import MultiTagSelect from "components/common/MultiTagSelect";
+import Modal from "components/common/Modal";
 
 import "./styles.scss";
 
@@ -133,86 +132,88 @@ const EditAdvisorModal = ({
   };
 
   return (
-    <>
-      <div className="capacitySettingsEditAdvisorModalOuter">
-
-        <div className="capacitySettingsEditAdvisorModal">
-          <div className="capacitySettingsEditAdvisorModalHeader">
-            {name}
-            <i className="capacitySettingsEditAdvisorModalHeaderNumber">{employeeNumber}</i>
-            <button type="button" className="capacitySettingsEditAdvisorModalCloseButton" onClick={onClose}>
-              <img alt="close" src={closeIcon} />
+    <Modal
+      title={name}
+      subtitle={employeeNumber}
+      cancelButtonText="Cancel"
+      submitButtonText="Save"
+      size="large"
+      onCancel={onClose}
+      onSubmit={submit}
+    >
+      <div className="capacitySettingsEditAdvisorModalStatusContainer">
+        {showSuccess && (
+        <div className="capacitySettingsEditAdvisorModalStatusBar capacitySettingsEditAdvisorModalStatusBarSuccess" onClick={() => setShowSuccess(false)}>
+          New photo was successfully uploaded. Don&apos;t forget to save it.
+        </div>
+        )}
+        {showError && (
+        <div className="capacitySettingsEditAdvisorModalStatusBar capacitySettingsEditAdvisorModalStatusBarError" onClick={() => setShowError(false)}>
+          {errorMessage}
+        </div>
+        )}
+      </div>
+      <Block
+        className="conciergeSettingsPageBlock capacitySettingsEditAdvisorModalPhotoBlock"
+      >
+        <ImageInput
+          isRounded
+          onImageChange={handlePhotoChange}
+          isEditing
+          inputName="advisorPhotoInput"
+          image={advisorPhoto}
+          alt="concierge advisor photo"
+          noImageText="No Photo"
+        />
+        <div className="capacitySettingsEditAdvisorModalSeparator">&nbsp;</div>
+        <div className="capacitySettingsEditAdvisorModalAvailability">
+          <div className="capacitySettingsEditAdvisorModalAvailabilityTitle">Availability</div>
+          <div className="capacitySettingsEditAdvisorModalAvailabilityOptions">
+            <button
+              type="button"
+              className={cx("capacitySettingsEditAdvisorModalAvailabilityOption", {
+                availabilityOptionActive: advisorAvailability === "unavailable",
+              })}
+              onClick={() => setAdvisorAvailability("unavailable")}
+            >
+              Not available
+            </button>
+            <button
+              type="button"
+              className={cx("capacitySettingsEditAdvisorModalAvailabilityOption", {
+                availabilityOptionActive: advisorAvailability === "publicly_available",
+              })}
+              onClick={() => setAdvisorAvailability("publicly_available")}
+            >
+              Public
+            </button>
+            <button
+              type="button"
+              className={cx("capacitySettingsEditAdvisorModalAvailabilityOption", {
+                availabilityOptionActive: advisorAvailability === "internally_available",
+              })}
+              onClick={() => setAdvisorAvailability("internally_available")}
+            >
+              Internal Only
             </button>
           </div>
-          <div className="capacitySettingsEditAdvisorModalBody">
-            <div className="capacitySettingsEditAdvisorModalStatusContainer">
-              {showSuccess && (
-              <div className="capacitySettingsEditAdvisorModalStatusBar capacitySettingsEditAdvisorModalStatusBarSuccess" onClick={() => setShowSuccess(false)}>
-                New photo was successfully uploaded. Don&apos;t forget to save it.
-              </div>
-              )}
-              {showError && (
-              <div className="capacitySettingsEditAdvisorModalStatusBar capacitySettingsEditAdvisorModalStatusBarError" onClick={() => setShowError(false)}>
-                {errorMessage}
-              </div>
-              )}
-            </div>
-            <Block
-              className="conciergeSettingsPageBlock capacitySettingsEditAdvisorModalPhotoBlock"
-            >
-              <ImageInput
-                isRounded
-                onImageChange={handlePhotoChange}
-                isEditing
-                inputName="advisorPhotoInput"
-                image={advisorPhoto}
-                alt="concierge advisor photo"
-                noImageText="No Photo"
-              />
-              <div className="capacitySettingsEditAdvisorModalSeparator">&nbsp;</div>
-              <div className="capacitySettingsEditAdvisorModalAvailability">
-                <div className="capacitySettingsEditAdvisorModalAvailabilityTitle">Availability</div>
-                <div className="capacitySettingsEditAdvisorModalAvailabilityOptions">
-                  <button
-                    className={cx("capacitySettingsEditAdvisorModalAvailabilityOption", {
-                      availabilityOptionActive: advisorAvailability === "unavailable",
-                    })}
-                    onClick={() => setAdvisorAvailability("unavailable")}
-                  >
-                    Not available
-                  </button>
-                  <button
-                    className={cx("capacitySettingsEditAdvisorModalAvailabilityOption", {
-                      availabilityOptionActive: advisorAvailability === "publicly_available",
-                    })}
-                    onClick={() => setAdvisorAvailability("publicly_available")}
-                  >
-                    Public
-                  </button>
-                  <button
-                    className={cx("capacitySettingsEditAdvisorModalAvailabilityOption", {
-                      availabilityOptionActive: advisorAvailability === "internally_available",
-                    })}
-                    onClick={() => setAdvisorAvailability("internally_available")}
-                  >
-                    Internal Only
-                  </button>
-                </div>
-              </div>
-              <div className="capacitySettingsEditAdvisorModalSeparator">&nbsp;</div>
-              {advisorTeamTags && (
-              <MultiTagSelect
-                label="Team tags"
-                options={teamTags}
-                value={advisorTeamTags}
-                onChange={(selected) => onUpdateAdvisorTeamTags(selected.map(({ id }) => id))}
-              />
-              )}
-            </Block>
-            <section className="conciergeBlock conciergeSettingsPageBlock capacitySettingsEditAdvisorModalWorkingHoursBlock">
-              <section className="conciergeBlockTitle">Working Hours</section>
-              <section className="conciergeBlockContent capacitySettingsEditAdvisorModalWorkingHoursBlockContent">
-                {workingHoursOptions && advisorWorkingHours
+        </div>
+        <div className="capacitySettingsEditAdvisorModalSeparator">&nbsp;</div>
+        {advisorTeamTags && (
+        <MultiTagSelect
+          label="Team tags"
+          options={teamTags}
+          value={advisorTeamTags}
+          onChange={(selected) => {
+            onUpdateAdvisorTeamTags(selected.map(({ id }) => id));
+          }}
+        />
+        )}
+      </Block>
+      <section className="conciergeBlock conciergeSettingsPageBlock capacitySettingsEditAdvisorModalWorkingHoursBlock">
+        <section className="conciergeBlockTitle">Working Hours</section>
+        <section className="conciergeBlockContent capacitySettingsEditAdvisorModalWorkingHoursBlockContent">
+          {workingHoursOptions && advisorWorkingHours
                   && Object.keys(advisorWorkingHours).map((dayName) => (
                     <div className="conciergeDealershipTimeField">
                       <div className="conciergeDealershipTimeFieldLabel">
@@ -256,21 +257,15 @@ const EditAdvisorModal = ({
                       </div>
                     </div>
                   ))}
-              </section>
-            </section>
-          </div>
-          <div className="capacitySettingsEditAdvisorModalFooter">
-            <button type="button" className="capacitySettingsEditAdvisorModalCancel" onClick={onClose}>Cancel</button>
-            <button type="button" className="capacitySettingsEditAdvisorModalSave" onClick={() => submit()}>Save</button>
-          </div>
-        </div>
-      </div>
-      <button type="button" className="capacitySettingsEditAdvisorOverlay" />
-    </>
+        </section>
+      </section>
+    </Modal>
   );
 };
 
 EditAdvisorModal.propTypes = {
+  teamTags: array,
+  advisorTeamTags: array,
   onClose: func.isRequired,
   onSubmit: func.isRequired,
   name: string.isRequired,
@@ -284,6 +279,8 @@ EditAdvisorModal.propTypes = {
 };
 
 EditAdvisorModal.defaultProps = {
+  teamTags: [],
+  advisorTeamTags: [],
   workingHours: {},
   error: null,
 };

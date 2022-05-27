@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { func, bool, string } from "prop-types";
 
-import grayEditIcon from "assets/images/editGray.svg";
 import Block from "components/common/Block";
 import { vehiclePropType, customerPropType } from "shared/prop-types";
 import {
@@ -23,6 +22,7 @@ import { imageUrl, isVehicleBookable } from "shared/utils/common";
 import cx from "classnames";
 
 import EditVehicleModal from "components/common/DataEditionModal/EditVehicleModal";
+import Button from "components/common/Button";
 import "../styles.scss";
 import { dealershipMakeModelYearMapSelector } from "store/selectors/app-selectors";
 import { settingsDefaultMakeSelector } from "store/selectors/settings-selectors";
@@ -71,18 +71,13 @@ const VehicleDetails = ({
           {" "}
           {vehicle?.vehicle_set?.model}
         </p>
-        <button
-          type="button"
-          className="conciergeSchedulingPersonalDataEdit"
+        <Button
+          variant="base-grey"
+          icon="editGrey"
           onClick={() => setVehicleEditorVisible(true)}
         >
-          <img
-            className="conciergeSchedulingPersonalDataEditImage"
-            alt="edit"
-            src={grayEditIcon}
-          />
           <span>Edit</span>
-        </button>
+        </Button>
       </section>
       <div className="conciergeSchedulingVehicleData">
         <div className="conciergeSchedulingVehicleDataContainer">
@@ -150,26 +145,19 @@ const VehicleDetails = ({
                 <p>{vehicle.mileage}</p>
                 <section className="conciergeSchedulingBookButtonSection">
                   <NavLink
+                    style={{ textDecoration: "none" }}
                     to={{
                       pathname: "/scheduling/process",
                     }}
                   >
-                    <button
-                      type="button"
+                    <Button
+                      variant="brand"
+                      fullWidth
                       onClick={() => dispatchCurrentInformation()}
-                      className={cx(
-                        "conciergeSchedulingButton",
-                        "conciergeSchedulingBookButton",
-                        {
-                          conciergeSchedulingButtonDisabled: !isVehicleBookable(
-                            vehicle,
-                          ),
-                        },
-                      )}
                       disabled={!isVehicleBookable(vehicle)}
                     >
                       Book an appointment
-                    </button>
+                    </Button>
                   </NavLink>
                 </section>
               </section>

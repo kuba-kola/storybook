@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { func } from "prop-types";
 import { connect } from "react-redux";
 import cx from "classnames";
-
 import Modal from "components/common/Modal";
 import Input from "components/common/Input";
 import { createArriveUser } from "store/actions/settings-actions";
@@ -38,8 +37,11 @@ const AddArriveUserModal = ({
   return (
     <Modal
       title="New Arrive User"
+      cancelButtonText="Cancel"
+      submitButtonText="Create"
+      size="small"
       onCancel={onClose}
-      onSave={submit}
+      onSubmit={submit}
     >
       <Input
         inputClassName={cx({ error: !!errors.email })}

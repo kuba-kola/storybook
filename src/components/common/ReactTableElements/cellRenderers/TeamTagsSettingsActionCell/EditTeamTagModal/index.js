@@ -3,11 +3,10 @@ import {
   func, number, string, arrayOf, shape,
 } from "prop-types";
 import { connect } from "react-redux";
-
 import { updateTeamTag } from "store/actions/settings-actions";
 import { settingsTeamTagsSelector } from "store/selectors/settings-selectors";
 import Input from "components/common/Input";
-import closeIcon from "assets/images/close.svg";
+import Modal from "components/common/Modal";
 
 const EditTeamTagModal = ({
   team_tags,
@@ -43,53 +42,29 @@ const EditTeamTagModal = ({
   }));
 
   return (
-    <>
-      <div className="menuTemplatesAddTemplateModal conciergeSettingsAddUserModal">
-        <div className="menuTemplatesAddTemplateModalHeader">
-          Edit user
-          <button
-            type="button"
-            className="menuTemplatesAddTemplateModalCloseButton"
-            onClick={onClose}
-          >
-            <img alt="close" src={closeIcon} />
-          </button>
-        </div>
-        <div className="menuTemplatesAddTemplateModalBody">
-          <Input
-            label="Name"
-            value={data.name}
-            onChange={(value) => handleInputChange("name", value)}
-          />
-          <Input
-            label="Expected upsell 1/10h"
-            type="number"
-            step="0.1"
-            min="0"
-            max="20"
-            value={data.expected_upsell}
-            onChange={(value) => value >= 0 && value <= 20 && handleInputChange("expected_upsell", value)}
-          />
-        </div>
-        <div className="menuTemplatesAddTemplateModalFooter conciergeSettingsAddUserModalFooter">
-          <button
-            type="button"
-            className="menuTemplatesAddTemplateModalCancel"
-            onClick={onClose}
-          >
-            Cancel
-          </button>
-          <button
-            type="button"
-            className="menuTemplatesAddTemplateModalSave"
-            onClick={submit}
-          >
-            Save
-          </button>
-        </div>
-      </div>
-      <button type="button" className="menuTemplatesAddTemplateOverlay" />
-    </>
+    <Modal
+      title="Edit user"
+      cancelButtonText="Cancel"
+      submitButtonText="Save"
+      size="small"
+      onCancel={onClose}
+      onSubmit={submit}
+    >
+      <Input
+        label="Name"
+        value={data.name}
+        onChange={(value) => handleInputChange("name", value)}
+      />
+      <Input
+        label="Expected upsell 1/10h"
+        type="number"
+        step="0.1"
+        min="0"
+        max="20"
+        value={data.expected_upsell}
+        onChange={(value) => value >= 0 && value <= 20 && handleInputChange("expected_upsell", value)}
+      />
+    </Modal>
   );
 };
 

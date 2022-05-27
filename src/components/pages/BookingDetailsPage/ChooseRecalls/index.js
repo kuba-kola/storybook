@@ -1,20 +1,21 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { func, arrayOf, bool } from 'prop-types';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { func, arrayOf, bool } from "prop-types";
 
 import {
   schedulingAvailableRecallsSelector,
   schedulingSelectedRecallsSelector,
   schedulingRecallsLoadingSelector,
   schedulingRecallsLoadingErrorSelector,
-} from 'store/selectors/scheduling-process-selectors';
-import { setCurrentStep, fetchRecalls } from 'store/actions/booking-details-actions';
-import { servicePropType } from 'shared/prop-types';
-import { BOOKING_STEP_ADVISOR } from 'shared/constants';
+} from "store/selectors/scheduling-process-selectors";
+import { setCurrentStep, fetchRecalls } from "store/actions/booking-details-actions";
+import { servicePropType } from "shared/prop-types";
+import { BOOKING_STEP_ADVISOR } from "shared/constants";
 
-import Panel from 'components/common/Panel';
-import RecallsToSelect from './RecallsToSelect';
-import './styles.scss';
+import Panel from "components/common/Panel";
+import Button from "components/common/Button";
+import RecallsToSelect from "./RecallsToSelect";
+import "./styles.scss";
 
 const ChooseRecalls = ({
   availableRecalls,
@@ -39,13 +40,12 @@ const ChooseRecalls = ({
         <>
           <RecallsToSelect availableRecalls={availableRecalls} selectedRecalls={selectedRecalls} />
           <div className="conciergeSchedulingSubmitWrapper">
-            <button
-              type="button"
-              className="conciergeSchedulingButton conciergeSchedulingSubmitButton"
+            <Button
+              variant="brand"
               onClick={() => setSchedulingStep(BOOKING_STEP_ADVISOR)}
             >
               Done
-            </button>
+            </Button>
           </div>
         </>
       )}

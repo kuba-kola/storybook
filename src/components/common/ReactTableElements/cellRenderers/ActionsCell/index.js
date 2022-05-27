@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
   number, bool, string, shape, func,
@@ -9,8 +9,7 @@ import editIcon from "assets/images/edit.svg";
 import deactivateIcon from "assets/images/deactivate.svg";
 import deleteIcon from "assets/images/delete.svg";
 import { toggleTemplate, deleteTemplate } from "store/actions/menu-templates-actions";
-
-import DeleteModal from "components/common/DeleteModal";
+import Modal from "components/common/Modal";
 import EditNameModal from "./EditNameModal";
 import "./styles.scss";
 
@@ -84,12 +83,18 @@ const ActionsCell = ({
         />
       )}
       {deleteModalOpen && (
-        <DeleteModal
+        <Modal
+          title="Wait. Are you sure?"
           text={`
-            Deleting template means that is will be no longer used in conversation.
-            Please note that this process cannot be undone.`}
+                  Deleting template means that is will be no longer used in conversation.
+                  Please note that this process cannot be undone.`}
+          cancelButtonText="No"
+          submitButtonText="Yes"
+          submitButtonVariant="destructive"
+          cancelButtonVariant="dark"
+          size="small"
           onSubmit={() => onDeleteTemplate(id)}
-          onClose={() => setDeleteModalOpen(false)}
+          onCancel={() => setDeleteModalOpen(false)}
         />
       )}
     </div>

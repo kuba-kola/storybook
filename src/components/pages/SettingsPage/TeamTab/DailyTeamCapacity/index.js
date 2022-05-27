@@ -61,14 +61,16 @@ const DailyTeamCapacity = ({
     <Panel
       header={(
         <>
-          <p className="conciergeBookingDetailsPanelHeader">Daily capacity</p>
-          <HeaderEdit
-            isEditing={isEditing}
-            handleEdit={() => setIsEditing(true)}
-            handleCancel={cancelChanges}
-            handleSave={saveChanges}
-            isSaveDisabled={isSaveDisabled}
-          />
+          <div className="display-flex space-between align-items-center full-width">
+            <p className="conciergeBookingDetailsPanelHeader">Daily capacity</p>
+            <HeaderEdit
+              isEditing={isEditing}
+              handleEdit={() => setIsEditing(true)}
+              handleCancel={cancelChanges}
+              handleSave={saveChanges}
+              isSaveDisabled={isSaveDisabled}
+            />
+          </div>
         </>
       )}
       className="conciergeSettingsPageCapacityTabCapacityPanel"

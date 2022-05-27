@@ -3,11 +3,9 @@ import {
   string, func, arrayOf, number,
 } from "prop-types";
 import { connect } from "react-redux";
-import cx from "classnames";
-
 import { menuItemPropType } from "shared/prop-types";
 import { addMenuItem } from "store/actions/menu-template-actions";
-import closeIcon from "assets/images/close.svg";
+import Modal from "components/common/Modal";
 import ServicesSelect from "./ServicesSelect";
 import OpCodesSelect from "./OpCodesSelect";
 
@@ -41,44 +39,37 @@ const AddMenuItemModal = ({
   };
 
   return (
-    <>
-      <div className="menuTemplatesAddMenuItemModal">
-        <div className="menuTemplatesAddMenuItemModalHeader">
-          {duplicate ? `Duplicate ${duplicate.op_code} - ${duplicate.name}` : "Add a new menu item"}
-          <button type="button" className="menuTemplatesAddMenuItemModalCloseButton" onClick={onClose}>
-            <img alt="close" src={closeIcon} />
-          </button>
-        </div>
-        <div className="menuTemplatesAddMenuItemModalBody">
-          <div className="menuTemplatesAddMenuItemModalLabel">
-            Service
-          </div>
-          <ServicesSelect
-            service={service}
-            kind={kind}
-            excludedServices={excludedServices}
-            onChange={setService}
-          />
-          {service && service.value === "" && (
-            <>
-              <div className="menuTemplatesAddMenuItemModalLabel menuTemplatesAddMenuItemModalLabel--topMargin">
-                Op code
-              </div>
-              <OpCodesSelect
-                showAssigned={kind === "extension"}
-                opCode={opCode}
-                onChange={setOpCode}
-              />
-            </>
-          )}
-        </div>
-        <div className="menuTemplatesAddMenuItemModalFooter">
-          <button type="button" className="menuTemplatesAddMenuItemModalCancel" onClick={onClose}>Cancel</button>
-          <button type="button" className={cx("menuTemplatesAddMenuItemModalSave", { "menuTemplatesAddMenuItemModalSave--disabled": isSaveDisabled() })} onClick={submit} disabled={isSaveDisabled()}>Save</button>
-        </div>
+    <Modal
+      title={duplicate ? `Duplicate ${duplicate.op_code} - ${duplicate.name}` : "Add a new menu item"}
+      cancelButtonText="Cancel"
+      submitButtonText="Save"
+      submitDisabled={isSaveDisabled()}
+      size="small"
+      onCancel={onClose}
+      onSubmit={submit}
+    >
+      <div className="addMenuItemModalLabel">
+        Service
       </div>
-      <button type="button" className="menuTemplatesEditNameOverlay" />
-    </>
+      <ServicesSelect
+        service={service}
+        kind={kind}
+        excludedServices={excludedServices}
+        onChange={setService}
+      />
+      {service && service.value === "" && (
+      <>
+        <div className="addMenuItemModalLabel addMenuItemModalLabelTopMargin">
+          Op code
+        </div>
+        <OpCodesSelect
+          showAssigned={kind === "extension"}
+          opCode={opCode}
+          onChange={setOpCode}
+        />
+      </>
+      )}
+    </Modal>
   );
 };
 

@@ -3,7 +3,7 @@ import {
   shape, arrayOf, string, oneOfType, number,
 } from "prop-types";
 
-import PanelToggle from "components/common/PanelToggle";
+import Panel from "components/common/Panel";
 import { convertDateFromISO } from "components/pages/BookingDetailsPage/RemotePanel/utils";
 import RemotePanelAdditionalInfo from "./RemotePanelAdditionalInfo";
 
@@ -131,9 +131,10 @@ const RemotePanel = ({
   }, [jobs]);
 
   return (
-    <PanelToggle
+    <Panel
       className="conciergeBookingRemotePanel"
       header={title}
+      isToggle
     >
       <RemotePanelAdditionalInfo
         jobs={jobs}
@@ -143,7 +144,7 @@ const RemotePanel = ({
         pickUpJobFind={pickUpJobFind}
         dropOffJobFind={dropOffJobFind}
       />
-    </PanelToggle>
+    </Panel>
   );
 };
 

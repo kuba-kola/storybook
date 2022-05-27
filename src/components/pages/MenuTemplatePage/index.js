@@ -14,7 +14,7 @@ import { servicesTemplateSelector, servicesErrorSelector } from "store/selectors
 import { dealershipIdSelector } from "store/selectors/app-selectors";
 import { reorderItems } from "shared/utils/common";
 import PageHeader from "components/common/PageHeader";
-
+import Button from "components/common/Button";
 import AddMenuItemModal from "./AddMenuItemModal";
 import MenuItem from "./MenuItem";
 import "./styles.scss";
@@ -178,13 +178,14 @@ class MenuTemplatePage extends Component {
                   />
                 ))}
               </SortableList>
-              <button
-                type="button"
-                className="menuTemplatePageNewMenuItemButton"
+              <Button
+                variant="brand-outline"
+                fullWidth
+                style={{ marginBottom: "16px" }}
                 onClick={this.newMenuItem(MAINTENANCE)}
               >
                 + Add new item
-              </button>
+              </Button>
               <div className="menuTemplatePageServiceGroup">
                 <div className="menuTemplatePageServiceGroupHeader">
                   Concerns
@@ -207,13 +208,14 @@ class MenuTemplatePage extends Component {
                   />
                 ))}
               </SortableList>
-              <button
-                type="button"
-                className="menuTemplatePageNewMenuItemButton"
+              <Button
+                variant="brand-outline"
+                fullWidth
+                style={{ marginBottom: "16px" }}
                 onClick={this.newMenuItem(CONCERN)}
               >
                 + Add new item
-              </button>
+              </Button>
             </section>
           ) : (
             <section className="menuTemplatePageMain">
@@ -239,13 +241,14 @@ class MenuTemplatePage extends Component {
                   />
                 ))}
               </SortableList>
-              <button
-                type="button"
-                className="menuTemplatePageNewMenuItemButton"
+              <Button
+                variant="brand-outline"
+                fullWidth
                 onClick={this.newMenuItem(EXTENSION)}
+                style={{ marginBottom: "16px" }}
               >
                 + Add new item
-              </button>
+              </Button>
             </section>
           )}
         </div>

@@ -29,8 +29,7 @@ import VideosPanel from "components/pages/BookingDetailsPage/VideosPanel";
 import PageHeader from "components/common/PageHeader";
 import Panel from "components/common/Panel";
 import Accordion from "components/common/Accordion/BookingAccordion";
-import DeleteModal from "components/common/DeleteModal";
-import deleteIcon from "assets/images/delete.svg";
+import Modal from "components/common/Modal";
 import UncheckedIcon from "assets/images/bookings/unchecked.svg";
 import CheckedIcon from "assets/images/bookings/checked.svg";
 import loadingGif from "assets/images/loading.gif";
@@ -52,7 +51,7 @@ import {
   bookingDetailsUpdatedWithoutDmsNotificationSelector,
   bookingDetailsSendSmsSelector,
   bookingDetailsIsROGeneratedSelector,
-  bookingSelectedRecallsSelector
+  bookingSelectedRecallsSelector,
 } from "store/selectors/booking-details-selectors";
 import {
   retrieveBookingDetails,
@@ -96,9 +95,10 @@ import ChooseServices from "components/common/BookingSteps/ChooseServices/Choose
 import TimeOfArrival from "components/common/BookingSteps/TimeOfArrival/TimeOfArrivalBooking";
 import ChooseAdvisor from "components/common/BookingSteps/ChooseAdvisor/ChooseAdvisorBooking";
 import Transportation from "components/common/BookingSteps/Transportation/TransportationBooking";
+import Button from "components/common/Button";
 import { formatTimeInfo } from "./utils";
 import CheckinModal from "./CheckinModal";
-import ChooseRecalls from './ChooseRecalls';
+import ChooseRecalls from "./ChooseRecalls";
 import "./styles.scss";
 
 const PageTitle = ({ name }) => (
@@ -265,12 +265,12 @@ class BookingDetailsPage extends Component {
               <ChooseServices nextStep={BOOKING_STEP_RECALLS} />
             </Accordion>
             <Accordion
-                title="Recalls"
-                customClass="schedulingProcessAccordion"
-                step={BOOKING_STEP_RECALLS}
-              >
-                <ChooseRecalls />
-              </Accordion>
+              title="Recalls"
+              customClass="schedulingProcessAccordion"
+              step={BOOKING_STEP_RECALLS}
+            >
+              <ChooseRecalls />
+            </Accordion>
             <Accordion
               title="Service Advisor"
               step={BOOKING_STEP_ADVISOR}
@@ -329,21 +329,17 @@ class BookingDetailsPage extends Component {
           <BookingDetailsSummary booking={booking} />
           {!booking.repair_order_number && (
             <div className="conciergeBookingDetailsSidebarButtons">
-              <button
-                type="button"
-                className={cx("conciergeBookingDetailsModifyButton", {
-                  conciergeBookingDetailsButtonDisabled: !isBookable,
-                })}
+              <Button
+                variant="dark"
+                fullWidth
                 disabled={!isBookable}
                 onClick={() => this.setState({ isModifyBooking: true })}
               >
                 Modify / Reschedule
-              </button>
-              <button
-                type="button"
-                className={cx("conciergeBookingDetailsModifyButton", {
-                  conciergeBookingDetailsButtonDisabled: !isBookable,
-                })}
+              </Button>
+              <Button
+                variant="dark"
+                fullWidth
                 disabled={!isBookable}
                 onClick={() => {
                   this.props.onScheduleNewBooking();
@@ -351,15 +347,15 @@ class BookingDetailsPage extends Component {
                 }}
               >
                 New appointment
-              </button>
-              <button
-                type="button"
-                className="conciergeBookingDetailsDeleteButton"
+              </Button>
+              <Button
+                variant="destructive-outline"
+                icon="bin"
+                fullWidth
                 onClick={() => this.setState({ isDeleteModalOpen: true })}
               >
-                <img alt="delete" src={deleteIcon} />
-                Cancel appointment
-              </button>
+                <p>Cancel appointment</p>
+              </Button>
             </div>
           )}
         </div>
@@ -432,64 +428,43 @@ class BookingDetailsPage extends Component {
                     <img className="conciergeBookingDetailsButtonsLoading" src={loadingGif} alt="Loading ..." />
                   ) : (
                     <>
-                      <button
-                        type="button"
+                      <Button
+                        variant="success"
                         onClick={this.handleCheckinOpen}
                         disabled={checkinError || isCheckedInStatus || isOnSite}
-                        className={cx(
-                          "conciergeBookingDetailsButton",
-                          "conciergeBookingDetailsButtonCheckin",
-                          {
-                            conciergeBookingDetailsButtonActive:
-                              isCheckedInStatus || isOnSite,
-                            conciergeBookingDetailsButtonDisabled:
-                              checkinError || isCheckedInStatus || isOnSite,
-                          },
-                        )}
                       >
                         {isOnSite ? "Arrived"
                           : isCheckedInStatus
                             ? "Checked in"
                             : "Check-in"}
-                      </button>
+                      </Button>
                       {!isCheckedInStatus && !isRoCreated && !isOnSite && (
-                        <button
-                          type="button"
+                        <Button
+                          variant="dark-outline"
                           onClick={() => this.props.inviteToCheckin()}
                           disabled={isTriggerSmsLoading || isSmsSent}
-                          className={cx(
-                            "conciergeBookingDetailsButton",
-                            "conciergeBookingDetailsButtonInvite",
-                          )}
                         >
                           {isSmsSent && "Invite sent"}
                           {isTriggerSmsLoading && "Sending sms..."}
                           {!isSmsSent && !isTriggerSmsLoading && "Invite to check-in"}
-                        </button>
+                        </Button>
                       )}
                       {(isIOS || this.isMobileAndTablet) && !isRoCreated && (
-                        <button
-                          type="button"
+                        <Button
+                          variant="dark"
                           onClick={() => window.open("carmenarrive://")}
-                          className={cx(
-                            "conciergeBookingDetailsButton",
-                            "conciergeBookingDetailsButtonModify",
-                          )}
+
                         >
                           Video inspection
-                        </button>
+                        </Button>
                       )}
                       {isGenerateROAvailable && (
-                        <button
-                          type="button"
+                        <Button
+                          variant="brand"
                           onClick={() => this.props.createRo(booking.id)}
-                          className={cx(
-                            "conciergeBookingDetailsButton",
-                            "conciergeBookingDetailsButtonGenerateRO",
-                          )}
                         >
                           Create RO
-                        </button>
+                        </Button>
                       )}
                     </>
                   )}
@@ -502,27 +477,33 @@ class BookingDetailsPage extends Component {
           {this.renderContent(isModifyBooking)}
         </section>
         {this.state.isDeleteModalOpen && (
-          <DeleteModal
-            text="Booking data will be lost. Customer will be notified about cancelation."
-            onSubmit={() => {
-              this.props.onDeleteBooking(booking.id, dealershipId);
-              this.setState({ isDeleteModalOpen: false });
-            }}
-            onClose={() => this.setState({ isDeleteModalOpen: false })}
+        <Modal
+          title="Wait. Are you sure?"
+          text="Booking data will be lost. Customer will be notified about cancelation."
+          cancelButtonText="No"
+          submitButtonText="Yes"
+          submitButtonVariant="destructive"
+          cancelButtonVariant="dark"
+          size="small"
+          onSubmit={() => {
+            this.props.onDeleteBooking(booking.id, dealershipId);
+            this.setState({ isDeleteModalOpen: false });
+          }}
+          onCancel={() => this.setState({ isDeleteModalOpen: false })}
+        >
+          <div
+            className="sendSmsToggle"
+            onClick={() => setSendTextMessage(!sendSms)}
           >
-            <div
-              className="appointmentDetailsSendSmsToggle"
-              onClick={() => setSendTextMessage(!sendSms)}
-            >
-              <img
-                src={!sendSms ? CheckedIcon : UncheckedIcon}
-                alt="checkbox"
-              />
-              <span>
-                Do not notify customer
-              </span>
-            </div>
-          </DeleteModal>
+            <img
+              src={!sendSms ? CheckedIcon : UncheckedIcon}
+              alt="checkbox"
+            />
+            <span>
+              Do not notify customer
+            </span>
+          </div>
+        </Modal>
         )}
         {isCheckinModalOpen && (
           <CheckinModal

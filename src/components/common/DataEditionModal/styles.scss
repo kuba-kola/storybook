@@ -1,54 +1,7 @@
 @import '~styles/index.scss';
 
-$modal_width: 554px;
-$modal_height: auto;
-
 .dataEdition {
   &Modal {
-    @include fixed(top 50% left 50%);
-    @include sizing($modal_width, $modal_height);
-
-    z-index: $z-index-2;
-    overflow: hidden;
-    border: 1px solid map-get($colors, darker-gray);
-    border-radius: 10px;
-    background-color: map-get($colors, white);
-    transform: translate(-50%, -50%);
-    box-shadow: 0 4px 10px 0 rgba(map-get($colors, shadow-gray), 0.08);
-
-    &Header {
-      @include sizing(auto 64px);
-
-      display: flex;
-      min-width: $modal_width;
-      padding: 0 24px;
-      font-family: $ff-lato;
-      font-size: map-get($sizes, bigger);
-      letter-spacing: -0.15px;
-      line-height: 22px;
-      border-bottom: 1px solid map-get($colors, darker-gray);
-      color: map-get($colors, black);
-      background-color: map-get($colors, light-gray);
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    &CloseButton {
-      @include sizing(24px 24px);
-
-      padding: 0;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-    }
-
-    &Body {
-      overflow: scroll;
-      width: 100%;
-      height: calc(100vh - 200px);
-      padding: 24px;
-    }
-
     &Loader {
       display: block;
       padding: 0 100px;
@@ -154,43 +107,6 @@ $modal_height: auto;
       }
     }
 
-    &Footer {
-      display: flex;
-      width: 100%;
-      padding: 0 24px 24px;
-      justify-content: flex-end;
-    }
-
-    &Cancel {
-      @include sizing(109px 48px);
-      @include secondary-font;
-
-      margin-right: 20px;
-      padding: 0;
-      font-size: map-get($sizes, slightly-bigger);
-      line-height: 16px;
-      border: 1px solid map-get($colors, blueish-gray);
-      border-radius: 6px;
-      color: map-get($colors, main-black);
-      background-color: map-get($colors, white);
-      cursor: pointer;
-    }
-
-    &Save {
-      @include sizing(96px 48px);
-      @include secondary-font;
-
-      padding: 0;
-      font-size: map-get($sizes, slightly-bigger);
-      line-height: 16px;
-      border: none;
-      border-radius: 6px;
-      color: map-get($colors, white);
-      background: map-get($colors, button-gradient);
-      box-shadow: 0 8px 15px 0 rgba(map-get($colors, black), 0.18);
-      cursor: pointer;
-    }
-
     &StatusBar {
       max-width: 1120px;
       margin: 31px auto 0;
@@ -204,14 +120,6 @@ $modal_height: auto;
         background-color: map-get($colors, red);
       }
     }
-  }
-
-  &AddTemplateOverlay {
-    @include fixed(top 0 left 0);
-    @include sizing(100vw 100vh);
-
-    z-index: $z-index-1;
-    background-color: rgba(map-get($colors, darkest-gray), 0.95);
   }
 }
 

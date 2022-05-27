@@ -7,8 +7,13 @@
 
     &Label {
       font-family: $ff-lato;
-      font-size: map-get($sizes, smaller);
-      margin-bottom: 0.5em;
+      font-style: normal;
+      font-weight: bold;
+      font-size: map-get($sizes, much-smaller);
+      line-height: 16px;
+      text-transform: uppercase;
+      color: $color-gray;
+      margin-bottom: 10px;
     }
 
     &Inner {
@@ -21,16 +26,32 @@
     &Outlined {
       background-color: map-get($colors, white);
       border: 1px solid map-get($colors, darker-gray);
+      border-radius: 5px;
     }
 
     &Item {
       display: flex;
+      flex-direction: row;
       height: 32px;
-      padding: 0 10px;
-      border-radius: 8px;
-      background-color: map-get($colors, white-gray);
+      padding: 6px 12px;
+      border-radius: 6px;
+      background-color: #2e30421a;;
       align-items: center;
+      justify-content: center;
 
+      &Name {
+        font-family: $ff-lato;
+        font-style: normal;
+        font-weight: 400;
+        font-size: map-get($sizes, smaller);
+        line-height: map-get($sizes, big);
+        color: map-get($colors, dark-gray);
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+        margin: 0px 8px;
+      }
+      
       &Gap {
         margin-top: 8px;
         margin-left: 8px;
@@ -39,7 +60,6 @@
       &Remove {
         cursor: pointer;
         display: flex;
-        margin-left: 5px;
         padding: 0;
         background-color: map-get($colors, white-gray);
         align-items: center;
@@ -63,7 +83,7 @@
     overflow: hidden;
     height: 32px;
     border: 1px solid map-get($colors, darker-gray);
-    border-radius: 8px;
+    border-radius: 6px;
     color: map-get($colors, main-black);
     background-color: map-get($colors, white);
     box-shadow: 0 12px 30px 0 rgba(map-get($colors, black), 0.16);
@@ -89,7 +109,7 @@
     height: 32px;
     padding: 0;
     line-height: 0;
-    border-radius: 8px;
+    border-radius: 6px;
     background-color: map-get($colors, light-blue);
   }
 
@@ -102,7 +122,7 @@
     width: 100%;
     padding: 0;
     border: 1px solid map-get($colors, darker-gray);
-    border-radius: 8px;
+    border-radius: 6px;
     background-color: map-get($colors, white);
     box-shadow: 0 12px 30px 0 rgba(map-get($colors, black), 0.16);
     flex-direction: column;

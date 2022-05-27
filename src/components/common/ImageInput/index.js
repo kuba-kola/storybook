@@ -3,7 +3,8 @@ import {
   string, bool, func, shape,
 } from "prop-types";
 import cx from "classnames";
-import deleteIcon from "assets/images/delete.svg";
+import Button from "../Button";
+
 import "./styles.scss";
 
 const ImageInput = ({
@@ -67,14 +68,14 @@ const ImageInput = ({
         )}
       </label>
       {onDelete && isEditing && (
-        <button
-          className="conciergeImageInputDeleteButton"
-          type="button"
+        <Button
+          variant="destructive-outline"
+          icon="bin"
+          fullWidth
           onClick={onDelete}
         >
-          <img alt="delete" src={deleteIcon} />
-          Delete
-        </button>
+          <p>Delete</p>
+        </Button>
       )}
     </>
   );

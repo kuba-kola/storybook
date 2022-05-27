@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { object } from "prop-types";
-import PanelToggle from "components/common/PanelToggle";
+import Panel from "components/common/Panel";
 import PersonalDetailsBlock from "./PersonalDetailsBlock";
 import VehiclesBlock from "./VehiclesBLock";
 
@@ -66,9 +66,10 @@ class CustomerDetailsPanel extends Component {
       vehicleMileage,
     } = this.state;
     return (
-      <PanelToggle
+      <Panel
         header={<p className="conciergeBookingDetailsPanelHeader">Customer details</p>}
         className="conciergeCustomerDetailsPanel"
+        isToggle
       >
         <section className="conciergeCustomerDetailsPanelBlocksWrapper">
           <PersonalDetailsBlock
@@ -87,7 +88,7 @@ class CustomerDetailsPanel extends Component {
             mileage={vehicleMileage}
           />
         </section>
-      </PanelToggle>
+      </Panel>
     );
   }
 }

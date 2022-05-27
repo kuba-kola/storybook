@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
-  shape, arrayOf, string, oneOfType, number, func, array, bool,
+  shape, arrayOf, string, oneOfType, number, func, bool,
 } from "prop-types";
 import { connect } from "react-redux";
 import {
   retrieveVideos,
 } from "store/actions/booking-details-actions";
-import PanelToggle from "components/common/PanelToggle";
+import Panel from "components/common/Panel";
 import {
   bookingDetailsVideosLoadingStateSelector,
   bookingDetailsVideosPickUpSelector,
@@ -59,9 +59,10 @@ const VideosPanel = ({
       && !availableWalkaroundVideos.length) return null;
 
   return (
-    <PanelToggle
+    <Panel
       className="conciergeBookingRemotePanel"
       header={title}
+      isToggle
     >
       {isLoadingVideos && <div>Loading ...</div>}
       {availablePickUpVideos.length > 0 && (
@@ -82,7 +83,7 @@ const VideosPanel = ({
           videos={availableWalkaroundVideos}
         />
       )}
-    </PanelToggle>
+    </Panel>
   );
 };
 

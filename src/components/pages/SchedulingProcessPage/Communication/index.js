@@ -11,6 +11,7 @@ import cx from "classnames";
 
 import Input from "components/common/Input";
 import RadioButton from "components/common/RadioButton";
+import Button from "components/common/Button";
 
 import {
   setSendSms,
@@ -121,20 +122,15 @@ const Communication = ({
         </div>
       </div>
       <div className="conciergeSchedulingSubmitWrapper">
-        <button
-          type="button"
-          className={cx(
-            "conciergeSchedulingButton",
-            "conciergeSchedulingSubmitButton",
-            "conciergeSchedulingTimeSubmitButton",
-            { conciergeSchedulingButtonDisabled: submitDisabled },
-          )}
+        <Button
+          variant="brand"
+          disabled={submitDisabled}
           onClick={submitDisabled
             ? null
             : () => setSchedulingStep(isRemote ? BOOKING_STEP_REMOTE : BOOKING_STEP_TRANSPORT)}
         >
           Done
-        </button>
+        </Button>
       </div>
     </>
   );

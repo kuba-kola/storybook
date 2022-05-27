@@ -92,11 +92,21 @@
     }
   }
 
+  &SidebarButtons {
+    button:not(:first-child) {
+      margin-top: 16px;
+    }
+  }
+
   &ButtonsWrap {
     display: flex;
     margin-left: auto;
     align-items: center;
     justify-content: space-between;
+
+    button:not(:first-child) {
+      margin-left: 16px;
+    }
   }
 
   &ButtonsLoading {
@@ -390,4 +400,14 @@
   background-color: $color-smoke-white;
   box-shadow: 0 2px 20px 0 $color-black-02;
   flex-direction: column;
+}
+
+
+.sendSmsToggle {
+  display: flex;
+  align-items: center;
+
+  img {
+    margin-right: 10px;
+  }
 }

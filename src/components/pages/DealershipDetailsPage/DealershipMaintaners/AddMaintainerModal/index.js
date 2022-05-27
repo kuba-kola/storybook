@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { func } from "prop-types";
 import { connect } from "react-redux";
 import cx from "classnames";
-
 import Input from "components/common/Input";
 import { createMaintainer } from "store/actions/dealership-details-actions";
-import closeIcon from "assets/images/close.svg";
+import Modal from "components/common/Modal";
 
 const AddMaintainerModal = ({
   addMaintaner,
@@ -33,30 +32,22 @@ const AddMaintainerModal = ({
   };
 
   return (
-    <>
-      <div className="menuTemplatesAddTemplateModal conciergeSettingsAddUserModal">
-        <div className="menuTemplatesAddTemplateModalHeader">
-          New maintainer
-          <button type="button" className="menuTemplatesAddTemplateModalCloseButton" onClick={onClose}>
-            <img alt="close" src={closeIcon} />
-          </button>
-        </div>
-        <div className="menuTemplatesAddTemplateModalBody">
-          <Input
-            inputClassName={cx({ error: !!errors.email })}
-            label="Email"
-            error={errors.email}
-            value={email}
-            onChange={setEmail}
-          />
-        </div>
-        <div className="menuTemplatesAddTemplateModalFooter conciergeSettingsAddUserModalFooter">
-          <button type="button" className="menuTemplatesAddTemplateModalCancel" onClick={onClose}>Cancel</button>
-          <button type="button" className="menuTemplatesAddTemplateModalSave" onClick={submit}>Create</button>
-        </div>
-      </div>
-      <button type="button" className="menuTemplatesAddTemplateOverlay" />
-    </>
+    <Modal
+      title="New maintainer"
+      cancelButtonText="Cancel"
+      submitButtonText="Create"
+      size="small"
+      onCancel={onClose}
+      onSubmit={submit}
+    >
+      <Input
+        inputClassName={cx({ error: !!errors.email })}
+        label="Email"
+        error={errors.email}
+        value={email}
+        onChange={setEmail}
+      />
+    </Modal>
   );
 };
 

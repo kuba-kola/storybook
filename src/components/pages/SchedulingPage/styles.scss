@@ -55,6 +55,11 @@
 
   &ButtonGroup {
     padding-top: 16px;
+    display: flex;
+
+    button:not(:first-child) {
+      margin-left: 16px;
+    }
   }
 
   &SubmitWrapper {

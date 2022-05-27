@@ -2,11 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 import {
   func, arrayOf, bool, string,
 } from "prop-types";
-import cx from "classnames";
 import dateFns from "date-fns";
 import { daySlotPropType, chosenTimeSlotPropType, serviceAdvisorPropType } from "shared/prop-types";
 import { timeInUSFormat } from "shared/utils/datetime";
 import Panel from "components/common/Panel";
+import Button from "components/common/Button";
 import Picker from "./Picker";
 import "./styles.scss";
 
@@ -131,17 +131,13 @@ const TimeOfArrival = ({
               <div className="schedulingCalendarCurrent">
                 {formatTimeInfo()}
               </div>
-              <button
-                type="button"
-                className={cx(
-                  "conciergeSchedulingButton",
-                  "conciergeSchedulingSubmitButton",
-                  { conciergeSchedulingButtonDisabled: !chosenQuarterSlot },
-                )}
+              <Button
+                variant="brand"
+                disabled={!chosenQuarterSlot}
                 onClick={() => setSchedulingStep(nextStep)}
               >
                 Done
-              </button>
+              </Button>
             </div>
           </>
         )

@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { bool, func } from "prop-types";
 import { connect } from "react-redux";
 import cx from "classnames";
-
 import { createTemplate } from "store/actions/menu-templates-actions";
-import closeIcon from "assets/images/close.svg";
+import Modal from "components/common/Modal";
 
 import "./styles.scss";
 
@@ -27,36 +26,28 @@ class AddTemplateModal extends Component {
     const { onClose } = this.props;
 
     return (
-      <>
-        <div className="menuTemplatesAddTemplateModal">
-          <div className="menuTemplatesAddTemplateModalHeader">
-            New template
-            <button type="button" className="menuTemplatesAddTemplateModalCloseButton" onClick={onClose}>
-              <img alt="close" src={closeIcon} />
-            </button>
-          </div>
-          <div className="menuTemplatesAddTemplateModalBody">
-            <div className="menuTemplatesAddTemplateModalLabel">
-              Template name
-            </div>
-            <input
-              className={cx("menuTemplatesAddTemplateModalInput", { error: errors.length })}
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-            {errors.map((error) => (
-              <span key={error} className="menuTemplatesAddTemplateModalInputError">
-                {error}
-              </span>
-            ))}
-          </div>
-          <div className="menuTemplatesAddTemplateModalFooter">
-            <button type="button" className="menuTemplatesAddTemplateModalCancel" onClick={onClose}>Cancel</button>
-            <button type="button" className="menuTemplatesAddTemplateModalSave" onClick={this.submit}>Create</button>
-          </div>
+      <Modal
+        title="New template"
+        cancelButtonText="Cancel"
+        submitButtonText="Create"
+        size="small"
+        onCancel={onClose}
+        onSubmit={this.submit}
+      >
+        <div className="addTemplateModalLabel">
+          Template name
         </div>
-        <button type="button" className="menuTemplatesAddTemplateOverlay" />
-      </>
+        <input
+          className={cx("addTemplateModalInput", { error: errors.length })}
+          value={this.state.name}
+          onChange={this.handleChange}
+        />
+        {errors.map((error) => (
+          <span key={error} className="addTemplateModalInputError">
+            {error}
+          </span>
+        ))}
+      </Modal>
     );
   }
 }

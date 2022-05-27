@@ -7,13 +7,12 @@ import {
 } from "ramda";
 import { connect } from "react-redux";
 import Switch from "react-switch";
-
 import { integrationSettingsKeys } from "shared/constants";
 import { addIntegration } from "store/actions/dealership-details-actions";
 import { formatIntegrationSettingName } from "shared/utils/common";
-import closeIcon from "assets/images/close.svg";
 import StyledSelect from "components/common/StyledSelect";
 import Input from "components/common/Input";
+import Modal from "components/common/Modal";
 
 import "./styles.scss";
 
@@ -137,75 +136,63 @@ class AddIntegrationModal extends Component {
     const integrationsDropdown = this.prepareIntegrationsDropdown(errors);
 
     return (
-      <>
-        <div className="conciergeDealershipDetailsAddIntegrationModal">
-          <div className="conciergeDealershipDetailsAddIntegrationModalHeader">
-            New integration
-            <button
-              type="button"
-              className="conciergeDealershipDetailsAddIntegrationModalCloseButton"
-              onClick={this.props.onClose}
-            >
-              <img alt="close" src={closeIcon} />
-            </button>
-          </div>
-          <div className="conciergeDealershipDetailsAddIntegrationModalBody">
-            <div className="conciergeDealershipDetailsAddIntegrationModalDropdownContainer">
-              <div className="conciergeDealershipDetailsAddIntegrationModalSelectWrapper">
-                <div className="conciergeInputLabel">Integration type</div>
-                {integrationsDropdown}
-              </div>
-            </div>
-            <div className="conciergeDealershipDetailsAddIntegrationModalInputsContainer">
-              {settingsKeys.map((keyName) => {
-                const { [integrationType]: { [keyName]: keyNameError } = {} } = errors;
-                if (keyName === "both_conditions_required") {
-                  return (
-                    <div
-                      key={keyName}
-                      className="conciergeSettingsPageRemoteIntegrationSwitch"
-                    >
-                      <label
-                        className="conciergeInputLabel"
-                        htmlFor="remote-requirements-switch"
-                      >
-                        {formatIntegrationSettingName("both_conditions_required")}
-                      </label>
-                      <Switch
-                        id="remote-requirements-switch"
-                        className="remoteRequirementsSwitch"
-                        onChange={() => this.handleSettingsChange(!settings[keyName], keyName)}
-                        checked={settings[keyName]}
-                        onColor="#36af5e"
-                        offColor="#dedee0"
-                        activeBoxShadow="0 0 2px 3px #0bcaf9"
-                        aria-labelledby="remote-requirements-label"
-                      />
-                    </div>
-                  );
-                }
-                return (
-                  <div className="conciergeDealershipDetailsAddIntegrationModalInputContainer" key={keyName}>
-                    <Input
-                      label={formatIntegrationSettingName(keyName)}
-                      key={keyName}
-                      className="conciergeDealershipDetailsAddIntegrationModalInput"
-                      value={settings[keyName] || ""}
-                      onChange={(value) => this.handleSettingsChange(value, keyName)}
-                      error={keyNameError}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <div className="conciergeDealershipDetailsAddIntegrationModalFooter">
-            <button type="button" className="conciergeDealershipDetailsAddIntegrationModalCancel" onClick={this.props.onClose}>Cancel</button>
-            <button type="button" className="conciergeDealershipDetailsAddIntegrationModalSave" onClick={this.submit}>Create</button>
+      <Modal
+        title="New integration"
+        cancelButtonText="Cancel"
+        submitButtonText="Create"
+        size="medium"
+        onCancel={this.props.onClose}
+        onSubmit={this.submit}
+      >
+        <div className="addIntegrationModalDropdownContainer">
+          <div className="addIntegrationModalSelectWrapper">
+            <div className="conciergeInputLabel">Integration type</div>
+            {integrationsDropdown}
           </div>
         </div>
-        <button type="button" className="conciergeDealershipDetailsAddIntegrationOverlay" />
-      </>
+        <div className="addIntegrationModalInputsContainer">
+          {settingsKeys.map((keyName) => {
+            const { [integrationType]: { [keyName]: keyNameError } = {} } = errors;
+            if (keyName === "both_conditions_required") {
+              return (
+                <div
+                  key={keyName}
+                  className="conciergeSettingsPageRemoteIntegrationSwitch"
+                >
+                  <label
+                    className="conciergeInputLabel"
+                    htmlFor="remote-requirements-switch"
+                  >
+                    {formatIntegrationSettingName("both_conditions_required")}
+                  </label>
+                  <Switch
+                    id="remote-requirements-switch"
+                    className="remoteRequirementsSwitch"
+                    onChange={() => this.handleSettingsChange(!settings[keyName], keyName)}
+                    checked={settings[keyName]}
+                    onColor="#36af5e"
+                    offColor="#dedee0"
+                    activeBoxShadow="0 0 2px 3px #0bcaf9"
+                    aria-labelledby="remote-requirements-label"
+                  />
+                </div>
+              );
+            }
+            return (
+              <div className="addIntegrationModalInputContainer" key={keyName}>
+                <Input
+                  label={formatIntegrationSettingName(keyName)}
+                  key={keyName}
+                  className="addIntegrationModalInput"
+                  value={settings[keyName] || ""}
+                  onChange={(value) => this.handleSettingsChange(value, keyName)}
+                  error={keyNameError}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </Modal>
     );
   }
 }

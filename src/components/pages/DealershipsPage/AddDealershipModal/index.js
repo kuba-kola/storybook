@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import { func, string, array } from "prop-types";
 import { connect } from "react-redux";
 import { isEmpty, isNil, reject } from "ramda";
-
 import { addDealership } from "store/actions/dealerships-actions";
 import { authTokenSelector } from "store/selectors/auth-selectors";
 import { dealershipsDataSelector } from "store/selectors/dealerships-selectors";
 import { availableTimezones } from "shared/utils/datetime";
 import { emailValidator } from "shared/validators";
-import closeIcon from "assets/images/close.svg";
 import StyledSelect from "components/common/StyledSelect";
 import Input from "components/common/Input";
+import Modal from "components/common/Modal";
 
 import "./styles.scss";
 
@@ -132,78 +131,66 @@ class AddDealershipModal extends Component {
       ? preparedTimezoneOptions : [defaultOption, ...preparedTimezoneOptions];
 
     return (
-      <>
-        <div className="dealershipsAddDealershipModal">
-          <div className="dealershipsAddDealershipModalHeader">
-            New dealership
-            <button
-              type="button"
-              className="dealershipsAddDealershipModalCloseButton"
-              onClick={this.props.onClose}
-            >
-              <img alt="close" src={closeIcon} />
-            </button>
-          </div>
-          <div className="dealershipsAddDealershipModalBody">
-            <div className="dealershipsAddDealershipModalInputContainer">
-              <Input
-                inputClassName="dealershipsAddDealershipModalInput"
-                label="Dealership&apos;s name"
-                value={name}
-                onChange={this.handleNameChange}
-                error={errors.name}
-              />
+      <Modal
+        title="New dealership"
+        cancelButtonText="Cancel"
+        submitButtonText="Create"
+        size="small"
+        onCancel={this.props.onClose}
+        onSubmit={this.submit}
+      >
+        <div className="addDealershipModalInputContainer">
+          <Input
+            inputClassName="addDealershipModalInput"
+            label="Dealership&apos;s name"
+            value={name}
+            onChange={this.handleNameChange}
+            error={errors.name}
+          />
+        </div>
+        <div className="addDealershipModalInputContainer">
+          <div className="addDealershipModalInputContainerSelectWrapper">
+            <div className="addDealershipModalLabel">
+              Dealership&apos;s  timezone
             </div>
-            <div className="dealershipsAddDealershipModalInputContainer">
-              <div className="dealershipsAddDealershipModalInputContainerSelectWrapper">
-                <div className="dealershipsAddDealershipModalLabel">
-                  Dealership&apos;s  timezone
-                </div>
-                <StyledSelect
-                  className="dealershipsAddDealershipModalSelect"
-                  key="dealership_timezone"
-                  options={timezoneOptions}
-                  value={selectedTimezone || defaultOption}
-                  onChange={this.handleTimeZoneChange}
-                  error={errors.timezone}
-                />
-              </div>
-            </div>
-            <div className="dealershipsAddDealershipModalInputContainer">
-              <Input
-                inputClassName="dealershipsAddDealershipModalInput"
-                label="Dealership&apos;s address"
-                value={address}
-                onChange={this.handleAddressChange}
-                error={errors.address}
-              />
-            </div>
-            <div className="dealershipsAddDealershipModalInputContainer">
-              <Input
-                inputClassName="dealershipsAddDealershipModalInput"
-                label="Dealership admin&apos;s email"
-                value={email}
-                onChange={this.handleEmailChange}
-                error={errors.email}
-              />
-            </div>
-            <div className="dealershipsAddDealershipModalInputContainer">
-              <Input
-                inputClassName="dealershipsAddDealershipModalInput"
-                label="Dealership&apos;s tax rate"
-                value={taxRate}
-                onChange={this.handleTaxRateChange}
-                error={errors.taxRate}
-              />
-            </div>
-          </div>
-          <div className="dealershipsAddDealershipModalFooter">
-            <button type="button" className="dealershipsAddDealershipModalCancel" onClick={this.props.onClose}>Cancel</button>
-            <button type="button" className="dealershipsAddDealershipModalSave" onClick={this.submit}>Create</button>
+            <StyledSelect
+              className="addDealershipModalSelect"
+              key="dealership_timezone"
+              options={timezoneOptions}
+              value={selectedTimezone || defaultOption}
+              onChange={this.handleTimeZoneChange}
+              error={errors.timezone}
+            />
           </div>
         </div>
-        <button type="button" className="dealershipsAddDealershipOverlay" />
-      </>
+        <div className="addDealershipModalInputContainer">
+          <Input
+            inputClassName="addDealershipModalInput"
+            label="Dealership&apos;s address"
+            value={address}
+            onChange={this.handleAddressChange}
+            error={errors.address}
+          />
+        </div>
+        <div className="addDealershipModalInputContainer">
+          <Input
+            inputClassName="addDealershipModalInput"
+            label="Dealership admin&apos;s email"
+            value={email}
+            onChange={this.handleEmailChange}
+            error={errors.email}
+          />
+        </div>
+        <div className="addDealershipModalInputContainer">
+          <Input
+            inputClassName="addDealershipModalInput"
+            label="Dealership&apos;s tax rate"
+            value={taxRate}
+            onChange={this.handleTaxRateChange}
+            error={errors.taxRate}
+          />
+        </div>
+      </Modal>
     );
   }
 }

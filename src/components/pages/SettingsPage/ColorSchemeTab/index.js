@@ -78,16 +78,17 @@ const ColorSchemeTab = ({ dealershipColorScheme, submitColorScheme }) => {
       />
       <div className="conciergeSettingsColorSchemeFooter">
         <Button
-          className="conciergeSettingsColorSchemeResetAll"
+          variant="destructive"
           onClick={() => setColorScheme(defaultColorScheme)}
         >
-          Reset all to defaults
+          <p>Reset all to defaults</p>
         </Button>
         <Button
-          className="conciergeSettingsColorSchemeSubmit"
+          variant="brand"
+          style={{ marginLeft: "16px " }}
           onClick={() => submitColorScheme(colorScheme)}
         >
-          Update color scheme
+          <p>Update color scheme</p>
         </Button>
       </div>
     </Panel>

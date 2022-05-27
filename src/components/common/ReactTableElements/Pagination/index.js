@@ -74,6 +74,9 @@ class Pagination extends Component {
         <section className="conciergeTablePaginationButtonsWrapper">
           <div className="-previous">
             <PreviousComponent
+              variant="neutral"
+              icon="leftArrow"
+              padding="small"
               onClick={() => {
                 if (!this.canPrevious()) {
                   return;
@@ -81,10 +84,7 @@ class Pagination extends Component {
                 this.changePage(page - 1);
               }}
               disabled={!this.canPrevious()}
-              className="conciergeTablePaginationArrowButton"
-            >
-              <div className="conciergeTablePaginationPrevArrowContent" />
-            </PreviousComponent>
+            />
           </div>
           <div className="-center">
             {visiblePages.map((pageNumber, index, array) => (
@@ -95,6 +95,7 @@ class Pagination extends Component {
                     ? "conciergeTablePaginationPageButtonActive"
                     : "conciergeTablePaginationPageButton"
                 }
+                padding="small"
                 onClick={() => this.changePage(pageNumber)}
               >
                 {
@@ -119,10 +120,10 @@ class Pagination extends Component {
                 this.changePage(page + 1);
               }}
               disabled={!this.canNext()}
-              className="conciergeTablePaginationArrowButton"
-            >
-              <div className="conciergeTablePaginationNextArrowContent" />
-            </NextComponent>
+              variant="neutral"
+              icon="rightArrow"
+              padding="small"
+            />
           </div>
         </section>
         {showPageSizeOptions && (

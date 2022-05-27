@@ -3,9 +3,8 @@ import {
   func, number, string, arrayOf, shape,
 } from "prop-types";
 import { connect } from "react-redux";
-
 import Input from "components/common/Input";
-import closeIcon from "assets/images/close.svg";
+import Modal from "components/common/Modal";
 import { settingsArriveUsersSelector } from "store/selectors/settings-selectors";
 import { updateArriveUser } from "store/actions/settings-actions";
 
@@ -48,51 +47,27 @@ const EditArriveUserModal = ({
   };
 
   return (
-    <>
-      <div className="menuTemplatesAddTemplateModal conciergeSettingsAddUserModal">
-        <div className="menuTemplatesAddTemplateModalHeader">
-          Edit arrive user
-          <button
-            type="button"
-            className="menuTemplatesAddTemplateModalCloseButton"
-            onClick={onClose}
-          >
-            <img alt="close" src={closeIcon} />
-          </button>
-        </div>
-        <div className="menuTemplatesAddTemplateModalBody">
-          <Input
-            label="Email"
-            value={email}
-            error={errors.email}
-            onChange={setEmail}
-          />
-          <Input
-            label="Password"
-            value={password}
-            error={errors.password}
-            onChange={setPassword}
-          />
-        </div>
-        <div className="menuTemplatesAddTemplateModalFooter conciergeSettingsAddUserModalFooter">
-          <button
-            type="button"
-            className="menuTemplatesAddTemplateModalCancel"
-            onClick={onClose}
-          >
-            Cancel
-          </button>
-          <button
-            type="button"
-            className="menuTemplatesAddTemplateModalSave"
-            onClick={submit}
-          >
-            Save
-          </button>
-        </div>
-      </div>
-      <button type="button" className="menuTemplatesAddTemplateOverlay" />
-    </>
+    <Modal
+      title="Edit arrive user"
+      cancelButtonText="Cancel"
+      submitButtonText="Save"
+      size="small"
+      onCancel={onClose}
+      onSubmit={submit}
+    >
+      <Input
+        label="Email"
+        value={email}
+        error={errors.email}
+        onChange={setEmail}
+      />
+      <Input
+        label="Password"
+        value={password}
+        error={errors.password}
+        onChange={setPassword}
+      />
+    </Modal>
   );
 };
 

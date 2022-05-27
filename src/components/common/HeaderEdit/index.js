@@ -20,28 +20,28 @@ const HeaderEdit = ({
         isEditing ? (
           <>
             <Button
+              variant="dark-outline"
               onClick={handleCancel}
-              className="conciergeSettingsPageActionButton conciergeSettingsPageActionButton-cancel"
             >
               Cancel
             </Button>
             <Button
+              variant="brand"
               onClick={handleSave}
-              className="conciergeSettingsPageActionButton conciergeSettingsPageActionButton-save"
               disabled={isSaveDisabled}
+              style={{ marginLeft: "16px" }}
             >
-              <img src={saveIcon} alt="concierge edit light" className="conciergeSettingsPageIcon conciergeSettingsPageIcon-save" />
-              Save
+              <p>Save</p>
             </Button>
           </>
         )
           : (
             <Button
+              variant="dark"
+              icon="editWhite"
               onClick={handleEdit}
-              className="conciergeSettingsPageActionButton conciergeSettingsPageActionButton-edit"
             >
-              <img src={editIcon} alt="concierge edit light" className="conciergeSettingsPageIcon conciergeSettingsPageIcon-edit" />
-              Edit
+              <p>Edit</p>
             </Button>
           )
       }

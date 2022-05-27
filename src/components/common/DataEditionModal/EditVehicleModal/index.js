@@ -5,9 +5,7 @@ import {
 import { isEmpty, uniq } from "ramda";
 import StyledSelect from "components/common/StyledSelect";
 import AsyncCreatableSelect from "react-select/lib/AsyncCreatable";
-
 import { customerFieldsPropType } from "shared/prop-types";
-import closeIcon from "assets/images/close.svg";
 import { isMakeModelValid, convertArrayToSelectOptions } from "shared/utils/common";
 import { fetchCdkModelCodeSuggestions } from "shared/api";
 import {
@@ -29,6 +27,8 @@ import {
 } from "store/selectors/app-selectors";
 import { dmsTypeSelector } from "store/selectors/settings-selectors";
 import { authTokenSelector } from "store/selectors/auth-selectors";
+import Button from "components/common/Button";
+import Modal from "components/common/Modal";
 import { renderDataEditionErrors } from "../helpers";
 
 const EditVehicleModal = ({
@@ -311,84 +311,64 @@ const EditVehicleModal = ({
   );
 
   return (
-    <>
-      <div className="dataEditionModal">
-        <div className="dataEditionModalHeader">
-          {title}
-          <button
-            type="button"
-            className="dataEditionModalCloseButton"
-            onClick={() => handleClose()}
-          >
-            <img alt="close" src={closeIcon} />
-          </button>
-        </div>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <div className="dataEditionModalBody">
-            {loading ? (
-              <span className="dataEditionModalLoader font-ibm">
-                Loading...
-              </span>
-            ) : (
-              fields.map((field) => {
-                if (field.id === "external_model_code") {
-                  if (dmsType !== "cdk") return null;
-                  return renderCdkModelCode(field);
-                }
-                if (field.id === "vin") return renderVin(field);
+    <Modal
+      title={title}
+      size="small"
+      isForm
+      loading={loading}
+      cancelButtonText="Cancel"
+      submitButtonText={submitButtonText}
+      onCancel={handleClose}
+      onSubmit={handleSubmit}
+    >
+      <div className="dataEditionModalBody">
+        {loading ? (
+          <span className="dataEditionModalLoader font-ibm">
+            Loading...
+          </span>
+        ) : (
+          fields.map((field) => {
+            if (field.id === "external_model_code") {
+              if (dmsType !== "cdk") return null;
+              return renderCdkModelCode(field);
+            }
+            if (field.id === "vin") return renderVin(field);
 
-                if (field.id === "makeModelYear") {
-                  return (
-                    <div className="dataEditionModalMakeModelYearRow">
-                      {renderMakeModelYear(field.items)}
-                    </div>
-                  );
-                }
+            if (field.id === "makeModelYear") {
+              return (
+                <div className="dataEditionModalMakeModelYearRow">
+                  {renderMakeModelYear(field.items)}
+                </div>
+              );
+            }
 
-                return (
-                  <label
-                    htmlFor={field.id}
-                    id={field.id}
-                    key={field.id}
-                    className="dataEditionModalLabel"
-                  >
-                    {field.label}
-                    <input
-                      {...field}
-                      className="dataEditionModalInput"
-                      name={field.id}
-                      value={data[field.id]}
-                      onChange={(e) => {
-                        setValidationError("");
-                        setData({ ...data, [field.id]: e.target.value });
-                      }}
-                    />
-                  </label>
-                );
-              })
-            )}
-            {error && renderDataEditionErrors(error)}
-            {validationError && renderDataEditionErrors(validationError)}
-            {vehicleSetByVinError && renderDataEditionErrors(vehicleSetByVinError)}
-          </div>
-          {!loading && (
-            <div className="dataEditionModalFooter">
-              <button
-                className="dataEditionModalCancel"
-                type="button"
-                onClick={() => handleClose()}
+            return (
+              <label
+                htmlFor={field.id}
+                id={field.id}
+                key={field.id}
+                className="dataEditionModalLabel"
               >
-                Cancel
-              </button>
-              <button className="dataEditionModalSave" type="submit">
-                {submitButtonText}
-              </button>
-            </div>
-          )}
-        </form>
+                {field.label}
+                <input
+                  {...field}
+                  className="dataEditionModalInput"
+                  name={field.id}
+                  value={data[field.id]}
+                  onChange={(e) => {
+                    setValidationError("");
+                    setData({ ...data, [field.id]: e.target.value });
+                  }}
+                />
+              </label>
+            );
+          })
+        )}
+        {error && renderDataEditionErrors(error)}
+        {validationError && renderDataEditionErrors(validationError)}
+        {vehicleSetByVinError && renderDataEditionErrors(vehicleSetByVinError)}
       </div>
-      <button type="button" className="dataEditionAddTemplateOverlay" />
-    </>
+    </Modal>
   );
 };
 

@@ -13,6 +13,7 @@ import { countSelectedServicesByType } from "shared/utils/common";
 import { servicePropType, dealershipMenuItemsPropType } from "shared/prop-types";
 
 import Panel from "components/common/Panel";
+import Button from "components/common/Button";
 import ServiceTypeToggler from "./ServiceTypeToggler";
 import ServicesToSelect from "./ServicesToSelect";
 import "./styles.scss";
@@ -119,18 +120,13 @@ const ChooseServices = ({
                 decisionTrees={decisionTrees}
               />
               <div className="conciergeSchedulingSubmitWrapper">
-                <button
-                  type="button"
-                  className={cx(
-                    "conciergeSchedulingButton",
-                    "conciergeSchedulingSubmitButton",
-                    { conciergeSchedulingButtonDisabled: !selectedServices.length },
-                  )}
+                <Button
+                  variant="brand"
                   disabled={!selectedServices.length}
                   onClick={() => setSchedulingStep(nextStep)}
                 >
                   Done
-                </button>
+                </Button>
               </div>
             </>
           )

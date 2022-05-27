@@ -62,10 +62,10 @@ const FrontendPagination = ({
               changePage(activePage - 1);
             }}
             disabled={activePage === 1}
-            className="conciergeTablePaginationArrowButton"
-          >
-            <div className="conciergeTablePaginationPrevArrowContent" />
-          </Button>
+            variant="neutral"
+            icon="leftArrow"
+            padding="small"
+          />
         </div>
         <div className="-center">
           {visiblePages.map((pageNumber, index, array) => (
@@ -76,6 +76,7 @@ const FrontendPagination = ({
                   ? "conciergeTablePaginationPageButtonActive"
                   : "conciergeTablePaginationPageButton"
               }
+              padding="small"
               onClick={() => changePage(pageNumber)}
             >
               {
@@ -98,10 +99,10 @@ const FrontendPagination = ({
               changePage(activePage + 1);
             }}
             disabled={activePage === pages}
-            className="conciergeTablePaginationArrowButton"
-          >
-            <div className="conciergeTablePaginationNextArrowContent" />
-          </Button>
+            variant="neutral"
+            icon="rightArrow"
+            padding="small"
+          />
         </div>
       </section>
     </div>

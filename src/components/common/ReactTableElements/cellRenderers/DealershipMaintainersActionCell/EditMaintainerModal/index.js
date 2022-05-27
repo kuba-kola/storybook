@@ -3,11 +3,10 @@ import {
   func, number, string, arrayOf, shape,
 } from "prop-types";
 import { connect } from "react-redux";
-
 import { dealershipDetailsMaintainersSelector } from "store/selectors/dealership-details-selectors";
 import { updateMaintainer } from "store/actions/dealership-details-actions";
 import Input from "components/common/Input";
-import closeIcon from "assets/images/close.svg";
+import Modal from "components/common/Modal";
 
 const EditMaintainerModal = ({
   id,
@@ -44,45 +43,21 @@ const EditMaintainerModal = ({
   };
 
   return (
-    <>
-      <div className="menuTemplatesAddTemplateModal conciergeSettingsAddUserModal">
-        <div className="menuTemplatesAddTemplateModalHeader">
-          Edit dealearship maintainer
-          <button
-            type="button"
-            className="menuTemplatesAddTemplateModalCloseButton"
-            onClick={onClose}
-          >
-            <img alt="close" src={closeIcon} />
-          </button>
-        </div>
-        <div className="menuTemplatesAddTemplateModalBody">
-          <Input
-            label="Email"
-            value={email}
-            error={errors.email}
-            onChange={setEmail}
-          />
-        </div>
-        <div className="menuTemplatesAddTemplateModalFooter conciergeSettingsAddUserModalFooter">
-          <button
-            type="button"
-            className="menuTemplatesAddTemplateModalCancel"
-            onClick={onClose}
-          >
-            Cancel
-          </button>
-          <button
-            type="button"
-            className="menuTemplatesAddTemplateModalSave"
-            onClick={submit}
-          >
-            Save
-          </button>
-        </div>
-      </div>
-      <button type="button" className="menuTemplatesAddTemplateOverlay" />
-    </>
+    <Modal
+      title="Edit dealearship maintainer"
+      cancelButtonText="Cancel"
+      submitButtonText="Save"
+      size="small"
+      onCancel={onClose}
+      onSubmit={submit}
+    >
+      <Input
+        label="Email"
+        value={email}
+        error={errors.email}
+        onChange={setEmail}
+      />
+    </Modal>
   );
 };
 

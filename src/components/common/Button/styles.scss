@@ -1,12 +1,139 @@
 @import '~styles/index.scss';
 
 .conciergeButton {
-  @include main-font;
-
-  height: 48px;
-  outline: none;
-  border: 1px solid map-get($colors, darker-gray);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   border-radius: 6px;
-  background: transparent;
+  background: none;
+  height: fit-content;
   cursor: pointer;
+
+  font-family: $ff-ibm;
+  font-style: $fs-normal;
+  font-weight: $fw-normal;
+  font-size: map-get($sizes, regular);
+  line-height: map-get($sizes, slightly-bigger);
+  text-align: center;
+
+  &SmallPadding {
+    padding: 6px 9px;
+  }
+
+  &MediumPadding {
+    padding: 9px 12px;
+  }
+
+  &LargePadding {
+    padding: 16px 24px;
+  }
+
+  &FullWidth {
+    width: 100%;
+  }
+
+  &:disabled {
+    background: map-get($colors, darker-gray);
+    color: map-get($colors, white);
+    border: 1px solid map-get($colors, darker-gray);
+    cursor: not-allowed;
+  }
+
+  &BaseGrey {
+    color: #a4acbc;
+  }
+
+  &Neutral {
+    background: map-get($colors, white);
+    border: 1px solid map-get($colors, darker-gray);
+
+    &:hover:not(:disabled) {
+      background: map-get($colors, darker-white);
+    }
+  }
+
+  &Aqua {
+    background: $color-light-blue-gradient;
+    border: 1px solid map-get($colors, light-blue);
+    box-shadow: 0px 4px 10px rgba(27, 43, 41, 0.08);
+
+    &:hover:not(:disabled) {
+      background: $color-light-blue-gradient-secondary
+    }
+  }
+
+  &Brand {
+    background: map-get($colors, button-gradient);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.18);
+    border: none;
+    color: map-get($colors, white);
+
+    &:hover:not(:disabled) {
+      background: map-get($colors, primary-gradient);
+    }
+  }
+
+  &BrandOutline {
+    background: map-get($colors, white);
+    border: 1px solid map-get($colors, primary);;
+    color: map-get($colors, primary);
+
+    &:hover:not(:disabled) {
+      border: 1px solid map-get($colors, primary-active);
+      color: map-get($colors, primary-active);
+    }
+  }
+
+  &Dark {
+    background: map-get($colors, dark-gray);
+    color: map-get($colors, white);
+
+    &:hover:not(:disabled) {
+      background: map-get($colors, blueish-gray);
+    }
+  }
+
+  &DarkOutline {
+    background: map-get($colors, white);
+    border: 1px solid map-get($colors, black);
+  }
+
+  &Success {
+    background: map-get($colors, green2);
+    color: map-get($colors, white);
+
+    &:hover:not(:disabled) {
+      background: map-get($colors, green3);
+    }
+  }
+
+  &Destructive {
+    background: map-get($colors, pink);
+    color: map-get($colors, white);
+
+    &:hover:not(:disabled) {
+      background: #fd3075;
+    }
+  }
+
+  &DestructiveOutline {
+    background: #FDFDFD;
+    border: 1px solid map-get($colors, pink);
+    box-shadow: 0px 4px 10px rgba(27, 43, 41, 0.08);
+    color: map-get($colors, pink);
+
+    &:hover:not(:disabled) {
+      background: $color-pink-gradient;
+    }
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  :not(:last-child) {
+    margin-right: 6px;
+  }
 }

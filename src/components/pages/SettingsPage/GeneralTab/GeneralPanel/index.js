@@ -46,6 +46,7 @@ class GeneralPanel extends Component {
       working_hours: {},
       services_price_visible: false,
       repair_order_generation_on_arrival: true,
+      car_inspection_enabled: true,
       logoForSending: null,
       welcomeScreenForSending: null,
       shouldDeleteWelcomeScreen: false,
@@ -75,6 +76,7 @@ class GeneralPanel extends Component {
       working_hours,
       services_price_visible,
       repair_order_generation_on_arrival,
+      car_inspection_enabled,
     } = this.props.dealershipInfo;
 
     this.setState({
@@ -94,6 +96,7 @@ class GeneralPanel extends Component {
       working_hours: working_hours || {},
       services_price_visible: services_price_visible || false,
       repair_order_generation_on_arrival: repair_order_generation_on_arrival === undefined ? true : repair_order_generation_on_arrival,
+      car_inspection_enabled: car_inspection_enabled,
       isEditing: false,
     });
   }
@@ -202,6 +205,7 @@ class GeneralPanel extends Component {
       additional_settings,
       services_price_visible,
       repair_order_generation_on_arrival,
+      car_inspection_enabled,
       logoForSending,
       welcomeScreenForSending,
       shouldDeleteWelcomeScreen,
@@ -216,7 +220,7 @@ class GeneralPanel extends Component {
     dataToSend.append("manager_name", manager_name);
     dataToSend.append("manager_phone", manager_phone);
     dataToSend.append("manager_email", manager_email);
-    if (fallback_op_code.id !== null) {
+    if (fallback_op_code !== null && fallback_op_code.id !== null) {
       dataToSend.append("fallback_op_code_id", fallback_op_code.id);
     }
     sales_emails.length
@@ -226,6 +230,7 @@ class GeneralPanel extends Component {
     dataToSend.append("working_hours", JSON.stringify(working_hours));
     dataToSend.append("services_price_visible", services_price_visible);
     dataToSend.append("repair_order_generation_on_arrival", repair_order_generation_on_arrival);
+    dataToSend.append("car_inspection_enabled", car_inspection_enabled);
     dataToSend.append("time_zone", this.props.dealershipInfo.time_zone);
 
     if (logoForSending) {
@@ -261,6 +266,7 @@ class GeneralPanel extends Component {
       fallback_op_code,
       services_price_visible,
       repair_order_generation_on_arrival,
+      car_inspection_enabled,
       salesEmailError,
       salesEmailInput,
       salesEmailsOptions,
@@ -380,7 +386,7 @@ class GeneralPanel extends Component {
               onColor="#36af5e"
               offColor="#dedee0"
               activeBoxShadow="0 0 2px 3px #0bcaf9"
-              aria-labelledby="services-price-visible-lable"
+              aria-labelledby="services-price-visible-label"
             />
           </div>
           <div className="SwitchContainer">
@@ -394,7 +400,21 @@ class GeneralPanel extends Component {
               onColor="#36af5e"
               offColor="#dedee0"
               activeBoxShadow="0 0 2px 3px #0bcaf9"
-              aria-labelledby="autogenerate-ro-visible-visible-lable"
+              aria-labelledby="autogenerate-ro-visible-visible-label"
+            />
+          </div>
+          <div className="SwitchContainer">
+            <label className="conciergeInputLabel" htmlFor="car-inspection-visible">Car inspection</label>
+            <Switch
+              id="car-inspection-visible"
+              className="Switch"
+              onChange={() => this.handleInputChange("car_inspection_enabled", !car_inspection_enabled)}
+              disabled={!isEditing}
+              checked={car_inspection_enabled}
+              onColor="#36af5e"
+              offColor="#dedee0"
+              activeBoxShadow="0 0 2px 3px #0bcaf9"
+              aria-labelledby="car-inspection-visible-visible-label"
             />
           </div>
         </Block>

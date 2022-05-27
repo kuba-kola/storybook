@@ -24,6 +24,7 @@ import {
 
 import EditVehicleModal from "components/common/DataEditionModal/EditVehicleModal";
 import DataEditionModal from "components/common/DataEditionModal";
+import Button from "components/common/Button";
 import { dealershipMakeModelYearMapSelector } from "store/selectors/app-selectors";
 import { prepareCustomerPickupAddress } from "shared/utils/common";
 import VehicleDetails from "../VehicleDetails";
@@ -118,18 +119,13 @@ const CustomerDetails = ({
               <p className="conciergeSchedulingLabel">Phone number</p>
               <p>{customer.phone_number}</p>
             </section>
-            <button
-              type="button"
-              className="conciergeSchedulingPersonalDataEdit"
+            <Button
+              variant="base-grey"
+              icon="editGrey"
               onClick={() => setCustomerEditorVisible(true)}
             >
-              <img
-                className="conciergeSchedulingPersonalDataEditImage"
-                alt="edit"
-                src={grayEditIcon}
-              />
               <span>Edit</span>
-            </button>
+            </Button>
           </div>
         </div>
         <div className="conciergeSchedulingPersonalData">
@@ -156,20 +152,18 @@ const CustomerDetails = ({
       <section className="conciergeSchedulingConfirmVehicleSection">
         <p>Vehicle not on the list? Please confirm with the customer if the vehicle could be linked to a different phone number.</p>
         <div className="conciergeSchedulingButtonGroup">
-          <button
-            type="button"
-            className="conciergeSchedulingButton"
+          <Button
+            variant="brand"
             onClick={() => focusOnInputField()}
           >
-            Yes
-          </button>
-          <button
-            type="button"
-            className="conciergeSchedulingAddVehicleButton"
+            <p>Yes</p>
+          </Button>
+          <Button
+            variant="dark-outline"
             onClick={() => setVehicleEditorVisible(true)}
           >
-            No
-          </button>
+            <p>No</p>
+          </Button>
         </div>
       </section>
       {customerEditorVisible && (

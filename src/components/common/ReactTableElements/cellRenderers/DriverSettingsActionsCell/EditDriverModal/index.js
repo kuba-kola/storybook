@@ -2,17 +2,16 @@ import React, { useState, useEffect } from "react";
 import { string, func } from "prop-types";
 import { connect } from "react-redux";
 import { isEmpty, isNil } from "ramda";
-
 import { weekDaysHumanFormat, timeInUSFormat } from "shared/utils/datetime";
 import { settingsDealershipWorkingHoursSelector, dmsTypeSelector } from "store/selectors/settings-selectors";
 import { workingHoursPropType, photoPropType } from "shared/prop-types";
 import { driverWorkingHoursOptions, extractPhoneNumberFromString } from "shared/utils/common";
 import { phoneNumberLengthValidator } from "shared/validators";
-import closeIcon from "assets/images/close.svg";
 import ImageInput from "components/common/ImageInput";
 import Block from "components/common/Block";
 import Input from "components/common/Input";
 import StyledSelect from "components/common/StyledSelect";
+import Modal from "components/common/Modal";
 
 import "./styles.scss";
 
@@ -156,52 +155,51 @@ const EditDriverModal = ({
   const modalTitle = `Edit ${name}`;
 
   return (
-    <>
-      <div className="capacitySettingsEditDriverModal">
-        <div className="capacitySettingsEditDriverModalHeader">
-          {modalTitle}
-          <button type="button" className="capacitySettingsEditDriverModalCloseButton" onClick={onClose}>
-            <img alt="close" src={closeIcon} />
-          </button>
+    <Modal
+      title={modalTitle}
+      cancelButtonText="Cancel"
+      submitButtonText="Save"
+      size="large"
+      onCancel={onClose}
+      onSubmit={submit}
+    >
+      <div className="capacitySettingsEditDriverModalStatusContainer">
+        {showSuccess && (
+        <div className="capacitySettingsEditDriverModalStatusBar capacitySettingsEditDriverModalStatusBarSuccess" onClick={() => setShowSuccess(false)}>
+          New photo was successfully uploaded. Don&apos;t forget to save it.
         </div>
-        <div className="capacitySettingsEditDriverModalBody">
-          <div className="capacitySettingsEditDriverModalStatusContainer">
-            {showSuccess && (
-              <div className="capacitySettingsEditDriverModalStatusBar capacitySettingsEditDriverModalStatusBarSuccess" onClick={() => setShowSuccess(false)}>
-                New photo was successfully uploaded. Don&apos;t forget to save it.
-              </div>
-            )}
-            {showError && (
-              <div className="capacitySettingsEditDriverModalStatusBar capacitySettingsEditDriverModalStatusBarError" onClick={() => setShowError(false)}>
-                {errorMessage}
-              </div>
-            )}
-          </div>
-          <div className="capacitySettingsEditDriverModalSettingsContainer">
-            <section className="capacitySettingsEditDriverModalInputsContainer">
-              <Input label="Name" value={driverName} onChange={setDriverName} />
-              <Input label="Phone number" value={driverPhoneNumber} onChange={setDriverPhoneNumber} />
-            </section>
-            <section className="capacitySettingsEditDriverModalPhotoAndWorkingHoursContainer">
-              <Block
-                title="Driver photo"
-                className="conciergeBlock conciergeSettingsPageBlock capacitySettingsEditDriverModalPhotoBlock"
-              >
-                <ImageInput
-                  onImageChange={handlePhotoChange}
-                  onDelete={handlePhotoDelete}
-                  isEditing
-                  inputName="driverPhotoInput"
-                  image={driverPhoto}
-                  alt="concierge driver photo"
-                  imagePresentText="Upload Photo"
-                  noImageText="No Driver's Photo"
-                />
-              </Block>
-              <section className="conciergeBlock conciergeSettingsPageBlock capacitySettingsEditDriverModalWorkingHoursBlock">
-                <section className="conciergeBlockTitle">Working Hours</section>
-                <section className="conciergeBlockContent capacitySettingsEditDriverModalWorkingHoursBlockContent">
-                  {workingHoursOptions && driverWorkingHours
+        )}
+        {showError && (
+        <div className="capacitySettingsEditDriverModalStatusBar capacitySettingsEditDriverModalStatusBarError" onClick={() => setShowError(false)}>
+          {errorMessage}
+        </div>
+        )}
+      </div>
+      <div className="capacitySettingsEditDriverModalSettingsContainer">
+        <section className="capacitySettingsEditDriverModalInputsContainer">
+          <Input label="Name" value={driverName} onChange={setDriverName} />
+          <Input label="Phone number" value={driverPhoneNumber} onChange={setDriverPhoneNumber} />
+        </section>
+        <section className="capacitySettingsEditDriverModalPhotoAndWorkingHoursContainer">
+          <Block
+            title="Driver photo"
+            className="conciergeBlock conciergeSettingsPageBlock capacitySettingsEditDriverModalPhotoBlock"
+          >
+            <ImageInput
+              onImageChange={handlePhotoChange}
+              onDelete={handlePhotoDelete}
+              isEditing
+              inputName="driverPhotoInput"
+              image={driverPhoto}
+              alt="concierge driver photo"
+              imagePresentText="Upload Photo"
+              noImageText="No Driver's Photo"
+            />
+          </Block>
+          <section className="conciergeBlock conciergeSettingsPageBlock capacitySettingsEditDriverModalWorkingHoursBlock">
+            <section className="conciergeBlockTitle">Working Hours</section>
+            <section className="conciergeBlockContent capacitySettingsEditDriverModalWorkingHoursBlockContent">
+              {workingHoursOptions && driverWorkingHours
                     && Object.keys(driverWorkingHours).map((dayName) => (
                       <div className="conciergeDealershipTimeField">
                         <div className="conciergeDealershipTimeFieldLabel">
@@ -245,18 +243,11 @@ const EditDriverModal = ({
                         </div>
                       </div>
                     ))}
-                </section>
-              </section>
             </section>
-          </div>
-        </div>
-        <div className="capacitySettingsEditDriverModalFooter">
-          <button type="button" className="capacitySettingsEditDriverModalCancel" onClick={onClose}>Cancel</button>
-          <button type="button" className="capacitySettingsEditDriverModalSave" onClick={() => submit()}>Save</button>
-        </div>
+          </section>
+        </section>
       </div>
-      <button type="button" className="capacitySettingsEditDriverOverlay" />
-    </>
+    </Modal>
   );
 };
 

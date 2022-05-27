@@ -10,6 +10,7 @@ import { chosenTimeSlotPropType, servicePropType } from "shared/prop-types";
 
 import RadioButton from "components/common/RadioButton";
 import Panel from "components/common/Panel";
+import Button from "components/common/Button";
 import { BOOKING_STEP_TRANSPORT } from "shared/constants";
 
 import "./styles.scss";
@@ -90,13 +91,12 @@ const Transportation = ({
         </>
       )}
       <div className="conciergeSchedulingSubmitWrapper">
-        <button
-          type="button"
-          className="conciergeSchedulingButton conciergeSchedulingSubmitButton"
+        <Button
+          variant="brand"
           onClick={() => setSchedulingStep("")}
         >
           Done
-        </button>
+        </Button>
       </div>
     </div>
   );

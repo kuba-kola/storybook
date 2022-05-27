@@ -10,6 +10,8 @@ import PlacesAutocomplete, {
 import { customerFieldsPropType } from "shared/prop-types";
 import closeIcon from "assets/images/close.svg";
 import { renderDataEditionErrors } from "./helpers";
+import Button from "../Button";
+import Modal from "../Modal";
 
 import "./styles.scss";
 
@@ -141,67 +143,45 @@ const DataEditionModal = ({
   );
 
   return (
-    <>
-      <div className="dataEditionModal">
-        <div className="dataEditionModalHeader">
-          {title}
-          <button
-            type="button"
-            className="dataEditionModalCloseButton"
-            onClick={loading ? null : () => onClose()}
-          >
-            <img alt="close" src={closeIcon} />
-          </button>
-        </div>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <div className="dataEditionModalBody">
-            {loading ? (
-              <span className="dataEditionModalLoader font-ibm">
-                Loading...
-              </span>
-            ) : (
-              fields.map((field) => {
-                if (field.id === "address") return renderLocationInput(field);
+    <Modal
+      title={title}
+      size="small"
+      isForm
+      loading={loading}
+      cancelButtonText="Cancel"
+      submitButtonText={submitButtonText}
+      onCancel={onClose}
+      onSubmit={handleSubmit}
+    >
+      {loading ? (
+        <span className="dataEditionModalLoader font-ibm">
+          Loading...
+        </span>
+      ) : (
+        fields.map((field) => {
+          if (field.id === "address") return renderLocationInput(field);
 
-                return (
-                  <label
-                    htmlFor={field.id}
-                    id={field.id}
-                    key={field.id}
-                    className="dataEditionModalLabel"
-                  >
-                    {field.label}
-                    <input
-                      {...field}
-                      className="dataEditionModalInput"
-                      name={field.id}
-                      value={data[field.id]}
-                      onChange={(e) => setData({ ...data, [field.id]: e.target.value })}
-                    />
-                  </label>
-                );
-              })
-            )}
-            {error && renderDataEditionErrors(error)}
-          </div>
-          {!loading && (
-            <div className="dataEditionModalFooter">
-              <button
-                className="dataEditionModalCancel"
-                type="button"
-                onClick={() => onClose()}
-              >
-                Cancel
-              </button>
-              <button className="dataEditionModalSave" type="submit">
-                {submitButtonText}
-              </button>
-            </div>
-          )}
-        </form>
-      </div>
-      <button type="button" className="dataEditionAddTemplateOverlay" />
-    </>
+          return (
+            <label
+              htmlFor={field.id}
+              id={field.id}
+              key={field.id}
+              className="dataEditionModalLabel"
+            >
+              {field.label}
+              <input
+                {...field}
+                className="dataEditionModalInput"
+                name={field.id}
+                value={data[field.id]}
+                onChange={(e) => setData({ ...data, [field.id]: e.target.value })}
+              />
+            </label>
+          );
+        })
+      )}
+      {error && renderDataEditionErrors(error)}
+    </Modal>
   );
 };
 

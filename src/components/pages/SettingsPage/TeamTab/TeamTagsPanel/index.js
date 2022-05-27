@@ -79,7 +79,8 @@ const TeamTagsPanel = ({
         <div className="conciergeBookingDetailsPanelHeader conciergeSettingsPagePanelHeader">
           <p>Team Tags</p>
           <Button
-            className="conciergeSettingsPageUsersPanelButton-add"
+            variant="dark"
+            style={{ width: "210px" }}
             onClick={() => setIsCreateModalOpen(true)}
           >
             + Add new team tag

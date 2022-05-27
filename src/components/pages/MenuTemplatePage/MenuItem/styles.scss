@@ -1,8 +1,8 @@
 @import '~styles/index.scss';
 
 .menuItem {
-  @include sizing(1110px 48px);
-
+  height: 48px;
+  margin-bottom: 16px;
   position: relative;
   display: flex;
   margin-bottom: 8px;

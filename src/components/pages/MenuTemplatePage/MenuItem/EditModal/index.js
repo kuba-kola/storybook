@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { string, func } from "prop-types";
 import { connect } from "react-redux";
-
 import { editService } from "store/actions/menu-template-actions";
-import closeIcon from "assets/images/close.svg";
 import OpCodesSelect from "components/pages/MenuTemplatePage/AddMenuItemModal/OpCodesSelect";
+import Modal from "components/common/Modal";
 
 import "./styles.scss";
 
@@ -24,39 +23,31 @@ const EditModal = (props) => {
   };
 
   return (
-    <>
-      <div className="menuTemplatesEditModal">
-        <div className="menuTemplatesEditModalHeader">
-          Edit
-          <button type="button" className="menuTemplatesEditModalCloseButton" onClick={props.onClose}>
-            <img alt="close" src={closeIcon} />
-          </button>
-        </div>
-        <div className="menuTemplatesEditModalBody">
-          <div className="menuTemplatesEditModalLabel">
-            Service name
-          </div>
-          <input
-            className="menuTemplatesEditModalInput"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-          />
-          <div className="menuTemplatesAddMenuItemModalLabel menuTemplatesAddMenuItemModalLabel--topMargin">
-            Op code
-          </div>
-          <OpCodesSelect
-            showAssigned={props.kind === "extension"}
-            opCode={opCode}
-            onChange={setOpCode}
-          />
-        </div>
-        <div className="menuTemplatesEditModalFooter">
-          <button type="button" className="menuTemplatesEditModalCancel" onClick={props.onClose}>Cancel</button>
-          <button type="button" className="menuTemplatesEditModalSave" onClick={submit}>Save</button>
-        </div>
+    <Modal
+      title="Edit"
+      cancelButtonText="Cancel"
+      submitButtonText="Save"
+      size="small"
+      onCancel={props.onClose}
+      onSubmit={submit}
+    >
+      <div className="editModalLabel">
+        Service name
       </div>
-      <button type="button" className="menuTemplatesEditNameOverlay" />
-    </>
+      <input
+        className="editModalInput"
+        value={name}
+        onChange={(event) => setName(event.target.value)}
+      />
+      <div className="editModalLabel editModalLabelTopMargin">
+        Op code
+      </div>
+      <OpCodesSelect
+        showAssigned={props.kind === "extension"}
+        opCode={opCode}
+        onChange={setOpCode}
+      />
+    </Modal>
   );
 };
 

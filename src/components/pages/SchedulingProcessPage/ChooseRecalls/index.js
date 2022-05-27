@@ -13,6 +13,7 @@ import { servicePropType } from "shared/prop-types";
 import { BOOKING_STEP_ADVISOR } from "shared/constants";
 
 import Panel from "components/common/Panel";
+import Button from "components/common/Button";
 import RecallsToSelect from "./RecallsToSelect";
 import "./styles.scss";
 
@@ -40,13 +41,12 @@ const ChooseRecalls = ({
         <>
           <RecallsToSelect availableRecalls={availableRecalls} selectedRecalls={selectedRecalls} />
           <div className="conciergeSchedulingSubmitWrapper">
-            <button
-              type="button"
-              className="conciergeSchedulingButton conciergeSchedulingSubmitButton"
+            <Button
+              variant="brand"
               onClick={() => setSchedulingStep(BOOKING_STEP_ADVISOR)}
             >
               Done
-            </button>
+            </Button>
           </div>
         </>
       )}

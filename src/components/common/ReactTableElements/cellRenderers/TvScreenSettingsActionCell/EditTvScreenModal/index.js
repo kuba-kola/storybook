@@ -3,11 +3,10 @@ import {
   func, number, string, arrayOf, shape,
 } from "prop-types";
 import { connect } from "react-redux";
-
 import Input from "components/common/Input";
 import { updateTvScreen } from "store/actions/settings-actions";
 import { settingsTvScreensSelector } from "store/selectors/settings-selectors";
-import closeIcon from "assets/images/close.svg";
+import Modal from "components/common/Modal";
 
 class EditTvScreenModal extends Component {
   constructor(props) {
@@ -60,51 +59,27 @@ class EditTvScreenModal extends Component {
     const { errors } = this.state;
 
     return (
-      <>
-        <div className="menuTemplatesAddTemplateModal conciergeSettingsAddUserModal">
-          <div className="menuTemplatesAddTemplateModalHeader">
-            Edit TV screen
-            <button
-              type="button"
-              className="menuTemplatesAddTemplateModalCloseButton"
-              onClick={this.props.onClose}
-            >
-              <img alt="close" src={closeIcon} />
-            </button>
-          </div>
-          <div className="menuTemplatesAddTemplateModalBody">
-            <Input
-              label="User name"
-              value={this.state.username}
-              error={errors.username}
-              onChange={(value) => this.handleInputChange("username", value)}
-            />
-            <Input
-              label="Password"
-              value={this.state.password}
-              error={errors.password}
-              onChange={(value) => this.handleInputChange("password", value)}
-            />
-          </div>
-          <div className="menuTemplatesAddTemplateModalFooter conciergeSettingsAddUserModalFooter">
-            <button
-              type="button"
-              className="menuTemplatesAddTemplateModalCancel"
-              onClick={this.props.onClose}
-            >
-              Cancel
-            </button>
-            <button
-              type="button"
-              className="menuTemplatesAddTemplateModalSave"
-              onClick={this.submit}
-            >
-              Save
-            </button>
-          </div>
-        </div>
-        <button type="button" className="menuTemplatesAddTemplateOverlay" />
-      </>
+      <Modal
+        title="Edit TV screen"
+        cancelButtonText="Cancel"
+        submitButtonText="Save"
+        size="small"
+        onCancel={this.props.onClose}
+        onSubmit={this.submit}
+      >
+        <Input
+          label="User name"
+          value={this.state.username}
+          error={errors.username}
+          onChange={(value) => this.handleInputChange("username", value)}
+        />
+        <Input
+          label="Password"
+          value={this.state.password}
+          error={errors.password}
+          onChange={(value) => this.handleInputChange("password", value)}
+        />
+      </Modal>
     );
   }
 }

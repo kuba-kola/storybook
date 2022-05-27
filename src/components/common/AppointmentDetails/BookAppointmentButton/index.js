@@ -1,21 +1,17 @@
 import React from "react";
 import { bool, func, string } from "prop-types";
-import cx from "classnames";
+import Button from "components/common/Button";
 
 const BookAppointmentButton = ({ isAppointmentComplete, onClick, label }) => (
   <div className="appointmentDetailsSection">
-    <button
-      type="button"
-      className={cx(
-        "conciergeSchedulingButton",
-        "conciergeSchedulingBookButton",
-        { conciergeSchedulingButtonDisabled: !isAppointmentComplete },
-      )}
+    <Button
+      variant="brand"
+      fullWidth
       disabled={!isAppointmentComplete}
       onClick={onClick}
     >
-      {label || "Book appointment"}
-    </button>
+      <p>{label || "Book appointment"}</p>
+    </Button>
   </div>
 );
 

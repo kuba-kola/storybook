@@ -5,48 +5,6 @@ $modal_height: 700px;
 
 .dealerships {
   &AddDealershipModal {
-    position: fixed;
-    top: calc(50% - #{$modal_height / 2});
-    left: calc(50% - #{$modal_width / 2});
-    z-index: $z-index-2;
-    overflow: hidden;
-    width: $modal_width;
-    height: $modal_height;
-    border: 1px solid map-get($colors, darker-gray);
-    border-radius: 10px;
-    background-color: map-get($colors, white);
-    box-shadow: 0 4px 10px 0 rgba(map-get($colors, shadow-gray), 0.08);
-
-    &Header {
-      @include sizing($modal_width 64px);
-
-      display: flex;
-      padding: 0 24px;
-      font-family: $ff-lato;
-      font-size: map-get($sizes, bigger);
-      letter-spacing: -0.15px;
-      line-height: 22px;
-      border-bottom: 1px solid map-get($colors, darker-gray);
-      color: map-get($colors, black);
-      background-color: map-get($colors, light-gray);
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    &CloseButton {
-      @include sizing(24px 24px);
-
-      padding: 0;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-    }
-
-    &Body {
-      width: 100%;
-      padding: 24px 20px;
-    }
-
     &InputContainer {
       height: 105px;
       padding: 20px 0;
@@ -87,50 +45,5 @@ $modal_height: 700px;
         padding: 0;
       }
     }
-
-    &Footer {
-      display: flex;
-      width: 100%;
-      padding: 0 24px;
-      justify-content: flex-end;
-    }
-
-    &Cancel {
-      @include sizing(109px 48px);
-
-      margin-right: 20px;
-      padding: 0;
-      font-family: $ff-ibm;
-      font-size: map-get($sizes, slightly-bigger);
-      line-height: 16px;
-      border: 1px solid map-get($colors, blueish-gray);
-      border-radius: 6px;
-      color: map-get($colors, main-black);
-      background-color: map-get($colors, white);
-      cursor: pointer;
-    }
-
-    &Save {
-      @include sizing(96px 48px);
-
-      padding: 0;
-      font-family: $ff-ibm;
-      font-size: map-get($sizes, slightly-bigger);
-      line-height: 16px;
-      border: none;
-      border-radius: 6px;
-      color: map-get($colors, white);
-      background: map-get($colors, button-gradient);
-      box-shadow: 0 8px 15px 0 rgba(map-get($colors, black), 0.18);
-      cursor: pointer;
-    }
-  }
-
-  &AddDealershipOverlay {
-    @include fixed(top 0 left 0);
-    @include sizing(100vw 100vh);
-
-    z-index: $z-index-1;
-    background-color: rgba(map-get($colors, darkest-gray), 0.95);
   }
 }

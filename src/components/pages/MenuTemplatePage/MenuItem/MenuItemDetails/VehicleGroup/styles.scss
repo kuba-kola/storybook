@@ -161,6 +161,12 @@
   &ActionButtons {
     width: 100%;
     text-align: right;
+    display: flex;
+    justify-content: flex-end;
+
+    button:not(:first-child) {
+      margin-left: 16px;
+    }
   }
 
   &ActionButton {

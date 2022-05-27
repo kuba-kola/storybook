@@ -7,7 +7,7 @@ import Select from "react-select";
 import Switch from "react-switch";
 import cx from "classnames";
 import { uniq, uniqBy } from "ramda";
-
+import Button from "components/common/Button";
 import {
   getVehicleSets, saveVehicleGroup, setVehicleGroupsClipboard, removeVehicleGroup,
 } from "store/actions/menu-template-actions";
@@ -242,14 +242,13 @@ const VehicleGroup = ({
             placeholder="Year to"
           />
         </div>
-        <button
-          type="button"
-          className={cx("vehicleGroupQuickAddButton", { vehicleGroupQuickAddButtonDisabled: !isEditing })}
+        <Button
+          variant="dark"
           onClick={quickAdd}
           disabled={!isEditing || isLoadingSets}
         >
           Add
-        </button>
+        </Button>
       </div>
       <div className="vehicleGroupInputContainer">
         <span className="vehicleGroupInputLabel">Cars</span>
@@ -360,76 +359,42 @@ const VehicleGroup = ({
             <span className="vehicleGroupError">Invalid value</span>
           )}
         </div>
-        {/* <div className="vehicleGroupInputContainer">
-          <span className="vehicleGroupInputLabel">Expected upsell item <i>(optional)</i></span>
-          <input
-            type="number"
-            step="0.1"
-            min={0}
-            className={cx('vehicleGroupInputTextInput', { error: errors.expectedUpsellTimeError })}
-            disabled={!isEditing}
-            value={vehicleGroupData.expected_upsell_time}
-            onChange={({ target: { value } }) => +value >= 0 && updateVehicleGroupState({ expected_upsell_time: value })}
-          />
-          {errors.expectedUpsellTimeError && (
-            <span className="vehicleGroupError">Invalid value</span>
-          )}
-        </div> */}
       </div>
 
       {isEditing ? (
         <div className="vehicleGroupActionButtons">
-          <button
-            type="button"
+          <Button
+            variant="destructive"
             disabled={!vehicleGroupData.id}
-            className="vehicleGroupActionButton vehicleGroupActionButton-delete vehicleGroupActionButton-marginLeft"
             onClick={() => removeVehicleGroup(menuItemKind, menuItemId, vehicleGroupData.id)}
           >
-            Remove
-          </button>
-          <button
-            type="button"
-            className={cx("vehicleGroupActionButton", "vehicleGroupActionButton-marginLeft", {
-              "vehicleGroupActionButton-success": copied,
-            })}
+            <p>Remove</p>
+          </Button>
+          <Button
+            variant="aqua"
             disabled={copied}
             onClick={copy}
           >
-            {copied ? "Copied" : "Copy"}
-          </button>
+            <p>{copied ? "Copied" : "Copy"}</p>
+
+          </Button>
           {clipboardContent && (
-            <button
-              type="button"
-              className={cx("vehicleGroupActionButton", "vehicleGroupActionButton-marginLeft")}
-              onClick={paste}
-            >
-              Paste
-            </button>
+            <Button variant="aqua" onClick={paste}>
+              <p>Paste</p>
+            </Button>
           )}
-          <button
-            type="button"
-            className="vehicleGroupActionButton vehicleGroupActionButton-marginLeft"
-            onClick={resetState}
-          >
-            Cancel
-          </button>
-          <button
-            type="button"
-            className="vehicleGroupActionButton vehicleGroupActionButton-marginLeft"
-            onClick={save}
-          >
-            Save
-          </button>
+          <Button variant="dark-outline" onClick={resetState}>
+            <p>Cancel</p>
+          </Button>
+          <Button variant="brand" onClick={save}>
+            <p>Save</p>
+          </Button>
         </div>
       ) : (
         <div className="vehicleGroupActionButtons">
-          <button
-            type="button"
-            className="vehicleGroupActionButton vehicleGroupActionButton-marginLeft"
-            onClick={edit}
-          >
-            Edit
-          </button>
+          <Button variant="dark" icon="editWhite" onClick={edit}>
+            <p>Edit</p>
+          </Button>
         </div>
       )}
     </div>

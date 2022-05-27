@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { number, string, func } from "prop-types";
 import { connect } from "react-redux";
-
 import { duplicateTemplate } from "store/actions/menu-templates-actions";
-import closeIcon from "assets/images/close.svg";
+import Modal from "components/common/Modal";
 
 import "./styles.scss";
 
@@ -24,31 +23,23 @@ class DuplicateModal extends Component {
     const { onClose } = this.props;
 
     return (
-      <>
-        <div className="menuTemplatesDuplicateModal">
-          <div className="menuTemplatesDuplicateModalHeader">
-            Duplicate template
-            <button type="button" className="menuTemplatesDuplicateModalCloseButton" onClick={onClose}>
-              <img alt="close" src={closeIcon} />
-            </button>
-          </div>
-          <div className="menuTemplatesDuplicateModalBody">
-            <div className="menuTemplatesDuplicateModalLabel">
-              Template name
-            </div>
-            <input
-              className="menuTemplatesDuplicateModalInput"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="menuTemplatesDuplicateModalFooter">
-            <button type="button" className="menuTemplatesDuplicateModalCancel" onClick={onClose}>Cancel</button>
-            <button type="button" className="menuTemplatesDuplicateModalSave" onClick={this.submit}>Duplicate</button>
-          </div>
+      <Modal
+        title="Duplicate template"
+        cancelButtonText="Cancel"
+        submitButtonText="Duplicate"
+        size="small"
+        onCancel={onClose}
+        onSubmit={this.submit}
+      >
+        <div className="duplicateModalLabel">
+          Template name
         </div>
-        <button type="button" className="menuTemplatesDuplicateOverlay" />
-      </>
+        <input
+          className="duplicateModalInput"
+          value={this.state.name}
+          onChange={this.handleChange}
+        />
+      </Modal>
     );
   }
 }

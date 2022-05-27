@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { func } from "prop-types";
 import { connect } from "react-redux";
 import Select from "react-select";
-
 import { savePackageItems } from "store/actions/menu-template-actions";
 import { menuTemplatePropType, menuItemPropType } from "shared/prop-types";
+import Button from "components/common/Button";
 
 import "./styles.scss";
 
@@ -69,11 +69,13 @@ class PackageItem extends Component {
             classNamePrefix="packageItemInputDropdown"
           />
         </div>
-        {isEditing ? (
-          <button type="button" className="packageItemActionButton" onClick={this.save}>Save</button>
-        ) : (
-          <button type="button" className="packageItemActionButton" onClick={this.edit}>Edit</button>
-        )}
+        <div className="display-flex flex-end full-width">
+          {isEditing ? (
+            <Button variant="brand" onClick={this.save}>Save</Button>
+          ) : (
+            <Button variant="dark" icon="editWhite" onClick={this.edit}>Edit</Button>
+          )}
+        </div>
       </div>
     );
   }

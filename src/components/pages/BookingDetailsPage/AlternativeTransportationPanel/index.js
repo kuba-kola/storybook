@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { object } from "prop-types";
 
-import PanelToggle from "components/common/PanelToggle";
+import Panel from "components/common/Panel";
 import Button from "components/common/Button";
 import Block from "components/common/Block";
 
@@ -39,9 +39,10 @@ const AlternativeTransportationPanel = ({ booking: { transport } }) => {
   }, [transport]);
 
   return (
-    <PanelToggle
+    <Panel
       className="conciergeBookingDetailsPanel"
       header={title}
+      isToggle
     >
       {/* <Block className="conciergeBookingDetailsPanel">
         <section className="conciergeDropdownBlockContainer">
@@ -65,7 +66,7 @@ const AlternativeTransportationPanel = ({ booking: { transport } }) => {
       >
         Apply
       </Button> */}
-    </PanelToggle>
+    </Panel>
   );
 };
 

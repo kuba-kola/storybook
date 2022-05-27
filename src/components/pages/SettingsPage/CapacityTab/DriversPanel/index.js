@@ -102,7 +102,18 @@ const DriversPanel = ({
 
   return (
     <Panel
-      header={<p className="conciergeBookingDetailsPanelHeader">Drivers</p>}
+      header={(
+        <div className="display-flex space-between align-items-center full-width">
+          <p className="conciergeBookingDetailsPanelHeader">Drivers</p>
+          <Button
+            style={{ width: "210px" }}
+            variant="dark"
+            onClick={() => setCreateModalOpen(true)}
+          >
+            + Add new driver
+          </Button>
+        </div>
+      )}
       className="conciergeSettingsPageCapacityTabDriversPanel"
     >
       <ReactTable
@@ -114,14 +125,6 @@ const DriversPanel = ({
         page={page}
         minRows={1}
       />
-      <div className="conciergeSettingsPageUsersPanelButtonSection">
-        <Button
-          className="conciergeSettingsPageUsersPanelButton-add"
-          onClick={() => setCreateModalOpen(true)}
-        >
-          + Add new driver
-        </Button>
-      </div>
       {createModalOpen && (
         <AddDriverModal onSubmit={addNewDriver} onClose={() => setCreateModalOpen(false)} />
       )}

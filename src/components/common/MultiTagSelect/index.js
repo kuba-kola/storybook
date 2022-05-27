@@ -4,7 +4,7 @@ import React, {
 import {
   arrayOf, func, number, shape, string,
 } from "prop-types";
-import { useOutsideClick, usePrevious } from "shared/hooks";
+import { useOutsideClick } from "shared/hooks";
 import cx from "classnames";
 import upIcon from "assets/images/up.svg";
 import downIcon from "assets/images/down.svg";
@@ -19,7 +19,14 @@ const MultiTagSelect = ({
   options,
   onChange,
 }) => {
-  const [optionsByHash, setOptionsByHash] = useState(options.reduce((obj, option) => ({ ...obj, [option.id]: { ...option, selected: false } }), {}));
+  const [optionsByHash, setOptionsByHash] = useState(
+    options.reduce((obj, option) => ({
+      ...obj,
+      [option.id]: {
+        ...option, selected: false,
+      },
+    }), {}),
+  );
   const [isAddSelectActive, setIsAddSelectActive] = useState(false);
   const [selectInput, setSelectInput] = useState("");
   const [isSelectOpen, setIsSelectOpen] = useState(false);
@@ -43,8 +50,10 @@ const MultiTagSelect = ({
     .filter(({ name }) => name.toLowerCase().includes(selectInput.toLowerCase())),
   [optionsByHash, selectInput]);
 
-  const isAllSelected = useMemo(() => searchedOptions.every(({ selected }) => selected),
-    [optionsByHash, selectInput]);
+  const isAllSelected = useMemo(
+    () => searchedOptions.every(({ selected }) => selected),
+    [optionsByHash, selectInput],
+  );
 
   const toggleOption = (optionId) => {
     const newOptionsByHash = {
@@ -118,6 +127,7 @@ const MultiTagSelect = ({
             {isSelectOpen && (
             <div className="multiTagSelectMenu">
               <button
+                type="button"
                 className={cx("multiTagSelectMenuItem multiTagSelectMenuSelectAll", {
                   multiTagSelectMenuItemSelected: isAllSelected,
                 })}
@@ -126,6 +136,7 @@ const MultiTagSelect = ({
                 <img
                   className="multiTagSelectMenuItemCheckbox"
                   src={isAllSelected ? checkedIcon : uncheckedIcon}
+                  alt=""
                 />
                 <div className="multiTagSelectMenuItemLabel">SELECT ALL</div>
               </button>
@@ -133,6 +144,7 @@ const MultiTagSelect = ({
               <div className="multiTagSelectMenuList">
                 {searchedOptions.map(({ id, name, selected }) => (
                   <button
+                    type="button"
                     key={id}
                     className={cx("multiTagSelectMenuItem", {
                       multiTagSelectMenuItemSelected: selected,
@@ -142,6 +154,7 @@ const MultiTagSelect = ({
                     <img
                       className="multiTagSelectMenuItemCheckbox"
                       src={selected ? checkedIcon : uncheckedIcon}
+                      alt=""
                     />
                     <div className="multiTagSelectMenuItemLabel">{name}</div>
                   </button>
@@ -163,7 +176,9 @@ const MultiTagSelect = ({
     </div>
   );
 
-  if (!label) renderSelect();
+  if (!label) {
+    renderSelect();
+  }
 
   return (
     <div className="multiTagListOuter">

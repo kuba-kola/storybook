@@ -38,8 +38,11 @@ const AddTvScreenModal = ({
   return (
     <Modal
       title="New Tv Screen User"
+      cancelButtonText="Cancel"
+      submitButtonText="Create"
+      size="small"
       onCancel={onClose}
-      onSave={submit}
+      onSubmit={submit}
     >
       <Input
         inputClassName={cx({ error: !!errors.username })}

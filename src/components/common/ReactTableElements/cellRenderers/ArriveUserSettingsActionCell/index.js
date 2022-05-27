@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { number, func } from "prop-types";
 import { connect } from "react-redux";
-
 import { deleteArriveUser } from "store/actions/settings-actions";
 import menuIcon from "assets/images/menu.svg";
 import editIcon from "assets/images/edit.svg";
 import deleteIcon from "assets/images/delete.svg";
-import DeleteModal from "components/common/DeleteModal";
+import Modal from "components/common/Modal";
 import EditArriveUserModal from "./EditArriveUserModal";
 
 const ArriveUserSettingsActionCell = ({
@@ -65,13 +64,19 @@ const ArriveUserSettingsActionCell = ({
         <EditArriveUserModal id={id} onClose={() => setEditModalOpen(false)} />
       )}
       {deleteModalOpen && (
-        <DeleteModal
+        <Modal
+          title="Wait. Are you sure?"
           text={`
-            Deleting arrive user means that all the accesses will be taken away.
-            Please note that this process cannot be undone.
-          `}
+                  Deleting arrive user means that all the accesses will be taken away.
+                  Please note that this process cannot be undone.
+                `}
+          cancelButtonText="No"
+          submitButtonText="Yes"
+          submitButtonVariant="destructive"
+          cancelButtonVariant="dark"
+          size="small"
           onSubmit={() => onSubmit()}
-          onClose={() => setDeleteModalOpen(false)}
+          onCancel={() => setDeleteModalOpen(false)}
         />
       )}
 
