@@ -3,10 +3,12 @@ import React from "react";
 
 export default {
     title: 'Example/Action Cable',
-    // component: ActionCable
 }
 
-const Template = (args) => <ActionCable {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {};
+const Template = (args) => <ActionCable {...args}/>
+export const Base = Template.bind({});
+Base.args = {
+    channel: null,
+    channelKey: null,
+    authToken: null,
+};

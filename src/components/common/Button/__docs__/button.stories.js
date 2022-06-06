@@ -1,26 +1,25 @@
-import Button from '../index';
-import React from 'react';
+import Button from "../index";
+import React from "react";
 
 export default {
-    title: 'Example/Button',
-    component: Button,
+    title: "Done/Button",
     type: "button",
-    
     argTypes: {
+        onClick: () => console.log('CLICK'),
         children: {
             name: "label",
             description: "Button content",
             table: {
-                type: { summary: 'string' },
-                defaultValue: { summary: 'Button' }
+                type: { summary: "string" },
+                defaultValue: { summary: "Button" }
             },
             defaultValue: "Button",
         },
         variant: {
             name: "variant",
             description: 
-                'The variant changes the appearance of button. Accepted variants include base, base-grey, neutral, aqua, brand, brand-outline, dark, dark-outline, success, destructive or destructive-outline.',
-            defaultValue: 'base',
+                "The variant changes the view of button. Accepted variants include base, base-grey, neutral, aqua, brand, brand-outline, dark, dark-outline, success, destructive or destructive-outline.",
+            defaultValue: "base",
             options: [
                 "base",
                 "base-grey",
@@ -35,30 +34,30 @@ export default {
                 "destructive-outline",
             ],
             control: {
-                type: 'select'
+                type: "select"
             },
             table: {
-                type: { summary: 'string' },
-                defaultValue: { summary: 'base' }
+                type: { summary: "string" },
+                defaultValue: { summary: "base" }
             }
         },
         padding: {
             neme: "padding",
-            description: 'The size of padding. Options include small, medium or large.',
+            description: "The size of padding. Options include small, medium or large.",
             defaultValue: "large",
             options: ["small", "medium", "large"],
             control: {
-                type: 'radio'
+                type: "radio"
             },
             table: {
-                type: { summary: 'string' },
-                defaultValue: { summary: 'large' }
+                type: { summary: "string" },
+                defaultValue: { summary: "large" }
             }
         },
         icon: {
-            name: "Icon type",
+            name: "icon",
             description: 
-                'The icon type changes view of button context. Options include add, addWhite, bin, close, checkmark, edit, editGrey, editWhite, leftArrow or rightArrow.',
+                "The icon type changes view of button context. Options include add, addWhite, bin, close, checkmark, edit, editGrey, editWhite, leftArrow or rightArrow.",
             options: [
                 "add",
                 "addWhite",
@@ -73,23 +72,24 @@ export default {
                 null,
             ],
             control: {
-                type: 'select'
+                type: "select"
             },
             defaultValue: null,
             table: {
-                type: { summary: 'string' },
-                defaultValue: { summary: 'null' }
+                type: { summary: "string" },
+                defaultValue: { summary: "null" }
             }
         },
         fullWidth: {
-            name: "Full Width",
-            description: 'Size of button. Can be standard or occupy the entire width of the block',
+            name: "fullWidth",
+            description: "Size of button. Can be standard or occupy the entire width of the block",
             control: {
-                type: 'boolean'
+                type: "boolean"
             },
             table: {
-                type: { summary: 'boolean' },
-                defaultValue: { summary: 'false' }
+                type: { summary: "boolean" },
+                defaultValue: { summary: "false" },
+                category: "Validation"
             }
         }
     },

@@ -24,7 +24,7 @@ export default {
         },
         expandable: {
             name: "expandable",
-            description: "Content that is hidden under the accordion",
+            description: "Toggle availability of accordion",
             table: {
                 type: { summary: 'boolean' },
                 defaultValue: { summary: 'true' }
@@ -33,7 +33,30 @@ export default {
             control: {
                 type: 'boolean'
             }
-
+        },
+        maintenanceCount: {
+            name: "maintenance count",
+            description: "каўнтэр, які паказвае колькасць абраных паслуг",
+            table: {
+                type: { summary: 'number' },
+                defaultValue: { summary: '0' }
+            },
+            defaultValue: "0",
+            control: {
+                type: 'number'
+            }
+        },
+        concernCount: {
+            name: "concern count",
+            description: "каўнтэр, які паказвае колькасць знойдзенных праблем",
+            table: {
+                type: { summary: 'number' },
+                defaultValue: { summary: '0' }
+            },
+            defaultValue: "0",
+            control: {
+                type: 'number'
+            }
         }
     }
 }
@@ -42,20 +65,19 @@ const Template = (args) => <Accordion {...args}/>
 
 export const Base = Template.bind({});
 Base.args = {
-    // customClass: "",
     title: "Title",
     children: "Accordion content",
     expandable: true,
-    // maintenanceCount: 0,
-    // concernCount: 0,
+    maintenanceCount: "0",
+    concernCount: "0",
     // currentStep: "",
     // step: null,
     // isInitiallyExpanded: false,
     // selectedValue: null,
 }; 
 
-export const Booking = Template.bind({});
-Booking.args = {};
+// export const Booking = Template.bind({});
+// Booking.args = {};
 
-export const Scheduling = Template.bind({});
-Scheduling.args = {};
+// export const Scheduling = Template.bind({});
+// Scheduling.args = {};
